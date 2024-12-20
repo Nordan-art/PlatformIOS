@@ -98,6 +98,8 @@ struct ContentView: View {
     @State private var isScannerPresented = false
     @State private var scannedCode: String?
 
+    @State private var isRefreshing = false
+
     var body: some View {
         ZStack(alignment: .top) {
 //            Color.red // This changes the background of the entire screen, including the safe area.

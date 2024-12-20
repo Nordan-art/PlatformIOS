@@ -14,7 +14,7 @@ import UserNotifications
 import UniformTypeIdentifiers
 
 //URL data store for webview
-class WebViewData: ObservableObject {
+class WebViewData: NSObject, ObservableObject {
     @Published var url: URL?
     
     init(url: URL) {
@@ -29,46 +29,20 @@ struct WebView: UIViewRepresentable, Equatable {
     }
     
     @ObservedObject var data: WebViewData
-//    @ObservedObject var linkData: URLLinkData
+    //    @ObservedObject var linkData: URLLinkData
     @Binding var urlToShowHeader: Bool
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
-    
+    //    @Binding var isRefreshing: Bool
     
     func makeUIView(context: Context) -> WKWebView {
-//        context.coordinator.webView.navigationDelegate = context.coordinator
-//        
-//        let webConfiguration = WKWebViewConfiguration()
-//        
-//        webConfiguration.allowsInlineMediaPlayback = true // Example: Set configuration appropriately
-//        webConfiguration.mediaTypesRequiringUserActionForPlayback = []
-//
-//        // Set mediaTypesRequiringUserActionForPlayback to require user action for all media
-//        //webConfiguration.mediaTypesRequiringUserActionForPlayback = .all
-//
-//        return context.coordinator.webView
-        
-//        let dataStore = WKWebsiteDataStore.default()
-//
-//        // Создаём конфигурацию для WebView
-//        let configuration = WKWebViewConfiguration()
-//        configuration.websiteDataStore = dataStore
-//
-//        let webView = WKWebView(frame: .zero, configuration: configuration)
-//
-//        // Загружаем URL
-//        let request = URLRequest(url: url)
-//        webView.load(request)
-//
-//        return webView
-
         
         // Create a WKWebViewConfiguration
         let webConfiguration = WKWebViewConfiguration()
         
         webConfiguration.allowsInlineMediaPlayback = true // Example: Set configuration appropriately
-//        webConfiguration.allowsPictureInPictureMediaPlayback = true
-
+        //        webConfiguration.allowsPictureInPictureMediaPlayback = true
+        
         // Create the WKWebView with the configuration
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         
@@ -79,6 +53,15 @@ struct WebView: UIViewRepresentable, Equatable {
         webView.allowsBackForwardNavigationGestures = true
         webView.allowsLinkPreview = true
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(context.coordinator, action: #selector(Coordinator.handleRefresh(_:)), for: .valueChanged)
+        
+        // Set the refresh control in the web view's scroll view
+        webView.scrollView.refreshControl = refreshControl
+        
+        webView.scrollView.isScrollEnabled = true
+        webView.scrollView.bounces = true
+        
         // Store the webView in the coordinator
         context.coordinator.webView = webView
         
@@ -88,18 +71,17 @@ struct WebView: UIViewRepresentable, Equatable {
     func updateUIView(_ UIView: WKWebView, context: Context) {
         if let url = data.url {
             let request = URLRequest(url: url)
-            
-//            print("url: \(url)")
-//            print("request: \(request)")
+            //print("url: \(url)")
+            //print("request: \(request)")
             UIView.load(request)
             UIView.allowsBackForwardNavigationGestures = true;
         }
     }
     
-
     func makeCoordinator() -> WebViewCoordinator {
         return WebViewCoordinator(data: data, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented)
     }
+    
 }
 
 ///    Тут можно закрыть стракт вебвью, для разделения стракта и класса координатора
@@ -110,20 +92,23 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     @Binding var urlToShowHeader: Bool
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
+    //    @Binding var isRefreshing: Bool
     
     @StateObject var documentController = DocumentController()
     
     //    let documentInteractionController = UIDocumentInteractionController()
-
+    
     var webView: WKWebView = WKWebView()
     
     var fileForOpen: URL? = URL(string: "")
     
     init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>) {
+        //    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, isRefreshing: Binding<Bool>) {
         self.data = data
         self._urlToShowHeader = urlToShowHeader
         self._textUrl = textUrl
         self._isScannerPresented = isScannerPresented
+        //        self._isRefreshing = isRefreshing
         
         super.init()
         
@@ -131,39 +116,40 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         webView.navigationDelegate = self
     }
     
-//    @objc func refreshWebView(_ sender: UIRefreshControl) {
-//        if let webView = sender.superview?.superview as? WKWebView {
-//            webView.reload()
-//            sender.endRefreshing()
-//        }
-//    }
-
-//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-//        print("Check open or change URL5: \(webView.url)")
-//        print("Test print webview 5 url: \(webView.url!.absoluteString)")
-
-        //        if navigationAction.navigationType == .linkActivated {
-        //            guard let url = navigationAction.request.url else {return}
-        //            webView.load(URLRequest(url: url))
-        //        }
-        //        decisionHandler(.allow)
-//        if let host = navigationAction.request.url?.host {
-//            if host.contains("ticket_description") {
-//                decisionHandler(.cancel)
-//                return
-//            }
-//        }
-//    }
-  
-
+    
+    //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    //        print("Check open or change URL5: \(webView.url)")
+    //        print("Test print webview 5 url: \(webView.url!.absoluteString)")
+    //
+    //        if navigationAction.navigationType == .linkActivated {
+    //            guard let url = navigationAction.request.url else {return}
+    //            webView.load(URLRequest(url: url))
+    //        }
+    //        decisionHandler(.allow)
+    //        if let host = navigationAction.request.url?.host {
+    //            if host.contains("ticket_description") {
+    //                decisionHandler(.cancel)
+    //                return
+    //            }
+    //        }
+    //    }
+    
+    @objc func handleRefresh(_ sender: UIRefreshControl) {
+        sender.beginRefreshing()
+        
+        // Access the WKWebView directly and reload it
+        withAnimation() {
+            webView.reload()
+        }
+    }
     
     //    this function uses when neew to open new page, new tab or browser
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         let navURL: String = String(describing: navigationAction.request.url!)
-//        print("Check open or change URL4: \(webView.url)")
+        //        print("Check open or change URL4: \(webView.url)")
         print("Test print webview 4 url: \(webView.url!.absoluteString)")
-
-//        webConfiguration.mediaTypesRequiringUserActionForPlayback = .all
+        
+        //        webConfiguration.mediaTypesRequiringUserActionForPlayback = .all
         if (!navURL.contains("platformapro.com")) {
             if let url = navigationAction.request.url {
                 UIApplication.shared.open(url)
@@ -180,12 +166,12 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
                 return nil
             }
         } else if (navURL.contains("apple_link")) {
-//            PurchaseCustomProduct(urlData: navigationAction.request.url, webView: webView)
+            //            PurchaseCustomProduct(urlData: navigationAction.request.url, webView: webView)
             return nil
         } else if navigationAction.targetFrame == nil {
             print("navigationAction.request.url: \(navigationAction.request.url)")
             print("navigationAction.targetFrame == nil")
-
+            
             if let url = navigationAction.request.url {
                 UIApplication.shared.open(url)
             }
@@ -200,24 +186,28 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     //    Remember user, set title
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Test print webview 3 url: \(webView.url!.absoluteString)")
-
+        
+        if let refreshControl = webView.scrollView.refreshControl {
+            refreshControl.endRefreshing()
+        }
+        
         let defaultsStorage = UserDefaults.standard
         let compaire = URL(string: "https://platformapro.com/login?webview")
         let compaire1 = URL(string: "https://platformapro.com/login")
-                        
-                
-//        StateContent.currentUrl = webView.url!
-
+        
+        
+        //        StateContent.currentUrl = webView.url!
+        
         textUrl = String(describing: webView.url)
         StateContent.url = webView.url!
         
-
+        
         //      MARK: -- after navigation anyone navigation change url to standart for opening new normal window on new tab
-//        StateContent.url = URL(string: "https://platformapro.com/login?webview")!
-                        
+        //        StateContent.url = URL(string: "https://platformapro.com/login?webview")!
+        
         //MARK: -- Use JavaScript интеграци JS явы скрипта
         print(String(describing: webView.url!).contains("forgot-password"))
-//        print("webView.url: \(webView.url) || compaire: \(compaire)")
+        //        print("webView.url: \(webView.url) || compaire: \(compaire)")
         if (webView.url! != URL(string: "https://platformapro.com/login?webview") && webView.url! != URL(string: "https://platformapro.com/login") && webView.url! != URL(string: "https://platformapro.com/register")) {
             if (String(describing: webView.url!).contains("forgot-password")) {
                 urlToShowHeader = true
@@ -228,8 +218,8 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
             urlToShowHeader = true
         }
         
-//        print("currentUrl: \(stateContent.currentUrl)")
-//        print("linkData: \(linkData.url)")
+        //        print("currentUrl: \(stateContent.currentUrl)")
+        //        print("linkData: \(linkData.url)")
         
         if(webView.url == compaire || webView.url == compaire1){
             print("stateContent.deviceID for send JS: \(StateContent.deviceID)")
@@ -241,9 +231,9 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
                 loginType.value = "\(UIDevice.current.localizedModel)";
             }
             """
-//              loginType.value = "IOS";
-//            UIDevice.current.localizedModel
-
+            //              loginType.value = "IOS";
+            //            UIDevice.current.localizedModel
+            
             //            in iPad only pass iPad value to understand what this device
             webView.evaluateJavaScript(loadDeviceID, in: nil, in: .defaultClient) { result in
                 switch result {
@@ -259,21 +249,11 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
             //            Если писать без "for: url.host", то будут получены все кукки, и те что не относяться к сайту
             webView.getCookies(for: url.host) { data in
                 for (key, value) in data {
-//                    print("HUI coockies data: \(data)")
-//                    print("HUI coockies: \(key) \(value)")
                     if(key == "access") {
                         let myStringDict = value as? [String:AnyObject]
                         for (key1, value1) in myStringDict! {
-                            
                             if (key1 == "Value") {
-//                                let userID = String(describing: value1).base64Decoded()!
-//                                defaultsStorage.set(userID, forKey: "UserID")
-//                                print("key1 : \(key1)")
-//                                print("value1: \(value1)")
                                 StateContent.userAdminQrCodeSendToken = value1 as! String
-                                if let stringOne = defaultsStorage.string(forKey: "UserID") {
-                                    
-                                }
                             }
                         }
                     }
@@ -288,7 +268,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
         let fileExtension: [String] = ["HEIC", "doc", "docx", "xml"]
         print("Test print webview 2 url: \(webView.url!.absoluteString)")
-
+        
         
         let checkURL: String = String(describing: navigationAction.request.url!)
         if navigationAction.shouldPerformDownload {
@@ -305,11 +285,11 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-//        StateContent.currentUrl = webView.url!
+        //        StateContent.currentUrl = webView.url!
         print("Test print webview 1 url: \(webView.url!.absoluteString)")
         
         if (webView.url!.absoluteString.contains("start-scan-qr")) {
-//            isScannerPresented
+            //            isScannerPresented
             isScannerPresented = true
             decisionHandler(.cancel)
             return
@@ -319,7 +299,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
             // MARK: -- применяется это если надо предотвратить открытие страницы какой-либо по умолчанию оставить в canShowMIMEType только allow и download
             if let urlStr = navigationResponse.response.url?.absoluteString {
                 if (urlStr.contains("item=live_consult") || urlStr.contains("item=my_accountant")) {
-//                    PurchaseCustomProduct(urlData: webView.url, webView: webView)
+                    //                    PurchaseCustomProduct(urlData: webView.url, webView: webView)
                     print("Предотвратить открытие какого-лбио файла")
                     decisionHandler(.cancel)
                     return
@@ -427,37 +407,36 @@ extension WKWebView {
         
     }
     
-    // This method is called when the pull-to-refresh gesture is triggered
-    @objc func PullRefresh(_ sender: Any) {
-        if let webView = sender as? WKWebView {
-            webView.reload()  // Reload the web view
-            // End the refreshing animation once the page is reloaded
-            webView.scrollView.refreshControl?.endRefreshing()
+    @objc func handleRefresh(_ sender: UIRefreshControl) {
+        sender.beginRefreshing()
+        
+        // Reload the web view
+        if let webView = sender.superview as? WKWebView {
+            webView.reload()
         }
     }
-
-
+    
     @objc func goHome(_ sender: Any) {
         self.load( URLRequest(url: URL(string:  "https://platformapro.com/login?webview")!))
     }
     
-//    @objc func goWindows(_ sender: Any) {
-//        self.load( URLRequest(url: URL(string:  "https://webstationmcg.quickconnect.to/sharing/UzcjzsShS")!))
-//    }
+    //    @objc func goWindows(_ sender: Any) {
+    //        self.load( URLRequest(url: URL(string:  "https://webstationmcg.quickconnect.to/sharing/UzcjzsShS")!))
+    //    }
     
-//    @objc func goCloud(_ sender: Any) {
-//        self.load( URLRequest(url: URL(string:  "https://cloudmcg.quickconnect.to/CloudMCG")!))
-//    }
+    //    @objc func goCloud(_ sender: Any) {
+    //        self.load( URLRequest(url: URL(string:  "https://cloudmcg.quickconnect.to/CloudMCG")!))
+    //    }
     
-//    @objc func ReloadProductsIAP(_ sender: Any) {
-//        Task {
-//            do {
-//                try await PurchaseManager().loadProducts()
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+    //    @objc func ReloadProductsIAP(_ sender: Any) {
+    //        Task {
+    //            do {
+    //                try await PurchaseManager().loadProducts()
+    //            } catch {
+    //                print(error)
+    //            }
+    //        }
+    //    }
 }
 
 extension URL {
@@ -514,7 +493,6 @@ extension String {
 }
 
 extension WKWebView {
-    
     private var httpCookieStore: WKHTTPCookieStore  { return WKWebsiteDataStore.default().httpCookieStore }
     
     func getCookies(for domain: String? = nil, completion: @escaping ([String : Any])->())  {
@@ -533,109 +511,3 @@ extension WKWebView {
         }
     }
 }
-
-@MainActor func PurchaseCustomProduct(urlData: URL?, webView: WKWebView) {
-    if let url = urlData{
-        //      MARK: -- Если используется проверка на содержание значения в строке, то может вызваться что-то другое, т.к и любая другая строка может содержать текст проверяемый, поэтому надо использовать по типу: "count=", т.к count ещё содержится в my_accountant
-        var UserIDClear = ""
-        var ServNameClear = ""
-        var purchTypeClear = ""
-        var eDocIdClear = ""
-        var EmployeesCount = ""
-        var appleLinkRedirect = ""
-        
-        let SummAllIndex = String(describing: url).components(separatedBy: "&")
-        
-//      MARK: -- Проверка не по "=" или "?" а по содержанию элемента, и уже потом отделение значения по "="
-        if let element = SummAllIndex.first(where: {$0.contains("client_id=")}) {
-            UserIDClear = element.components(separatedBy: "=")[1]
-        }
-        if let element = SummAllIndex.first(where: {$0.contains("item=")}) {
-            ServNameClear = element.components(separatedBy: "=")[1]
-        }
-        if let element = SummAllIndex.first(where: {$0.contains("purchType=")}) {
-            purchTypeClear = element.components(separatedBy: "=")[1]
-        }
-        if let element = SummAllIndex.first(where: {$0.contains("eDocID=")}) {
-            eDocIdClear = element.components(separatedBy: "=")[1]
-        }
-        if let element = SummAllIndex.first(where: {$0.contains("count=")}) {
-            EmployeesCount = element.components(separatedBy: "=")[1]
-        }
-        if let element = SummAllIndex.first(where: {$0.contains("apple_link=")}) {
-            appleLinkRedirect = element.components(separatedBy: "=")[1]
-        }
-        
-        guard UserIDClear != "" && UserIDClear != "0" else {
-            UIApplication.shared.sendAction(#selector(WKWebView.Reload(_:)), to:  nil, from: nil, for: nil)
-            return
-        }
-        guard ServNameClear != "" else {
-            UIApplication.shared.sendAction(#selector(WKWebView.Reload(_:)), to:  nil, from: nil, for: nil)
-            return
-        }
-        guard purchTypeClear != "" else {
-            UIApplication.shared.sendAction(#selector(WKWebView.Reload(_:)), to:  nil, from: nil, for: nil)
-            return
-        }
-        
-        
-        if (purchTypeClear == "singlPurch") {
-//            for itemProduct in PurchaseManager.products1PurchcSingl {
-//                if (itemProduct.id == ServNameClear) {
-//                    Task {
-//                        do {
-//                            try await PurchaseManager().purchase(itemProduct, userID: UserIDClear, purchTypeClear: purchTypeClear, eDocIdClear: eDocIdClear, EmployeesCount: EmployeesCount, webView: webView)
-//                        } catch {
-//                            print(error)
-//                        }
-//                    }
-//                }
-//            }
-        } else {
-//            for itemProduct in PurchaseManager.products1Subscr {
-//                if (itemProduct.id == ServNameClear) {
-//                    Task {
-//                        do {
-//                            try await PurchaseManager().purchase(itemProduct, userID: UserIDClear, purchTypeClear: purchTypeClear, eDocIdClear: eDocIdClear, EmployeesCount: EmployeesCount, webView: webView)
-//                        } catch {
-//                            print(error)
-//                        }
-//                    }
-//                }
-//            }
-        }
-        
-    }
-}
-//struct WebView: UIViewRepresentable {
-//    let url: URL
-//
-//    func makeUIView(context: Context) -> WKWebView {
-//        let webView = WKWebView()
-//
-//        // Настройка UIRefreshControl
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(context.coordinator, action: #selector(Coordinator.refreshWebView), for: .valueChanged)
-//        webView.scrollView.refreshControl = refreshControl
-//
-//        // Загрузка URL
-//        webView.load(URLRequest(url: url))
-//        return webView
-//    }
-//
-//    func updateUIView(_ uiView: WKWebView, context: Context) {}
-//
-//    func makeCoordinator() -> Coordinator {
-//        Coordinator()
-//    }
-//
-//    class Coordinator: NSObject {
-//        @objc func refreshWebView(_ sender: UIRefreshControl) {
-//            if let webView = sender.superview?.superview as? WKWebView {
-//                webView.reload()
-//                sender.endRefreshing()
-//            }
-//        }
-//    }
-//}
