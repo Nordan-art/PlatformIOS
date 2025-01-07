@@ -11,12 +11,18 @@ import Network
 
 
 struct StateContent {
-//        static var url: URL = URL(string: "https://crm.mcgroup.pl/")!
-//        static var url: URL = URL(string: "https://hurafaktura.pl")!
+    //        static var url: URL = URL(string: "https://crm.mcgroup.pl/")!
+    //        static var url: URL = URL(string: "https://hurafaktura.pl")!
     static var url: URL = URL(string: "https://platformapro.com/login?webview")!
     
     static var currentUrl: URL = URL(string: "https://platformapro.com/login?webview")!
     
+    
+    static var addressOpenApp: String = ""
+    static var addressCityOpenApp: String = ""
+    static var addressTownOpenApp: String = ""
+    
+    static var scanerOpenEvent: String = ""
     
     static var deviceID: String = ""
     static var userAdminQrCodeSendToken: String = ""
@@ -28,7 +34,7 @@ struct StateContent {
 
 struct ContentView: View {
     @Environment(\.openURL) var openURL
-
+    
     private let webView = WKWebView()
     
     @State var urlToShowHeader: Bool = false
@@ -63,8 +69,8 @@ struct ContentView: View {
     
     @State var isVisibleNowLoadingScreen: Bool = false
     @State var loadingOnlyOneTime: Bool = false
-//    https://platformapro.com/login
-//    https://platformapro.com/register
+    //    https://platformapro.com/login
+    //    https://platformapro.com/register
     func networkMonitoring() {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue(label: "monitoring")
@@ -97,29 +103,32 @@ struct ContentView: View {
     
     @State private var isScannerPresented = false
     @State private var scannedCode: String?
-
+    
     @State private var isRefreshing = false
-
+    
+    @State private var availableApps: [TransportApplication] = []
+    @State var showAppSelection = false
+    
     var body: some View {
         ZStack(alignment: .top) {
-//            Color.red // This changes the background of the entire screen, including the safe area.
-//                .edgesIgnoringSafeArea(.top) // Ignore the top safe area
+            //            Color.red // This changes the background of the entire screen, including the safe area.
+            //                .edgesIgnoringSafeArea(.top) // Ignore the top safe area
             GeometryReader { reader in
                 Color.headerLogBackgr
                     .frame(height: reader.safeAreaInsets.top, alignment: .top)
                     .ignoresSafeArea()
             }
             .zIndex(4)
-
+            
             Color.black.ignoresSafeArea()
             
-//            Text("textUrl: \(textUrl)")
-//                .foregroundStyle(Color.clear)
-//                .font(.system(size: 20))
-//                .zIndex(4)
+            //            Text("textUrl: \(textUrl)")
+            //                .foregroundStyle(Color.clear)
+            //                .font(.system(size: 20))
+            //                .zIndex(4)
             
-//            WebView(data: WebViewData(url: stateContent.url))
-            WebView(data: WebViewData(url: StateContent.url), urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented)
+            //            WebView(data: WebViewData(url: stateContent.url))
+            WebView(data: WebViewData(url: StateContent.url), urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection)
                 .equatable()
                 .onChange(of: webView.estimatedProgress, perform: { value in
                     print(value)
@@ -128,27 +137,89 @@ struct ContentView: View {
                 .blur(radius: internetConnectionIsOKorNOT == .satisfied ? 0 : 5)
                 .onAppear {
                     textUrl = String(describing: StateContent.url)
-//                    print("onAppear currentUrl \(StateContent.currentUrl) ")
-//                    print("onAppear stateContent.url \(StateContent.url) ")
+                    //                    print("onAppear currentUrl \(StateContent.currentUrl) ")
+                    //                    print("onAppear stateContent.url \(StateContent.url) ")
                 }
                 .onOpenURL { incomingURL in
                     print("App was opened via URL: \(incomingURL)")
-//                    let deepLink = "platforma://open-restore-password/https%3A%2F%2Fplatformapro.com%2Fforgot-password"
+                    //                    let deepLink = "platforma://open-restore-password/https%3A%2F%2Fplatformapro.com%2Fforgot-password"
                     let baseDeepLink = "platforma://open-restore-password/"
+                    let baseDeepLinkOpenAnything = "platforma://open-any-url/"
+                    //                    let baseDeepLinkOpenAnything = "platforma://open-any-url/https%3A%2F%2Fplatformapro.com%2Fuser-single-event%2F6"
+                    //user-single-event/6
+                    //                    https://platformapro.com/forgot-password/ilNkhjFmM2nzJcYvfUGXzMHiZDWNdvd7QjN8bMUMbP2IIa3Qy1
                     
-//                    https://platformapro.com/forgot-password/ilNkhjFmM2nzJcYvfUGXzMHiZDWNdvd7QjN8bMUMbP2IIa3Qy1
-                    if (String(describing: incomingURL).contains("https://platformapro.com/")) {
+                    // Допустимы ссылки
+                    // https://platformapro.com/
+                    // platforma://platformapro.com/open-restore-password
+                    // platforma://platformapro.com/open-any-url
+                    
+                    if (String(describing: incomingURL).contains("platformapro.com") && !String(describing: incomingURL).contains("platforma://")) {
                         
                         StateContent.url = incomingURL
+                        
+                    } else if (String(describing: incomingURL).contains("platforma://")) {
+                        print("incomingURL: \(incomingURL)")
+                        
+                        if (String(describing: incomingURL).contains("open-restore-password")) {
+                            if let extractedURL = extractURL(from: String(describing: incomingURL), base: baseDeepLink) {
+                                print("extractedURL1: \(extractedURL)")
+                                StateContent.url = URL(string: extractedURL)!
+                            }
+                        } else if (String(describing: incomingURL).contains("open-any-url")) {
+                            if let extractedURL = extractURL(from: String(describing: incomingURL), base: baseDeepLinkOpenAnything) {
+                                print("extractedURL2: \(extractedURL)")
+                                StateContent.url = URL(string: extractedURL)!
+                            }
+                        } else {
+                            StateContent.url = URL(string: "https://platformapro.com/login?webview")!
+                        }
                     } else {
-                        if let extractedURL = extractURL(from: String(describing: incomingURL), base: baseDeepLink) {
-//                            print("Extracted URL: \(extractedURL)")
-                            StateContent.url = URL(string: extractedURL)!
-                            //                        StateContent.currentUrl = URL(string: extractedURL)!
-                            // Result: https://platformapro.com/forgot-password
+                        openURL(incomingURL)
+                    }
+                }
+            //                .sheet(isPresented: $showAppSelection) {
+            //                    List(availableApps) { app in
+            //                        Button(action: {
+            //                            app.open()
+            //                        }) {
+            //                            HStack {
+            //                                Image(systemName: app.iconName)
+            //                                    .foregroundColor(.blue)
+            //                                Text(app.name)
+            //                            }
+            //                        }
+            //                    }
+            //                }
+                .confirmationDialog(
+                    "Select an App",
+                    isPresented: $showAppSelection,
+                    titleVisibility: .visible
+                ) {
+                    ForEach(availableApps) { app in
+                        Button {
+                            app.open()
+                        } label: {
+                            HStack(spacing: 0) {
+                                //                                Image(systemName: app.iconName)
+                                //                                    .resizable()
+                                //                                    .foregroundColor(.blue)
+                                //                                    .frame(width: 15, height: 15)
+                                
+                                Text(app.name)
+                                    .font(.custom("Montserrat-Medium", size: 14))
+                            }
                         }
                     }
                 }
+                .onAppear {
+                    availableApps = TransportApplication.getAvailableApps()
+                }
+            
+            
+            
+            //            https://platformapro.com/
+            //            platforma://
             
             
             GeometryReader{ geometry in
@@ -183,10 +254,10 @@ struct ContentView: View {
             .zIndex(internetConnectionIsOKorNOT != .satisfied ? 4 : 1)
             
             if (urlToShowHeader == true) {
-//            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
-//            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
+                //            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
+                //            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
                 VStack(spacing: 0) {
-
+                    
                     HStack(alignment: .top) {
                         //Spacer()
                         Group {
@@ -199,20 +270,22 @@ struct ContentView: View {
                                 
                                 Spacer()
                                 
-//                                Button("Scan QR Code") {
-//                                    isScannerPresented = true
-//                                }
-//                                .padding()
-//                                .sheet(isPresented: $isScannerPresented) {
-//                                    QRCodeScannerView(scannedCode: $scannedCode)
-//                                }
-
+                                //                                Button("Scan QR Code") {
+                                //                                    isScannerPresented = true
+                                //                                }
+                                //                                .padding()
+                                //                                .sheet(isPresented: $isScannerPresented) {
+                                //                                    QRCodeScannerView(scannedCode: $scannedCode)
+                                //                                }
+                                
                                 Button {
                                     ///openURL(URL(string: "https://platformapro.com/privacy-policy")!)
                                     ///openURL(URL(string: "https://miacrm.pl/privacy-policy/")!)
                                     
+                                    //                                    availableApps = TransportApplication.getAvailableApps()
+                                    //                                    showAppSelection = true
                                     showPrivacePolicyAlert = true
-//                                    isScannerPresented = true
+                                    //                                    isScannerPresented = true
                                 } label: {
                                     Text("Privacy Policy")
                                         .font(.custom("Montserrat-Medium", size: 16))
@@ -259,16 +332,17 @@ struct ContentView: View {
                     
                 }
                 .padding(.horizontal, 15)
-                .frame(minWidth: SGConvenience.deviceWidth, minHeight: 75, maxHeight: 75)
-//                .frame(minWidth: UIScreen.main.bounds.width, minHeight: 75, maxHeight: 75)
-//                .frame(minWidth: UIScreen.main.bounds.width, minHeight: urlToShowHeader ? 75 : 0, maxHeight: urlToShowHeader ? 75 : 0)
+                .frame(width: SGConvenience.deviceWidth, height: 75)
+                //                .frame(minWidth: SGConvenience.deviceWidth, minHeight: 75, maxHeight: 75)
+                //                .frame(minWidth: UIScreen.main.bounds.width, minHeight: 75, maxHeight: 75)
+                //                .frame(minWidth: UIScreen.main.bounds.width, minHeight: urlToShowHeader ? 75 : 0, maxHeight: urlToShowHeader ? 75 : 0)
                 .background(Color.headerLogBackgr.opacity(0.5))
                 //            .background(Color(red: 100 / 255, green: 108 / 255, blue: 154 / 255).opacity(0.8))
                 //            .cornerRadius(radius: 15.0, corners: [.topLeft, .bottomLeft])
                 //            .frame(minWidth: UIScreen.main.bounds.width, minHeight: 75, maxHeight: 75, alignment: .top)
                 //            .frame(width: UIScreen.main.bounds.width, height: 50, alignment: .top)
-//                .transition(.move(edge: .trailing))
-//                .offset(y: CGFloat(topActionMenuOffset))
+                //                .transition(.move(edge: .trailing))
+                //                .offset(y: CGFloat(topActionMenuOffset))
                 //            .gesture(
                 //                DragGesture(minimumDistance: 20, coordinateSpace: .global)
                 //                    .onEnded { value in
@@ -304,7 +378,7 @@ struct ContentView: View {
                         // Display the custom alert as an overlay
                         AlertPrivacyPolice(show: $showPrivacePolicyAlert, infoTextAlert: "")
                             .frame(width: geo.size.width - 30, height: geo.size.width / 2)
-//                            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.width / 2)
+                        //                            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.width / 2)
                         //                        .frame(width: SGConvenience.deviceWidth - 30, height: SGConvenience.deviceHeight / 2)
                         //                        .frame(width: UIScreen.main.bounds.width / 1.1, height: UIScreen.main.bounds.height / 2)
                             .background(LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -318,12 +392,12 @@ struct ContentView: View {
                             )
                             .zIndex(2)
                             .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
-
+                        
                         
                         
                         Color.black.opacity(0.25)
                             .frame(width: geo.size.width, height: geo.size.height)
-//                            .frame(width: .infinity, height: .infinity)
+                        //                            .frame(width: .infinity, height: .infinity)
                             .zIndex(1)
                     }
                 }
@@ -356,14 +430,48 @@ struct ContentView: View {
 
 
 class SGConvenience {
-    #if os(watchOS)
-    static var deviceWidth:CGFloat = WKInterfaceDevice.current().screenBounds.size.width
-    static var deviceHeight:CGFloat = WKInterfaceDevice.current().screenBounds.size.height
-    #elseif os(iOS)
-    static var deviceWidth:CGFloat = UIScreen.main.bounds.size.width
-    static var deviceHeight:CGFloat = UIScreen.main.bounds.size.height
-    #elseif os(macOS)
-    static var deviceWidth:CGFloat? = NSScreen.main?.visibleFrame.size.width // You could implement this to force a CGFloat and get the full device screen size width regardless of the window size with .frame.size.width
-    static var deviceHeight:CGFloat? = NSScreen.main?.visibleFrame.size.height // You could implement this to force a CGFloat and get the full device screen size width regardless of the window size with .frame.size.width
-    #endif
+#if os(watchOS)
+    //    static var deviceWidth:CGFloat = WKInterfaceDevice.current().screenBounds.size.width
+    //    static var deviceHeight:CGFloat = WKInterfaceDevice.current().screenBounds.size.height
+    static var deviceWidth: CGFloat {
+        return WKInterfaceDevice.current().screenBounds.size.width
+    }
+    static var deviceHeight: CGFloat {
+        return WKInterfaceDevice.current().screenBounds.size.height
+    }
+#elseif os(iOS)
+    //    static var deviceWidth:CGFloat = UIScreen.main.bounds.size.width
+    //    static var deviceHeight:CGFloat = UIScreen.main.bounds.size.height
+    static var deviceWidth: CGFloat {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                return window.frame.size.width
+            }
+        }
+        return UIScreen.main.bounds.size.width
+    }
+    static var deviceHeight: CGFloat {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                return window.frame.size.height
+            }
+        }
+        return UIScreen.main.bounds.size.height
+    }
+#elseif os(macOS)
+    //    static var deviceWidth:CGFloat? = NSScreen.main?.visibleFrame.size.width // You could implement this to force a CGFloat and get the full device screen size width regardless of the window size with .frame.size.width
+    //    static var deviceHeight:CGFloat? = NSScreen.main?.visibleFrame.size.height // You could implement this to force a CGFloat and get the full device screen size width regardless of the window size with .frame.size.width
+    static var deviceWidth: CGFloat? {
+        if let window = NSApplication.shared.windows.first {
+            return window.frame.size.width
+        }
+        return NSScreen.main?.visibleFrame.size.width
+    }
+    static var deviceHeight: CGFloat? {
+        if let window = NSApplication.shared.windows.first {
+            return window.frame.size.height
+        }
+        return NSScreen.main?.visibleFrame.size.height
+    }
+#endif
 }

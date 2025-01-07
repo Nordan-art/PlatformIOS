@@ -6,8 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		469DB8E02D15CA6F00355097 /* PlatformaClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 469DB8D12D15CA6E00355097 /* PlatformaClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		469DB8DE2D15CA6F00355097 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4657C6C42CFE2F9900309A72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 469DB8D02D15CA6E00355097;
+			remoteInfo = PlatformaClip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		469DB8E52D15CA6F00355097 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				469DB8E02D15CA6F00355097 /* PlatformaClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4657C6CC2CFE2F9900309A72 /* Platforma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platforma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		469DB8D12D15CA6E00355097 /* PlatformaClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatformaClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -17,6 +46,13 @@
 				Info.plist,
 			);
 			target = 4657C6CB2CFE2F9900309A72 /* Platforma */;
+		};
+		469DB8E42D15CA6F00355097 /* Exceptions for "PlatformaClip" folder in "PlatformaClip" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 469DB8D02D15CA6E00355097 /* PlatformaClip */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -29,10 +65,25 @@
 			path = Platforma;
 			sourceTree = "<group>";
 		};
+		469DB8D22D15CA6E00355097 /* PlatformaClip */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				469DB8E42D15CA6F00355097 /* Exceptions for "PlatformaClip" folder in "PlatformaClip" target */,
+			);
+			path = PlatformaClip;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4657C6C92CFE2F9900309A72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469DB8CE2D15CA6E00355097 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				4657C6CE2CFE2F9900309A72 /* Platforma */,
+				469DB8D22D15CA6E00355097 /* PlatformaClip */,
 				4657C6CD2CFE2F9900309A72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				4657C6CC2CFE2F9900309A72 /* Platforma.app */,
+				469DB8D12D15CA6E00355097 /* PlatformaClip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,10 +121,12 @@
 				4657C6C82CFE2F9900309A72 /* Sources */,
 				4657C6C92CFE2F9900309A72 /* Frameworks */,
 				4657C6CA2CFE2F9900309A72 /* Resources */,
+				469DB8E52D15CA6F00355097 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				469DB8DF2D15CA6F00355097 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4657C6CE2CFE2F9900309A72 /* Platforma */,
@@ -82,6 +137,28 @@
 			productName = Platforma;
 			productReference = 4657C6CC2CFE2F9900309A72 /* Platforma.app */;
 			productType = "com.apple.product-type.application";
+		};
+		469DB8D02D15CA6E00355097 /* PlatformaClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 469DB8E12D15CA6F00355097 /* Build configuration list for PBXNativeTarget "PlatformaClip" */;
+			buildPhases = (
+				469DB8CD2D15CA6E00355097 /* Sources */,
+				469DB8CE2D15CA6E00355097 /* Frameworks */,
+				469DB8CF2D15CA6E00355097 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				469DB8D22D15CA6E00355097 /* PlatformaClip */,
+			);
+			name = PlatformaClip;
+			packageProductDependencies = (
+			);
+			productName = PlatformaClip;
+			productReference = 469DB8D12D15CA6E00355097 /* PlatformaClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
 		};
 /* End PBXNativeTarget section */
 
@@ -94,6 +171,9 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					4657C6CB2CFE2F9900309A72 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					469DB8D02D15CA6E00355097 = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -113,12 +193,20 @@
 			projectRoot = "";
 			targets = (
 				4657C6CB2CFE2F9900309A72 /* Platforma */,
+				469DB8D02D15CA6E00355097 /* PlatformaClip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4657C6CA2CFE2F9900309A72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		469DB8CF2D15CA6E00355097 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +223,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		469DB8CD2D15CA6E00355097 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		469DB8DF2D15CA6F00355097 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 469DB8D02D15CA6E00355097 /* PlatformaClip */;
+			targetProxy = 469DB8DE2D15CA6F00355097 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4657C6D82CFE2F9A00309A72 /* Debug */ = {
@@ -265,7 +368,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -274,6 +377,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby Bolt taxis.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to upload and share photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -285,7 +389,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.14;
+				MARKETING_VERSION = 1.0.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -307,7 +411,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -316,6 +420,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby Bolt taxis.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to upload and share photos.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -327,7 +432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.14;
+				MARKETING_VERSION = 1.0.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -335,6 +440,82 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		469DB8E22D15CA6F00355097 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlatformaClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.21;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		469DB8E32D15CA6F00355097 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 21;
+				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlatformaClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.21;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,6 +539,15 @@
 			buildConfigurations = (
 				4657C6DB2CFE2F9A00309A72 /* Debug */,
 				4657C6DC2CFE2F9A00309A72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		469DB8E12D15CA6F00355097 /* Build configuration list for PBXNativeTarget "PlatformaClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				469DB8E22D15CA6F00355097 /* Debug */,
+				469DB8E32D15CA6F00355097 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

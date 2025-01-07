@@ -33,6 +33,7 @@ struct WebView: UIViewRepresentable, Equatable {
     @Binding var urlToShowHeader: Bool
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
+    @Binding var showAppSelection: Bool
     //    @Binding var isRefreshing: Bool
     
     func makeUIView(context: Context) -> WKWebView {
@@ -79,7 +80,7 @@ struct WebView: UIViewRepresentable, Equatable {
     }
     
     func makeCoordinator() -> WebViewCoordinator {
-        return WebViewCoordinator(data: data, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented)
+        return WebViewCoordinator(data: data, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection)
     }
     
 }
@@ -92,6 +93,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     @Binding var urlToShowHeader: Bool
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
+    @Binding var showAppSelection: Bool
     //    @Binding var isRefreshing: Bool
     
     @StateObject var documentController = DocumentController()
@@ -102,12 +104,13 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     
     var fileForOpen: URL? = URL(string: "")
     
-    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>) {
+    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, showAppSelection: Binding<Bool>) {
         //    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, isRefreshing: Binding<Bool>) {
         self.data = data
         self._urlToShowHeader = urlToShowHeader
         self._textUrl = textUrl
         self._isScannerPresented = isScannerPresented
+        self._showAppSelection = showAppSelection
         //        self._isRefreshing = isRefreshing
         
         super.init()
@@ -288,8 +291,36 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         //        StateContent.currentUrl = webView.url!
         print("Test print webview 1 url: \(webView.url!.absoluteString)")
         
+        if (webView.url!.absoluteString.contains("open-transport-app")) {
+            showAppSelection = true
+            print("webView.url!.absoluteString: \(webView.url!.absoluteString)")
+//            https://platformapro.com/open-transport-app?city=Warszawa&town=Vogla%2028
+//            uber://?action=setPickup&dropoff[formatted_address]=<address>
+            if let url = URL(string: webView.url!.absoluteString),
+               let components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+                // Extract query items
+                if let queryItems = components.queryItems {
+                    let city = queryItems.first(where: { $0.name == "city" })?.value
+                    let town = queryItems.first(where: { $0.name == "town" })?.value
+
+                    print("City: \(city ?? "N/A")")
+                    print("Town: \(town ?? "N/A")")
+                    StateContent.addressCityOpenApp = city ?? ""
+                    StateContent.addressTownOpenApp = town ?? ""
+                    StateContent.addressOpenApp = "\(town ?? "") \(city ?? "")"
+//                    StateContent.addressOpenApp = "\(city ?? ""), \(town ?? "")"
+                }
+            }
+            decisionHandler(.cancel)
+            return
+        }
+        
         if (webView.url!.absoluteString.contains("start-scan-qr")) {
+            parseSearchAndCheckId(from: webView.url!.absoluteString)
+//            https://platformapro.com/start-scan-qr?start_id=12
             //            isScannerPresented
+            
+//            StateContent.scanerOpenEvent =
             isScannerPresented = true
             decisionHandler(.cancel)
             return
@@ -311,6 +342,24 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         } else {
             decisionHandler(.download)
         }
+    }
+    func parseSearchAndCheckId(from urlString: String) -> String? {
+        guard let url = URL(string: urlString),
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            return nil
+        }
+        
+        let queryItems = components.queryItems
+        
+        let startId = queryItems?.first(where: { $0.name == "start_id" })?.value
+        
+        if let startId = startId {
+            StateContent.scanerOpenEvent = startId
+            
+            return "startId: \(startId)"
+        }
+        
+        return nil
     }
     
     func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {

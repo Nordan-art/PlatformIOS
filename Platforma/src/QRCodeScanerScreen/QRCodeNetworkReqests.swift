@@ -39,7 +39,8 @@ class QRCodeNetworkReqests: ObservableObject{
     @Published var userFromQRCodeDataModel: UserFromQRCodeDataModel = UserFromQRCodeDataModel(status: true)
     
     func sendQrCodeData(search_id: String, check_id: String, completion: @escaping(Result<(response: HTTPURLResponse, data: Data, stringKey: String), Error>) -> Void) {
-        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?search_id=\(search_id)&check_id=\(check_id)") else {
+        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?search_id=\(search_id)&check_id=\(check_id)&compaire=\(StateContent.scanerOpenEvent)") else {
+//        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?search_id=\(search_id)&check_id=\(check_id)") else {
             completion(.failure(NetworkError.invalidURL))
             return
         }

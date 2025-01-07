@@ -136,6 +136,18 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 }
 
+class NotificationService: UNNotificationServiceExtension {
+    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+        let bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        
+        if let attachmentURL = URL(string: "https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok"),
+           let attachment = try? UNNotificationAttachment(identifier: "", url: attachmentURL, options: nil) {
+            bestAttemptContent?.attachments = [attachment]
+        }
+
+        contentHandler(bestAttemptContent ?? request.content)
+    }
+}
 
 struct NotificationDataModel: Codable {
     let custom: Custom?
