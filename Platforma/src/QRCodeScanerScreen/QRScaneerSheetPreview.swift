@@ -138,7 +138,7 @@ struct QRScaneerSheetPreview: View {
                                 isScanning = true
                                 scanerStatusError = false
                             } label: {
-                                Text("Repeat scan")
+                                Text("qrscaner.repeat_try_to_scan")
                                     .font(.custom("Montserrat-Medium", size: 16))
                                     .padding([.top, .bottom], 10)
                                     .frame(width: geometry.size.width / 2)
@@ -157,7 +157,7 @@ struct QRScaneerSheetPreview: View {
                             isScannerPresented = false
                             dismiss()
                         } label: {
-                            Text("Cancel Scan")
+                            Text("qrscaner.cancel_scan")
                                 .font(.custom("Montserrat-Medium", size: 16))
                                 .padding([.top, .bottom], 10)
                                 .frame(width: geometry.size.width / 2)

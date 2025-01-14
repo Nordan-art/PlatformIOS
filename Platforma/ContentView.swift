@@ -5,10 +5,14 @@
 //  Created by Daniil Razbitski on 02/12/2024.
 //
 
+import Combine
+import Foundation
+
 import SwiftUI
 import WebKit
 import Network
-
+import ActivityKit
+import WidgetKit
 
 struct StateContent {
     //        static var url: URL = URL(string: "https://crm.mcgroup.pl/")!
@@ -109,6 +113,8 @@ struct ContentView: View {
     @State private var availableApps: [TransportApplication] = []
     @State var showAppSelection = false
     
+    @StateObject private var activityManager = ActivityManager.shared
+
     var body: some View {
         ZStack(alignment: .top) {
             //            Color.red // This changes the background of the entire screen, including the safe area.
@@ -141,7 +147,7 @@ struct ContentView: View {
                     //                    print("onAppear stateContent.url \(StateContent.url) ")
                 }
                 .onOpenURL { incomingURL in
-                    print("App was opened via URL: \(incomingURL)")
+//                    print("App was opened via URL: \(incomingURL)")
                     //                    let deepLink = "platforma://open-restore-password/https%3A%2F%2Fplatformapro.com%2Fforgot-password"
                     let baseDeepLink = "platforma://open-restore-password/"
                     let baseDeepLinkOpenAnything = "platforma://open-any-url/"
@@ -284,8 +290,19 @@ struct ContentView: View {
                                     
                                     //                                    availableApps = TransportApplication.getAvailableApps()
                                     //                                    showAppSelection = true
-                                    showPrivacePolicyAlert = true
                                     //                                    isScannerPresented = true
+                                    //MARK: -- MAIN
+                                    showPrivacePolicyAlert = true
+                                    
+//                                    if (activityManager.activityID?.isEmpty == false) {
+//                                        Task {
+//                                            await activityManager.cancelAllRunningActivities()
+//                                        }
+//                                    } else {
+//                                        Task {
+//                                            await activityManager.start()
+//                                        }
+//                                    }
                                 } label: {
                                     Text("Privacy Policy")
                                         .font(.custom("Montserrat-Medium", size: 16))
@@ -377,8 +394,8 @@ struct ContentView: View {
                     GeometryReader { geo in
                         // Display the custom alert as an overlay
                         AlertPrivacyPolice(show: $showPrivacePolicyAlert, infoTextAlert: "")
-                            .frame(width: geo.size.width - 30, height: geo.size.width / 2)
-                        //                            .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.width / 2)
+                            .frame(width: geo.size.width - 30, height: geo.size.height / 2)
+                        //                        .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.width / 2)
                         //                        .frame(width: SGConvenience.deviceWidth - 30, height: SGConvenience.deviceHeight / 2)
                         //                        .frame(width: UIScreen.main.bounds.width / 1.1, height: UIScreen.main.bounds.height / 2)
                             .background(LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -410,6 +427,36 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $isScannerPresented, content: {QRScaneerSheetPreview(isScannerPresented: $isScannerPresented, scannedCode: $scannedCode).ignoresSafeArea(.all)})
     }
     
+    @State var errorMessage: String? = ""
+//    func startLiveActivity() {
+//
+//        if ActivityAuthorizationInfo().areActivitiesEnabled {
+//            do {
+//                let adventure = MIALiveActivityAttributes(name: "hero")
+//                let initialState = MIALiveActivityAttributes.ContentState(
+//                    currentHealthLevel: 100,
+//                    eventDescription: "Adventure has begun!"
+//                )
+//                
+//                let activity = try Activity.request(
+//                    attributes: adventure,
+//                    content: .init(state: initialState, staleDate: nil),
+//                    pushType: .token
+//                )
+//                
+////                self.setup(withActivity: activity)
+//            } catch {
+//                errorMessage = """
+//                            Couldn't start activity
+//                            ------------------------
+//                            \(String(describing: error))
+//                            """
+//                
+//                self.errorMessage = errorMessage
+//            }
+//        }
+//    }
+
     func extractURL(from deepLink: String, base: String) -> String? {
         guard deepLink.hasPrefix(base) else {
             print("Deep link does not match the base")
@@ -440,8 +487,6 @@ class SGConvenience {
         return WKInterfaceDevice.current().screenBounds.size.height
     }
 #elseif os(iOS)
-    //    static var deviceWidth:CGFloat = UIScreen.main.bounds.size.width
-    //    static var deviceHeight:CGFloat = UIScreen.main.bounds.size.height
     static var deviceWidth: CGFloat {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
@@ -475,3 +520,5 @@ class SGConvenience {
     }
 #endif
 }
+
+

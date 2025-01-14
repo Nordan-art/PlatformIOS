@@ -8,6 +8,7 @@
 import SwiftUI
 import WebKit
 import UserNotifications
+import ActivityKit
 
 @main
 struct PlatformaApp: App {
@@ -48,7 +49,8 @@ struct PlatformaApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 //    var stateDeviceIDContent = StateDeviceIDContent()
-    
+    @ObservedObject private var activityManager = ActivityManager.shared
+
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Request authorization to display notifications
@@ -70,6 +72,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         //        if let messageID = userInfo[gcmMessageIDKey] {
         //            print("Message ID: \(messageID)")
         //        }
+        if let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) {
+            //               print("Converted to Data:", jsonData)
+            
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print("JSON Response: \(jsonString)")
+            }
+        }
         
         print(userInfo)
         
@@ -89,29 +98,25 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // Handle the registration error
     }
-    
-    //    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    //        // Handle the notification when it is received while the app is in the foreground
-    //        completionHandler(.banner)
-    //    }
-    //
-    //    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-    //        // Handle the notification when it is received while the app is in the background or not running
-    //        completionHandler()
-    //    }
-    
+        
     // Receive displayed notifications for iOS 10 devices.
-    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         // Print userInfo for debugging
-//           print("UserInfo: \(userInfo)")
+        //           print("UserInfo: \(userInfo)")
 
-           // Convert userInfo to Data
+        //        updateLiveActivity(endTime: <#T##Date#>)
+
+        //        runLiveActivity
+        // Convert userInfo to Data
            if let jsonData = try? JSONSerialization.data(withJSONObject: userInfo, options: []) {
 //               print("Converted to Data:", jsonData)
 
                do {
+                   if let jsonString = String(data: jsonData, encoding: .utf8) {
+                       print("JSON Response: \(jsonString)")
+                   }
+
                    // Decode JSON data into NotificationDataModel
                    let model = try JSONDecoder().decode(NotificationDataModel.self, from: jsonData)
 //                   print("Decoded Model: \(model)")
@@ -121,6 +126,23 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 //                       print("Notification Action: \(action)")
                        StateContent.url = URL(string: action) ?? URL(string: "https://platformapro.com/login?webview")!
                    }
+                   
+                   if let liveactivity = model.live_activity {
+                       if (activityManager.activityID?.isEmpty == false) {
+                           Task {
+                               await activityManager.cancelAllRunningActivities()
+                           }
+                       } else {
+                           Task {
+                               activityManager.initialContentState = PlatformaLiveActivityAttributes.ContentState(startTime: model.live_activity?.startTime ?? "", eventName: model.live_activity?.eventName ?? "", eventType: model.live_activity?.eventType ?? "", eventAddress: model.live_activity?.eventAddress ?? "", eventURL: model.live_activity?.eventURL ?? "", activityID: model.live_activity?.activityID ?? "")
+                               await activityManager.start(activityID: model.live_activity?.activityID ?? "")
+                           }
+                       }
+                   }
+                   
+//                   JSON Response: {"custom":{"openPage":"notification","action":"https:\/\/platformapro.com\/user-single-event\/6"},"aps":{"alert":{"title":"PLATFORMA PRO","subtitle":"ТЕСТ с Platformapro.com","body":"Тестовое название мероприятия"},"timestamp":"1705168800","event":"update","content-state":{"awayTeamScore":"2","lastEvent":"Привет мир!","homeTeamScore":"1"},"sound":"testRingNotification"}}
+//                   JSON Response: {"live_activity":{"start_time":"2025-01-13 18:00:00","event_name":"Тестовое название мероприятия"},"custom":{"openPage":"notification","action":"https:\/\/platformapro.com\/user-single-event\/6"},"aps":{"alert":{"title":"PLATFORMA PRO","subtitle":"ТЕСТ с Platformapro.com","body":"Тестовое название мероприятия"},"sound":"testRingNotification"}}
+
                } catch {
 //                   print("Error decoding JSON: \(error.localizedDescription)")
                }
@@ -128,34 +150,36 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 //               print("Failed to serialize dictionary to Data.")
            }
 
-//               if let messageID = userInfo[gcmMessageIDKey] {
-//                 print("Message ID from userNotificationCenter didReceive: \(messageID)")
-//               }
-
         completionHandler()
     }
-}
-
-class NotificationService: UNNotificationServiceExtension {
-    override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        let bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        
-        if let attachmentURL = URL(string: "https://unsplash.com/photos/a-bunch-of-balloons-that-are-shaped-like-email-7NT4EDSI5Ok"),
-           let attachment = try? UNNotificationAttachment(identifier: "", url: attachmentURL, options: nil) {
-            bestAttemptContent?.attachments = [attachment]
-        }
-
-        contentHandler(bestAttemptContent ?? request.content)
-    }
+    
+//    func updateLiveActivity(endTime: Date) {
+//        guard let activity = Activity<MIALiveActivityAttributes>.activities.first else { return }
+//
+//        Task {
+//            await activity.update(using: .init(endTime: endTime))
+//        }
+//    }
+    
 }
 
 struct NotificationDataModel: Codable {
     let custom: Custom?
+    let live_activity: LiveActivity?
     let aps: APS
 
     struct Custom: Codable {
         let action: String?
         let openPage: String?
+    }
+    
+    struct LiveActivity: Codable {
+        var startTime: String? //start time of the event (получать разницу между началом и текущим и запускать таймер на это время)
+        var eventName: String? //name of event
+        var eventType: String? //online, offline
+        var eventAddress: String? //address of event, where it will be start
+        var eventURL: String? //address of event, where it will be start
+        var activityID: String? //address of event, where it will be start
     }
 
     struct APS: Codable {
@@ -169,3 +193,23 @@ struct NotificationDataModel: Codable {
         }
     }
 }
+
+
+//{
+//    "live_activity": {
+//        "start_time": "2025-01-13 18:00:00",
+//        "event_name": "Тестовое название мероприятия"
+//    },
+//    "custom": {
+//        "openPage": "notification",
+//        "action": "https://platformapro.com/user-single-event/6"
+//    },
+//    "aps": {
+//        "alert": {
+//            "title": "PLATFORMA PRO",
+//            "subtitle": "ТЕСТ с Platformapro.com",
+//            "body": "Тестовое название мероприятия"
+//        },
+//        "sound": "testRingNotification"
+//    }
+//}

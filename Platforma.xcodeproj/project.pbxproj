@@ -8,6 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		469DB8E02D15CA6F00355097 /* PlatformaClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 469DB8D12D15CA6E00355097 /* PlatformaClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46AA4AFE2D2E72E0000A84E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */; };
+		46AA4AFF2D2E72E0000A84E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */; };
+		46AA4B0D2D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AA4B062D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46AA4B372D353D98000A84E5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA4B1B2D351E7A000A84E5 /* WidgetKit.framework */; };
+		46AA4B382D353D98000A84E5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AA4B1D2D351E7A000A84E5 /* SwiftUI.framework */; };
+		46AA4B472D353D99000A84E5 /* PlatformaLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 46AA4B362D353D98000A84E5 /* PlatformaLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		46AA4B562D354C29000A84E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B4E2D354C29000A84E5 /* Assets.xcassets */; };
+		46AA4B582D354C29000A84E5 /* PlatformaLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B502D354C29000A84E5 /* PlatformaLiveActivity.swift */; };
+		46AA4B592D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B512D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift */; };
+		46AA4B5A2D354C29000A84E5 /* PlatformaLiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B522D354C29000A84E5 /* PlatformaLiveActivityBundle.swift */; };
+		46AA4B5B2D354C29000A84E5 /* PlatformaLiveActivityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B532D354C29000A84E5 /* PlatformaLiveActivityControl.swift */; };
+		46AA4B5C2D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B542D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift */; };
+		46AA4B8B2D354C2F000A84E5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B5D2D354C2F000A84E5 /* Preview Assets.xcassets */; };
+		46AA4B8C2D354C2F000A84E5 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B622D354C2F000A84E5 /* Montserrat-Black.ttf */; };
+		46AA4B8D2D354C2F000A84E5 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B632D354C2F000A84E5 /* Montserrat-BlackItalic.ttf */; };
+		46AA4B8E2D354C2F000A84E5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B642D354C2F000A84E5 /* Montserrat-Bold.ttf */; };
+		46AA4B8F2D354C2F000A84E5 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B652D354C2F000A84E5 /* Montserrat-BoldItalic.ttf */; };
+		46AA4B902D354C2F000A84E5 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B662D354C2F000A84E5 /* Montserrat-ExtraBold.ttf */; };
+		46AA4B912D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B672D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf */; };
+		46AA4B922D354C2F000A84E5 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B682D354C2F000A84E5 /* Montserrat-ExtraLight.ttf */; };
+		46AA4B932D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B692D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf */; };
+		46AA4B942D354C2F000A84E5 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6A2D354C2F000A84E5 /* Montserrat-Italic.ttf */; };
+		46AA4B952D354C2F000A84E5 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6B2D354C2F000A84E5 /* Montserrat-Light.ttf */; };
+		46AA4B962D354C2F000A84E5 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6C2D354C2F000A84E5 /* Montserrat-LightItalic.ttf */; };
+		46AA4B972D354C2F000A84E5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6D2D354C2F000A84E5 /* Montserrat-Medium.ttf */; };
+		46AA4B982D354C2F000A84E5 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6E2D354C2F000A84E5 /* Montserrat-MediumItalic.ttf */; };
+		46AA4B992D354C2F000A84E5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6F2D354C2F000A84E5 /* Montserrat-Regular.ttf */; };
+		46AA4B9A2D354C2F000A84E5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B702D354C2F000A84E5 /* Montserrat-SemiBold.ttf */; };
+		46AA4B9B2D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B712D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf */; };
+		46AA4B9C2D354C2F000A84E5 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B722D354C2F000A84E5 /* Montserrat-Thin.ttf */; };
+		46AA4B9D2D354C2F000A84E5 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B732D354C2F000A84E5 /* Montserrat-ThinItalic.ttf */; };
+		46AA4B9E2D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B752D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf */; };
+		46AA4B9F2D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B762D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf */; };
+		46AA4BA02D354C2F000A84E5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B772D354C2F000A84E5 /* README.txt */; };
+		46AA4BA12D354C2F000A84E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B822D354C2F000A84E5 /* Assets.xcassets */; };
+		46AA4BA32D354C2F000A84E5 /* AlertPrivacyPolice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B5F2D354C2F000A84E5 /* AlertPrivacyPolice.swift */; };
+		46AA4BA42D354C2F000A84E5 /* TransportApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B602D354C2F000A84E5 /* TransportApplication.swift */; };
+		46AA4BA52D354C2F000A84E5 /* RequestErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B792D354C2F000A84E5 /* RequestErrors.swift */; };
+		46AA4BA62D354C2F000A84E5 /* QRCodeAlertWindwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7B2D354C2F000A84E5 /* QRCodeAlertWindwo.swift */; };
+		46AA4BA72D354C2F000A84E5 /* QRCodeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7D2D354C2F000A84E5 /* QRCodeElement.swift */; };
+		46AA4BA82D354C2F000A84E5 /* QRCodeNetworkReqests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7E2D354C2F000A84E5 /* QRCodeNetworkReqests.swift */; };
+		46AA4BA92D354C2F000A84E5 /* QRScaneerSheetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7F2D354C2F000A84E5 /* QRScaneerSheetPreview.swift */; };
+		46AA4BAA2D354C2F000A84E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B832D354C2F000A84E5 /* ContentView.swift */; };
+		46AA4BAB2D354C2F000A84E5 /* JSUserScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */; };
+		46AA4BAC2D354C2F000A84E5 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */; };
+		46AA4BAD2D354C2F000A84E5 /* PlatformaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */; };
+		46AA4BAE2D354C2F000A84E5 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B892D354C2F000A84E5 /* WebView.swift */; };
+		46AA4BB72D354C34000A84E5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4BAF2D354C34000A84E5 /* Preview Assets.xcassets */; };
+		46AA4BB82D354C34000A84E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4BB12D354C34000A84E5 /* Assets.xcassets */; };
+		46AA4BBA2D354C34000A84E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BB22D354C34000A84E5 /* ContentView.swift */; };
+		46AA4BBB2D354C34000A84E5 /* PlatformaClipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BB52D354C34000A84E5 /* PlatformaClipApp.swift */; };
+		46AA4BC02D354C37000A84E5 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BBD2D354C37000A84E5 /* NotificationService.swift */; };
+		46AA4BC42D354C87000A84E5 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BC32D354C87000A84E5 /* ActivityManager.swift */; };
+		46AA4BC62D354E1F000A84E5 /* PlatformaLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B502D354C29000A84E5 /* PlatformaLiveActivity.swift */; };
+		46AA4BC72D354E1F000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B512D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift */; };
+		46AA4BC92D354E1F000A84E5 /* PlatformaLiveActivityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B532D354C29000A84E5 /* PlatformaLiveActivityControl.swift */; };
+		46AA4BCA2D354E1F000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B542D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift */; };
+		46AA4BCB2D354E7B000A84E5 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BC32D354C87000A84E5 /* ActivityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -17,6 +75,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 469DB8D02D15CA6E00355097;
 			remoteInfo = PlatformaClip;
+		};
+		46AA4B0B2D2E7CF4000A84E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4657C6C42CFE2F9900309A72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46AA4B052D2E7CF4000A84E5;
+			remoteInfo = MIAPushNotifiExtension;
+		};
+		46AA4B452D353D99000A84E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4657C6C42CFE2F9900309A72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46AA4B352D353D98000A84E5;
+			remoteInfo = PlatformaLiveActivityExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -32,48 +104,84 @@
 			name = "Embed App Clips";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		46AA4B122D2E7CF4000A84E5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				46AA4B472D353D99000A84E5 /* PlatformaLiveActivityExtension.appex in Embed Foundation Extensions */,
+				46AA4B0D2D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4657C6CC2CFE2F9900309A72 /* Platforma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Platforma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469DB8D12D15CA6E00355097 /* PlatformaClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlatformaClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AA4AFD2D2E72E0000A84E5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46AA4B002D2E72E8000A84E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46AA4B012D2E72E8000A84E5 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46AA4B062D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MIAPushNotifiExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AA4B1B2D351E7A000A84E5 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		46AA4B1D2D351E7A000A84E5 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		46AA4B362D353D98000A84E5 /* PlatformaLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PlatformaLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		46AA4B4E2D354C29000A84E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46AA4B4F2D354C29000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AA4B502D354C29000A84E5 /* PlatformaLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaLiveActivity.swift; sourceTree = "<group>"; };
+		46AA4B512D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaLiveActivityAttributes.swift; sourceTree = "<group>"; };
+		46AA4B522D354C29000A84E5 /* PlatformaLiveActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaLiveActivityBundle.swift; sourceTree = "<group>"; };
+		46AA4B532D354C29000A84E5 /* PlatformaLiveActivityControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaLiveActivityControl.swift; sourceTree = "<group>"; };
+		46AA4B542D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaLiveActivityLiveActivity.swift; sourceTree = "<group>"; };
+		46AA4B5D2D354C2F000A84E5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46AA4B5F2D354C2F000A84E5 /* AlertPrivacyPolice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPrivacyPolice.swift; sourceTree = "<group>"; };
+		46AA4B602D354C2F000A84E5 /* TransportApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportApplication.swift; sourceTree = "<group>"; };
+		46AA4B622D354C2F000A84E5 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		46AA4B632D354C2F000A84E5 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B642D354C2F000A84E5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		46AA4B652D354C2F000A84E5 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B662D354C2F000A84E5 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		46AA4B672D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B682D354C2F000A84E5 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		46AA4B692D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B6A2D354C2F000A84E5 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		46AA4B6B2D354C2F000A84E5 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		46AA4B6C2D354C2F000A84E5 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B6D2D354C2F000A84E5 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		46AA4B6E2D354C2F000A84E5 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B6F2D354C2F000A84E5 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		46AA4B702D354C2F000A84E5 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		46AA4B712D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B722D354C2F000A84E5 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		46AA4B732D354C2F000A84E5 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		46AA4B752D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		46AA4B762D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		46AA4B772D354C2F000A84E5 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		46AA4B792D354C2F000A84E5 /* RequestErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestErrors.swift; sourceTree = "<group>"; };
+		46AA4B7B2D354C2F000A84E5 /* QRCodeAlertWindwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeAlertWindwo.swift; sourceTree = "<group>"; };
+		46AA4B7D2D354C2F000A84E5 /* QRCodeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeElement.swift; sourceTree = "<group>"; };
+		46AA4B7E2D354C2F000A84E5 /* QRCodeNetworkReqests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeNetworkReqests.swift; sourceTree = "<group>"; };
+		46AA4B7F2D354C2F000A84E5 /* QRScaneerSheetPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScaneerSheetPreview.swift; sourceTree = "<group>"; };
+		46AA4B822D354C2F000A84E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46AA4B832D354C2F000A84E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		46AA4B842D354C2F000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSUserScripts.swift; sourceTree = "<group>"; };
+		46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		46AA4B872D354C2F000A84E5 /* Platforma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Platforma.entitlements; sourceTree = "<group>"; };
+		46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaApp.swift; sourceTree = "<group>"; };
+		46AA4B892D354C2F000A84E5 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		46AA4BAF2D354C34000A84E5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		46AA4BB12D354C34000A84E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46AA4BB22D354C34000A84E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		46AA4BB32D354C34000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AA4BB42D354C34000A84E5 /* PlatformaClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlatformaClip.entitlements; sourceTree = "<group>"; };
+		46AA4BB52D354C34000A84E5 /* PlatformaClipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaClipApp.swift; sourceTree = "<group>"; };
+		46AA4BBC2D354C37000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46AA4BBD2D354C37000A84E5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		46AA4BC32D354C87000A84E5 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4657C6E72CFE34D100309A72 /* Exceptions for "Platforma" folder in "Platforma" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 4657C6CB2CFE2F9900309A72 /* Platforma */;
-		};
-		469DB8E42D15CA6F00355097 /* Exceptions for "PlatformaClip" folder in "PlatformaClip" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 469DB8D02D15CA6E00355097 /* PlatformaClip */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		4657C6CE2CFE2F9900309A72 /* Platforma */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4657C6E72CFE34D100309A72 /* Exceptions for "Platforma" folder in "Platforma" target */,
-			);
-			path = Platforma;
-			sourceTree = "<group>";
-		};
-		469DB8D22D15CA6E00355097 /* PlatformaClip */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				469DB8E42D15CA6F00355097 /* Exceptions for "PlatformaClip" folder in "PlatformaClip" target */,
-			);
-			path = PlatformaClip;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4657C6C92CFE2F9900309A72 /* Frameworks */ = {
@@ -90,14 +198,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		46AA4B032D2E7CF4000A84E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46AA4B332D353D98000A84E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AA4B382D353D98000A84E5 /* SwiftUI.framework in Frameworks */,
+				46AA4B372D353D98000A84E5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4657C6C32CFE2F9900309A72 = {
 			isa = PBXGroup;
 			children = (
-				4657C6CE2CFE2F9900309A72 /* Platforma */,
-				469DB8D22D15CA6E00355097 /* PlatformaClip */,
+				46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */,
+				46AA4B8A2D354C2F000A84E5 /* Platforma */,
+				46AA4BB62D354C34000A84E5 /* PlatformaClip */,
+				46AA4BBE2D354C37000A84E5 /* MIAPushNotifiExtension */,
+				46AA4B552D354C29000A84E5 /* PlatformaLiveActivity */,
+				46AA4B1A2D351E7A000A84E5 /* Frameworks */,
 				4657C6CD2CFE2F9900309A72 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,8 +235,188 @@
 			children = (
 				4657C6CC2CFE2F9900309A72 /* Platforma.app */,
 				469DB8D12D15CA6E00355097 /* PlatformaClip.app */,
+				46AA4B062D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex */,
+				46AA4B362D353D98000A84E5 /* PlatformaLiveActivityExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		46AA4B1A2D351E7A000A84E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B1B2D351E7A000A84E5 /* WidgetKit.framework */,
+				46AA4B1D2D351E7A000A84E5 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46AA4B552D354C29000A84E5 /* PlatformaLiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B4E2D354C29000A84E5 /* Assets.xcassets */,
+				46AA4B4F2D354C29000A84E5 /* Info.plist */,
+				46AA4B502D354C29000A84E5 /* PlatformaLiveActivity.swift */,
+				46AA4B512D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift */,
+				46AA4B522D354C29000A84E5 /* PlatformaLiveActivityBundle.swift */,
+				46AA4B532D354C29000A84E5 /* PlatformaLiveActivityControl.swift */,
+				46AA4B542D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift */,
+			);
+			path = PlatformaLiveActivity;
+			sourceTree = "<group>";
+		};
+		46AA4B5E2D354C2F000A84E5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B5D2D354C2F000A84E5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		46AA4B612D354C2F000A84E5 /* AdditionalElement */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B5F2D354C2F000A84E5 /* AlertPrivacyPolice.swift */,
+				46AA4B602D354C2F000A84E5 /* TransportApplication.swift */,
+			);
+			path = AdditionalElement;
+			sourceTree = "<group>";
+		};
+		46AA4B742D354C2F000A84E5 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B622D354C2F000A84E5 /* Montserrat-Black.ttf */,
+				46AA4B632D354C2F000A84E5 /* Montserrat-BlackItalic.ttf */,
+				46AA4B642D354C2F000A84E5 /* Montserrat-Bold.ttf */,
+				46AA4B652D354C2F000A84E5 /* Montserrat-BoldItalic.ttf */,
+				46AA4B662D354C2F000A84E5 /* Montserrat-ExtraBold.ttf */,
+				46AA4B672D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf */,
+				46AA4B682D354C2F000A84E5 /* Montserrat-ExtraLight.ttf */,
+				46AA4B692D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf */,
+				46AA4B6A2D354C2F000A84E5 /* Montserrat-Italic.ttf */,
+				46AA4B6B2D354C2F000A84E5 /* Montserrat-Light.ttf */,
+				46AA4B6C2D354C2F000A84E5 /* Montserrat-LightItalic.ttf */,
+				46AA4B6D2D354C2F000A84E5 /* Montserrat-Medium.ttf */,
+				46AA4B6E2D354C2F000A84E5 /* Montserrat-MediumItalic.ttf */,
+				46AA4B6F2D354C2F000A84E5 /* Montserrat-Regular.ttf */,
+				46AA4B702D354C2F000A84E5 /* Montserrat-SemiBold.ttf */,
+				46AA4B712D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf */,
+				46AA4B722D354C2F000A84E5 /* Montserrat-Thin.ttf */,
+				46AA4B732D354C2F000A84E5 /* Montserrat-ThinItalic.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		46AA4B782D354C2F000A84E5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B742D354C2F000A84E5 /* static */,
+				46AA4B752D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf */,
+				46AA4B762D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf */,
+				46AA4B772D354C2F000A84E5 /* README.txt */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		46AA4B7A2D354C2F000A84E5 /* AlertModalReqError */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B792D354C2F000A84E5 /* RequestErrors.swift */,
+			);
+			path = AlertModalReqError;
+			sourceTree = "<group>";
+		};
+		46AA4B7C2D354C2F000A84E5 /* AlertQRCodeInfo */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B7B2D354C2F000A84E5 /* QRCodeAlertWindwo.swift */,
+			);
+			path = AlertQRCodeInfo;
+			sourceTree = "<group>";
+		};
+		46AA4B802D354C2F000A84E5 /* QRCodeScanerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B7A2D354C2F000A84E5 /* AlertModalReqError */,
+				46AA4B7C2D354C2F000A84E5 /* AlertQRCodeInfo */,
+				46AA4B7D2D354C2F000A84E5 /* QRCodeElement.swift */,
+				46AA4B7E2D354C2F000A84E5 /* QRCodeNetworkReqests.swift */,
+				46AA4B7F2D354C2F000A84E5 /* QRScaneerSheetPreview.swift */,
+			);
+			path = QRCodeScanerScreen;
+			sourceTree = "<group>";
+		};
+		46AA4B812D354C2F000A84E5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BC12D354C6C000A84E5 /* LiveActivity */,
+				46AA4B612D354C2F000A84E5 /* AdditionalElement */,
+				46AA4B782D354C2F000A84E5 /* Fonts */,
+				46AA4B802D354C2F000A84E5 /* QRCodeScanerScreen */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		46AA4B8A2D354C2F000A84E5 /* Platforma */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4B5E2D354C2F000A84E5 /* Preview Content */,
+				46AA4B812D354C2F000A84E5 /* src */,
+				46AA4B822D354C2F000A84E5 /* Assets.xcassets */,
+				46AA4B832D354C2F000A84E5 /* ContentView.swift */,
+				46AA4B842D354C2F000A84E5 /* Info.plist */,
+				46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */,
+				46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */,
+				46AA4B872D354C2F000A84E5 /* Platforma.entitlements */,
+				46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */,
+				46AA4B892D354C2F000A84E5 /* WebView.swift */,
+			);
+			path = Platforma;
+			sourceTree = "<group>";
+		};
+		46AA4BB02D354C34000A84E5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BAF2D354C34000A84E5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		46AA4BB62D354C34000A84E5 /* PlatformaClip */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BB02D354C34000A84E5 /* Preview Content */,
+				46AA4BB12D354C34000A84E5 /* Assets.xcassets */,
+				46AA4BB22D354C34000A84E5 /* ContentView.swift */,
+				46AA4BB32D354C34000A84E5 /* Info.plist */,
+				46AA4BB42D354C34000A84E5 /* PlatformaClip.entitlements */,
+				46AA4BB52D354C34000A84E5 /* PlatformaClipApp.swift */,
+			);
+			path = PlatformaClip;
+			sourceTree = "<group>";
+		};
+		46AA4BBE2D354C37000A84E5 /* MIAPushNotifiExtension */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BBC2D354C37000A84E5 /* Info.plist */,
+				46AA4BBD2D354C37000A84E5 /* NotificationService.swift */,
+			);
+			path = MIAPushNotifiExtension;
+			sourceTree = "<group>";
+		};
+		46AA4BC12D354C6C000A84E5 /* LiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BC22D354C73000A84E5 /* ActivityManager */,
+			);
+			path = LiveActivity;
+			sourceTree = "<group>";
+		};
+		46AA4BC22D354C73000A84E5 /* ActivityManager */ = {
+			isa = PBXGroup;
+			children = (
+				46AA4BC32D354C87000A84E5 /* ActivityManager.swift */,
+			);
+			path = ActivityManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,14 +430,14 @@
 				4657C6C92CFE2F9900309A72 /* Frameworks */,
 				4657C6CA2CFE2F9900309A72 /* Resources */,
 				469DB8E52D15CA6F00355097 /* Embed App Clips */,
+				46AA4B122D2E7CF4000A84E5 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				469DB8DF2D15CA6F00355097 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				4657C6CE2CFE2F9900309A72 /* Platforma */,
+				46AA4B0C2D2E7CF4000A84E5 /* PBXTargetDependency */,
+				46AA4B462D353D99000A84E5 /* PBXTargetDependency */,
 			);
 			name = Platforma;
 			packageProductDependencies = (
@@ -150,15 +458,50 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				469DB8D22D15CA6E00355097 /* PlatformaClip */,
-			);
 			name = PlatformaClip;
 			packageProductDependencies = (
 			);
 			productName = PlatformaClip;
 			productReference = 469DB8D12D15CA6E00355097 /* PlatformaClip.app */;
 			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
+		46AA4B052D2E7CF4000A84E5 /* MIAPushNotifiExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46AA4B0E2D2E7CF4000A84E5 /* Build configuration list for PBXNativeTarget "MIAPushNotifiExtension" */;
+			buildPhases = (
+				46AA4B022D2E7CF4000A84E5 /* Sources */,
+				46AA4B032D2E7CF4000A84E5 /* Frameworks */,
+				46AA4B042D2E7CF4000A84E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIAPushNotifiExtension;
+			packageProductDependencies = (
+			);
+			productName = MIAPushNotifiExtension;
+			productReference = 46AA4B062D2E7CF4000A84E5 /* MIAPushNotifiExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		46AA4B352D353D98000A84E5 /* PlatformaLiveActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46AA4B482D353D99000A84E5 /* Build configuration list for PBXNativeTarget "PlatformaLiveActivityExtension" */;
+			buildPhases = (
+				46AA4B322D353D98000A84E5 /* Sources */,
+				46AA4B332D353D98000A84E5 /* Frameworks */,
+				46AA4B342D353D98000A84E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlatformaLiveActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = PlatformaLiveActivityExtension;
+			productReference = 46AA4B362D353D98000A84E5 /* PlatformaLiveActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -176,14 +519,22 @@
 					469DB8D02D15CA6E00355097 = {
 						CreatedOnToolsVersion = 16.1;
 					};
+					46AA4B052D2E7CF4000A84E5 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					46AA4B352D353D98000A84E5 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 				};
 			};
 			buildConfigurationList = 4657C6C72CFE2F9900309A72 /* Build configuration list for PBXProject "Platforma" */;
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				pl,
+				ru,
 			);
 			mainGroup = 4657C6C32CFE2F9900309A72;
 			minimizedProjectReferenceProxies = 1;
@@ -194,6 +545,8 @@
 			targets = (
 				4657C6CB2CFE2F9900309A72 /* Platforma */,
 				469DB8D02D15CA6E00355097 /* PlatformaClip */,
+				46AA4B052D2E7CF4000A84E5 /* MIAPushNotifiExtension */,
+				46AA4B352D353D98000A84E5 /* PlatformaLiveActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -203,6 +556,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AA4AFE2D2E72E0000A84E5 /* Localizable.strings in Resources */,
+				46AA4B8B2D354C2F000A84E5 /* Preview Assets.xcassets in Resources */,
+				46AA4B8C2D354C2F000A84E5 /* Montserrat-Black.ttf in Resources */,
+				46AA4B8D2D354C2F000A84E5 /* Montserrat-BlackItalic.ttf in Resources */,
+				46AA4B8E2D354C2F000A84E5 /* Montserrat-Bold.ttf in Resources */,
+				46AA4B8F2D354C2F000A84E5 /* Montserrat-BoldItalic.ttf in Resources */,
+				46AA4B902D354C2F000A84E5 /* Montserrat-ExtraBold.ttf in Resources */,
+				46AA4B912D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				46AA4B922D354C2F000A84E5 /* Montserrat-ExtraLight.ttf in Resources */,
+				46AA4B932D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				46AA4B942D354C2F000A84E5 /* Montserrat-Italic.ttf in Resources */,
+				46AA4B952D354C2F000A84E5 /* Montserrat-Light.ttf in Resources */,
+				46AA4B962D354C2F000A84E5 /* Montserrat-LightItalic.ttf in Resources */,
+				46AA4B972D354C2F000A84E5 /* Montserrat-Medium.ttf in Resources */,
+				46AA4B982D354C2F000A84E5 /* Montserrat-MediumItalic.ttf in Resources */,
+				46AA4B992D354C2F000A84E5 /* Montserrat-Regular.ttf in Resources */,
+				46AA4B9A2D354C2F000A84E5 /* Montserrat-SemiBold.ttf in Resources */,
+				46AA4B9B2D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				46AA4B9C2D354C2F000A84E5 /* Montserrat-Thin.ttf in Resources */,
+				46AA4B9D2D354C2F000A84E5 /* Montserrat-ThinItalic.ttf in Resources */,
+				46AA4B9E2D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf in Resources */,
+				46AA4B9F2D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf in Resources */,
+				46AA4BA02D354C2F000A84E5 /* README.txt in Resources */,
+				46AA4BA12D354C2F000A84E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +587,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AA4BB72D354C34000A84E5 /* Preview Assets.xcassets in Resources */,
+				46AA4BB82D354C34000A84E5 /* Assets.xcassets in Resources */,
+				46AA4AFF2D2E72E0000A84E5 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46AA4B042D2E7CF4000A84E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46AA4B342D353D98000A84E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AA4B562D354C29000A84E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +615,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AA4BC62D354E1F000A84E5 /* PlatformaLiveActivity.swift in Sources */,
+				46AA4BC72D354E1F000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */,
+				46AA4BC92D354E1F000A84E5 /* PlatformaLiveActivityControl.swift in Sources */,
+				46AA4BCA2D354E1F000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */,
+				46AA4BA32D354C2F000A84E5 /* AlertPrivacyPolice.swift in Sources */,
+				46AA4BA42D354C2F000A84E5 /* TransportApplication.swift in Sources */,
+				46AA4BA52D354C2F000A84E5 /* RequestErrors.swift in Sources */,
+				46AA4BA62D354C2F000A84E5 /* QRCodeAlertWindwo.swift in Sources */,
+				46AA4BA72D354C2F000A84E5 /* QRCodeElement.swift in Sources */,
+				46AA4BA82D354C2F000A84E5 /* QRCodeNetworkReqests.swift in Sources */,
+				46AA4BA92D354C2F000A84E5 /* QRScaneerSheetPreview.swift in Sources */,
+				46AA4BAA2D354C2F000A84E5 /* ContentView.swift in Sources */,
+				46AA4BAB2D354C2F000A84E5 /* JSUserScripts.swift in Sources */,
+				46AA4BAC2D354C2F000A84E5 /* NotificationDelegate.swift in Sources */,
+				46AA4BC42D354C87000A84E5 /* ActivityManager.swift in Sources */,
+				46AA4BAD2D354C2F000A84E5 /* PlatformaApp.swift in Sources */,
+				46AA4BAE2D354C2F000A84E5 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +639,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AA4BBA2D354C34000A84E5 /* ContentView.swift in Sources */,
+				46AA4BBB2D354C34000A84E5 /* PlatformaClipApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46AA4B022D2E7CF4000A84E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AA4BC02D354C37000A84E5 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46AA4B322D353D98000A84E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AA4B582D354C29000A84E5 /* PlatformaLiveActivity.swift in Sources */,
+				46AA4B592D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */,
+				46AA4BCB2D354E7B000A84E5 /* ActivityManager.swift in Sources */,
+				46AA4B5A2D354C29000A84E5 /* PlatformaLiveActivityBundle.swift in Sources */,
+				46AA4B5B2D354C29000A84E5 /* PlatformaLiveActivityControl.swift in Sources */,
+				46AA4B5C2D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +673,30 @@
 			target = 469DB8D02D15CA6E00355097 /* PlatformaClip */;
 			targetProxy = 469DB8DE2D15CA6F00355097 /* PBXContainerItemProxy */;
 		};
+		46AA4B0C2D2E7CF4000A84E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46AA4B052D2E7CF4000A84E5 /* MIAPushNotifiExtension */;
+			targetProxy = 46AA4B0B2D2E7CF4000A84E5 /* PBXContainerItemProxy */;
+		};
+		46AA4B462D353D99000A84E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46AA4B352D353D98000A84E5 /* PlatformaLiveActivityExtension */;
+			targetProxy = 46AA4B452D353D99000A84E5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46AA4AFD2D2E72E0000A84E5 /* ru */,
+				46AA4B002D2E72E8000A84E5 /* en */,
+				46AA4B012D2E72E8000A84E5 /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4657C6D82CFE2F9A00309A72 /* Debug */ = {
@@ -368,7 +826,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -376,9 +834,11 @@
 				INFOPLIST_FILE = Platforma/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier. Also for Zoom meetings";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby Bolt taxis.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to microphone for use in zoom meetings";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to upload and share photos.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -389,7 +849,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -411,7 +871,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -419,9 +879,11 @@
 				INFOPLIST_FILE = Platforma/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Platforma;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
-				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To allow you to capture or update your profile photo for a personalized user experience. It also helps us scan QR Codes to make ticket identification easier. Also for Zoom meetings";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to find nearby Bolt taxis.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Access to microphone for use in zoom meetings";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to upload and share photos.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -454,7 +916,7 @@
 				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -472,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -492,7 +954,7 @@
 				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -510,12 +972,120 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.21;
+				MARKETING_VERSION = 1.0.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		46AA4B0F2D2E7CF4000A84E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MIAPushNotifiExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MIAPushNotifiExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.22;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.MIAPushNotifiExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46AA4B102D2E7CF4000A84E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 22;
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MIAPushNotifiExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MIAPushNotifiExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.22;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.MIAPushNotifiExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		46AA4B492D353D99000A84E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlatformaLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlatformaLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.PlatformaLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		46AA4B4A2D353D99000A84E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6V832Q56J;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlatformaLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlatformaLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.PlatformaLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,6 +1118,24 @@
 			buildConfigurations = (
 				469DB8E22D15CA6F00355097 /* Debug */,
 				469DB8E32D15CA6F00355097 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46AA4B0E2D2E7CF4000A84E5 /* Build configuration list for PBXNativeTarget "MIAPushNotifiExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46AA4B0F2D2E7CF4000A84E5 /* Debug */,
+				46AA4B102D2E7CF4000A84E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46AA4B482D353D99000A84E5 /* Build configuration list for PBXNativeTarget "PlatformaLiveActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46AA4B492D353D99000A84E5 /* Debug */,
+				46AA4B4A2D353D99000A84E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -291,6 +291,11 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         //        StateContent.currentUrl = webView.url!
         print("Test print webview 1 url: \(webView.url!.absoluteString)")
         
+        if (webView.url!.absoluteString.contains("courses")) {
+//            https://platformapro.com/courses
+            
+        }
+        
         if (webView.url!.absoluteString.contains("open-transport-app")) {
             showAppSelection = true
             print("webView.url!.absoluteString: \(webView.url!.absoluteString)")
@@ -303,8 +308,6 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
                     let city = queryItems.first(where: { $0.name == "city" })?.value
                     let town = queryItems.first(where: { $0.name == "town" })?.value
 
-                    print("City: \(city ?? "N/A")")
-                    print("Town: \(town ?? "N/A")")
                     StateContent.addressCityOpenApp = city ?? ""
                     StateContent.addressTownOpenApp = town ?? ""
                     StateContent.addressOpenApp = "\(town ?? "") \(city ?? "")"
