@@ -38,15 +38,15 @@ class QRCodeNetworkReqests: ObservableObject{
     
     @Published var userFromQRCodeDataModel: UserFromQRCodeDataModel = UserFromQRCodeDataModel(status: true)
     
-    func sendQrCodeData(search_id: String, check_id: String, completion: @escaping(Result<(response: HTTPURLResponse, data: Data, stringKey: String), Error>) -> Void) {
-        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?search_id=\(search_id)&check_id=\(check_id)&compaire=\(StateContent.scanerOpenEvent)") else {
+    func sendQrCodeData(search_id: String, check_id: String, userType: String, completion: @escaping(Result<(response: HTTPURLResponse, data: Data, stringKey: String), Error>) -> Void) {
+        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?adminType=\(StateContent.scanerEvnetType)&userType=\(userType)&search_id=\(search_id)&check_id=\(check_id)&compaire=\(StateContent.scanerOpenEvent)") else {
 //        guard let url = URL(string: "https://platformapro.com/qr-code-app-scan?search_id=\(search_id)&check_id=\(check_id)") else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
-        
+        //https://platformapro.com/qr-code-app-scan?adminType=event&userType=course&search_id=2&check_id=119&compaire=48
+        print("Passed url: \(url)")
         do {
-            
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -69,6 +69,10 @@ class QRCodeNetworkReqests: ObservableObject{
 //                    print("ERROR httpResponse.statusCode: \(httpResponse.statusCode)")
                 } else if (httpResponse.statusCode == 500) {
 //                    checkUserSessionTokenState.checkUserForLogout(statusCode: httpResponse.statusCode)
+                    if let jsonString = String(data: responseData, encoding: .utf8) {
+                        print("JSON Response req with QR code in status 500: \(jsonString)")
+                    }
+
                     completion(.failure(NetworkError.invalidSendedData))
 //                    print("ERROR httpResponse.statusCode: \(httpResponse.statusCode)")
                 } else {
@@ -107,7 +111,6 @@ class QRCodeNetworkReqests: ObservableObject{
         }
     }
     
-    
     @Published var userConfirmationDataModel: UserConfirmationDataModel = UserConfirmationDataModel(status: true)
 
     func sendConfirmUserValidQR(search_id: String, check_id: String, completion: @escaping(Result<(response: HTTPURLResponse, data: Data, stringKey: String), Error>) -> Void) {
@@ -124,7 +127,8 @@ class QRCodeNetworkReqests: ObservableObject{
 
         let requestData: [String: String] = [
             "event_id": search_id,
-            "user_event": check_id
+            "user_event": check_id,
+            "type": StateContent.scanerEvnetType
         ]
 
         print("requestData: \(requestData)")

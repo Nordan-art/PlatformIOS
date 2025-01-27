@@ -14,32 +14,13 @@ import Network
 import ActivityKit
 import WidgetKit
 
-struct StateContent {
-    //        static var url: URL = URL(string: "https://crm.mcgroup.pl/")!
-    //        static var url: URL = URL(string: "https://hurafaktura.pl")!
-    static var url: URL = URL(string: "https://platformapro.com/login?webview")!
-    
-    static var currentUrl: URL = URL(string: "https://platformapro.com/login?webview")!
-    
-    
-    static var addressOpenApp: String = ""
-    static var addressCityOpenApp: String = ""
-    static var addressTownOpenApp: String = ""
-    
-    static var scanerOpenEvent: String = ""
-    
-    static var deviceID: String = ""
-    static var userAdminQrCodeSendToken: String = ""
-    static var purchaseSingl: [String] = []
-    static var purchaseSubscription: [String] = []
-    static var purchaseAllIDs: [String] = []
-}
-
-
 struct ContentView: View {
     @Environment(\.openURL) var openURL
     
     private let webView = WKWebView()
+    
+    @StateObject var reqWidgetAnaliticData: ReqWidgetAnaliticData = ReqWidgetAnaliticData()
+    @State var userAccessToken: String = ""
     
     @State var urlToShowHeader: Bool = false
     @State var textUrl: String = ""
@@ -134,7 +115,7 @@ struct ContentView: View {
             //                .zIndex(4)
             
             //            WebView(data: WebViewData(url: stateContent.url))
-            WebView(data: WebViewData(url: StateContent.url), urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection)
+            WebView(data: WebViewData(url: StateContent.url), urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection, userAccessToken: $userAccessToken)
                 .equatable()
                 .onChange(of: webView.estimatedProgress, perform: { value in
                     print(value)
@@ -219,7 +200,13 @@ struct ContentView: View {
                     }
                 }
                 .onAppear {
+//                    reqInvoiceAnaliticsDataWidget(accessToken: userAccessToekn)
+                    reqInvoiceAnaliticsDataWidget(userAccessToken: userAccessToken)
+
                     availableApps = TransportApplication.getAvailableApps()
+                }
+                .onChange(of: userAccessToken) { newValue in
+                    reqInvoiceAnaliticsDataWidget(userAccessToken: userAccessToken)
                 }
             
             
@@ -276,13 +263,6 @@ struct ContentView: View {
                                 
                                 Spacer()
                                 
-                                //                                Button("Scan QR Code") {
-                                //                                    isScannerPresented = true
-                                //                                }
-                                //                                .padding()
-                                //                                .sheet(isPresented: $isScannerPresented) {
-                                //                                    QRCodeScannerView(scannedCode: $scannedCode)
-                                //                                }
                                 
                                 Button {
                                     ///openURL(URL(string: "https://platformapro.com/privacy-policy")!)
@@ -384,7 +364,10 @@ struct ContentView: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
+            
             networkMonitoring()
+            
+            updateWidget()
         }
         .disabled(showPrivacePolicyAlert)
         .overlay(
@@ -426,36 +409,11 @@ struct ContentView: View {
         )
         .fullScreenCover(isPresented: $isScannerPresented, content: {QRScaneerSheetPreview(isScannerPresented: $isScannerPresented, scannedCode: $scannedCode).ignoresSafeArea(.all)})
     }
-    
+    func updateWidget() {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
     @State var errorMessage: String? = ""
-//    func startLiveActivity() {
-//
-//        if ActivityAuthorizationInfo().areActivitiesEnabled {
-//            do {
-//                let adventure = MIALiveActivityAttributes(name: "hero")
-//                let initialState = MIALiveActivityAttributes.ContentState(
-//                    currentHealthLevel: 100,
-//                    eventDescription: "Adventure has begun!"
-//                )
-//                
-//                let activity = try Activity.request(
-//                    attributes: adventure,
-//                    content: .init(state: initialState, staleDate: nil),
-//                    pushType: .token
-//                )
-//                
-////                self.setup(withActivity: activity)
-//            } catch {
-//                errorMessage = """
-//                            Couldn't start activity
-//                            ------------------------
-//                            \(String(describing: error))
-//                            """
-//                
-//                self.errorMessage = errorMessage
-//            }
-//        }
-//    }
 
     func extractURL(from deepLink: String, base: String) -> String? {
         guard deepLink.hasPrefix(base) else {
@@ -468,6 +426,25 @@ struct ContentView: View {
         // Decode the URL if it was percent-encoded
         return extractedURL.removingPercentEncoding
     }
+    
+    func reqInvoiceAnaliticsDataWidget(userAccessToken: String) {
+        print("request suka user data: \(userAccessToken)")
+        
+            withAnimation(.easeInOut(duration: 0.35)) {
+                reqWidgetAnaliticData.fetchClosestEvents(userAccessToken: userAccessToken) { result in
+                    switch result {
+                    case .success(let data):
+                        print("")
+                        updateWidget()
+                    case .failure(let error):
+                        updateWidget()
+                            print("Error: \(error.localizedDescription)")
+                    }
+                }
+            }
+
+    }
+
 }
 
 

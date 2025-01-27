@@ -18,6 +18,19 @@
 
 "content_view.terms_of_use" = "Terms of use";
 
+/* MARK: -- Platforma -> PlatformaLiveActivity (Widgets part) */
+
+"widgets.no_information_about_events_await_update" = "Awaiting information update...";
+"widgets.no_information_about_events_need_authorize_await_update" = "Please log in and await information update...";
+
+"widgets.all_events.upcoming_all_events_title" = "All Upcoming Events";
+"widgets.all_events.upcoming_all_events_description" = "Stay informed. Conveniently browse upcoming Platforma events.";
+
+"widgets.all_events.upcoming_my_event_title" = "My Upcoming Events:";
+"widgets.all_events.upcoming_my_event_description" = "Don't forget about the events you've chosen.";
+
+"widgets.closest_event" = "Nearest Event:";
+"widgets.closest_events" = "Nearest Events:";
 
 /* MARK: -- Platforma -> src -> QRCodeScanerScreen -> AlertQRCodeInfo() */
 

@@ -66,6 +66,34 @@
 		46AA4BC92D354E1F000A84E5 /* PlatformaLiveActivityControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B532D354C29000A84E5 /* PlatformaLiveActivityControl.swift */; };
 		46AA4BCA2D354E1F000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B542D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift */; };
 		46AA4BCB2D354E7B000A84E5 /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4BC32D354C87000A84E5 /* ActivityManager.swift */; };
+		46AA4C532D37B173000A84E5 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B622D354C2F000A84E5 /* Montserrat-Black.ttf */; };
+		46AA4C542D37B179000A84E5 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B632D354C2F000A84E5 /* Montserrat-BlackItalic.ttf */; };
+		46AA4C552D37B17F000A84E5 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B642D354C2F000A84E5 /* Montserrat-Bold.ttf */; };
+		46AA4C562D37B185000A84E5 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B652D354C2F000A84E5 /* Montserrat-BoldItalic.ttf */; };
+		46AA4C572D37B189000A84E5 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B662D354C2F000A84E5 /* Montserrat-ExtraBold.ttf */; };
+		46AA4C582D37B18E000A84E5 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B672D354C2F000A84E5 /* Montserrat-ExtraBoldItalic.ttf */; };
+		46AA4C592D37B193000A84E5 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B682D354C2F000A84E5 /* Montserrat-ExtraLight.ttf */; };
+		46AA4C5A2D37B198000A84E5 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B692D354C2F000A84E5 /* Montserrat-ExtraLightItalic.ttf */; };
+		46AA4C5B2D37B19C000A84E5 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6A2D354C2F000A84E5 /* Montserrat-Italic.ttf */; };
+		46AA4C5C2D37B1A1000A84E5 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6B2D354C2F000A84E5 /* Montserrat-Light.ttf */; };
+		46AA4C5D2D37B1A6000A84E5 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6C2D354C2F000A84E5 /* Montserrat-LightItalic.ttf */; };
+		46AA4C5E2D37B1AE000A84E5 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6D2D354C2F000A84E5 /* Montserrat-Medium.ttf */; };
+		46AA4C5F2D37B1B5000A84E5 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6E2D354C2F000A84E5 /* Montserrat-MediumItalic.ttf */; };
+		46AA4C602D37B1BA000A84E5 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B6F2D354C2F000A84E5 /* Montserrat-Regular.ttf */; };
+		46AA4C612D37B1C1000A84E5 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B702D354C2F000A84E5 /* Montserrat-SemiBold.ttf */; };
+		46AA4C622D37B2A2000A84E5 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B712D354C2F000A84E5 /* Montserrat-SemiBoldItalic.ttf */; };
+		46AA4C632D37B2A6000A84E5 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B722D354C2F000A84E5 /* Montserrat-Thin.ttf */; };
+		46AA4C642D37B2AB000A84E5 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B732D354C2F000A84E5 /* Montserrat-ThinItalic.ttf */; };
+		46AA4C652D37B2B1000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B752D354C2F000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf */; };
+		46AA4C662D37B2B6000A84E5 /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B762D354C2F000A84E5 /* Montserrat-VariableFont_wght.ttf */; };
+		46AA4C812D380A88000A84E5 /* ActivityActionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4C802D380A88000A84E5 /* ActivityActionNetwork.swift */; };
+		46AA4C822D380A88000A84E5 /* ActivityActionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4C802D380A88000A84E5 /* ActivityActionNetwork.swift */; };
+		46AA4C842D380BC7000A84E5 /* StateContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4C832D380BC7000A84E5 /* StateContentData.swift */; };
+		46AA4C852D380BD5000A84E5 /* StateContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4C832D380BC7000A84E5 /* StateContentData.swift */; };
+		46AE47942D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */; };
+		46AE47952D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */; };
+		46AE47962D479FFB00A5E064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B822D354C2F000A84E5 /* Assets.xcassets */; };
+		46AE47972D47CD6C00A5E064 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +209,10 @@
 		46AA4BBC2D354C37000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46AA4BBD2D354C37000A84E5 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		46AA4BC32D354C87000A84E5 /* ActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		46AA4C802D380A88000A84E5 /* ActivityActionNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityActionNetwork.swift; sourceTree = "<group>"; };
+		46AA4C832D380BC7000A84E5 /* StateContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateContentData.swift; sourceTree = "<group>"; };
+		46AE478F2D4452CF00A5E064 /* PlatformaLiveActivityExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlatformaLiveActivityExtension.entitlements; sourceTree = "<group>"; };
+		46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosestAndAllEventWidgetRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +252,7 @@
 		4657C6C32CFE2F9900309A72 = {
 			isa = PBXGroup;
 			children = (
+				46AE478F2D4452CF00A5E064 /* PlatformaLiveActivityExtension.entitlements */,
 				46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */,
 				46AA4B8A2D354C2F000A84E5 /* Platforma */,
 				46AA4BB62D354C34000A84E5 /* PlatformaClip */,
@@ -348,7 +381,7 @@
 		46AA4B812D354C2F000A84E5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				46AA4BC12D354C6C000A84E5 /* LiveActivity */,
+				46AE47902D477AB700A5E064 /* Widgets */,
 				46AA4B612D354C2F000A84E5 /* AdditionalElement */,
 				46AA4B782D354C2F000A84E5 /* Fonts */,
 				46AA4B802D354C2F000A84E5 /* QRCodeScanerScreen */,
@@ -363,6 +396,7 @@
 				46AA4B812D354C2F000A84E5 /* src */,
 				46AA4B822D354C2F000A84E5 /* Assets.xcassets */,
 				46AA4B832D354C2F000A84E5 /* ContentView.swift */,
+				46AA4C832D380BC7000A84E5 /* StateContentData.swift */,
 				46AA4B842D354C2F000A84E5 /* Info.plist */,
 				46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */,
 				46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */,
@@ -415,8 +449,34 @@
 			isa = PBXGroup;
 			children = (
 				46AA4BC32D354C87000A84E5 /* ActivityManager.swift */,
+				46AA4C802D380A88000A84E5 /* ActivityActionNetwork.swift */,
 			);
 			path = ActivityManager;
+			sourceTree = "<group>";
+		};
+		46AE47902D477AB700A5E064 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				46AE47912D477AC500A5E064 /* MainWidgets */,
+				46AA4BC12D354C6C000A84E5 /* LiveActivity */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		46AE47912D477AC500A5E064 /* MainWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				46AE47922D477AD300A5E064 /* ClosestAndAllEventWidget */,
+			);
+			path = MainWidgets;
+			sourceTree = "<group>";
+		};
+		46AE47922D477AD300A5E064 /* ClosestAndAllEventWidget */ = {
+			isa = PBXGroup;
+			children = (
+				46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */,
+			);
+			path = ClosestAndAllEventWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,7 +664,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46AA4C652D37B2B1000A84E5 /* Montserrat-Italic-VariableFont_wght.ttf in Resources */,
+				46AA4C552D37B17F000A84E5 /* Montserrat-Bold.ttf in Resources */,
+				46AE47972D47CD6C00A5E064 /* Localizable.strings in Resources */,
+				46AE47962D479FFB00A5E064 /* Assets.xcassets in Resources */,
+				46AA4C572D37B189000A84E5 /* Montserrat-ExtraBold.ttf in Resources */,
+				46AA4C5F2D37B1B5000A84E5 /* Montserrat-MediumItalic.ttf in Resources */,
+				46AA4C602D37B1BA000A84E5 /* Montserrat-Regular.ttf in Resources */,
+				46AA4C542D37B179000A84E5 /* Montserrat-BlackItalic.ttf in Resources */,
 				46AA4B562D354C29000A84E5 /* Assets.xcassets in Resources */,
+				46AA4C582D37B18E000A84E5 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				46AA4C5B2D37B19C000A84E5 /* Montserrat-Italic.ttf in Resources */,
+				46AA4C5C2D37B1A1000A84E5 /* Montserrat-Light.ttf in Resources */,
+				46AA4C592D37B193000A84E5 /* Montserrat-ExtraLight.ttf in Resources */,
+				46AA4C642D37B2AB000A84E5 /* Montserrat-ThinItalic.ttf in Resources */,
+				46AA4C632D37B2A6000A84E5 /* Montserrat-Thin.ttf in Resources */,
+				46AA4C5D2D37B1A6000A84E5 /* Montserrat-LightItalic.ttf in Resources */,
+				46AA4C562D37B185000A84E5 /* Montserrat-BoldItalic.ttf in Resources */,
+				46AA4C5E2D37B1AE000A84E5 /* Montserrat-Medium.ttf in Resources */,
+				46AA4C662D37B2B6000A84E5 /* Montserrat-VariableFont_wght.ttf in Resources */,
+				46AA4C532D37B173000A84E5 /* Montserrat-Black.ttf in Resources */,
+				46AA4C612D37B1C1000A84E5 /* Montserrat-SemiBold.ttf in Resources */,
+				46AA4C5A2D37B198000A84E5 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				46AA4C622D37B2A2000A84E5 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,9 +699,11 @@
 			files = (
 				46AA4BC62D354E1F000A84E5 /* PlatformaLiveActivity.swift in Sources */,
 				46AA4BC72D354E1F000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */,
+				46AA4C842D380BC7000A84E5 /* StateContentData.swift in Sources */,
 				46AA4BC92D354E1F000A84E5 /* PlatformaLiveActivityControl.swift in Sources */,
 				46AA4BCA2D354E1F000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */,
 				46AA4BA32D354C2F000A84E5 /* AlertPrivacyPolice.swift in Sources */,
+				46AA4C822D380A88000A84E5 /* ActivityActionNetwork.swift in Sources */,
 				46AA4BA42D354C2F000A84E5 /* TransportApplication.swift in Sources */,
 				46AA4BA52D354C2F000A84E5 /* RequestErrors.swift in Sources */,
 				46AA4BA62D354C2F000A84E5 /* QRCodeAlertWindwo.swift in Sources */,
@@ -629,6 +713,7 @@
 				46AA4BAA2D354C2F000A84E5 /* ContentView.swift in Sources */,
 				46AA4BAB2D354C2F000A84E5 /* JSUserScripts.swift in Sources */,
 				46AA4BAC2D354C2F000A84E5 /* NotificationDelegate.swift in Sources */,
+				46AE47942D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */,
 				46AA4BC42D354C87000A84E5 /* ActivityManager.swift in Sources */,
 				46AA4BAD2D354C2F000A84E5 /* PlatformaApp.swift in Sources */,
 				46AA4BAE2D354C2F000A84E5 /* WebView.swift in Sources */,
@@ -657,11 +742,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				46AA4B582D354C29000A84E5 /* PlatformaLiveActivity.swift in Sources */,
+				46AE47952D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */,
 				46AA4B592D354C29000A84E5 /* PlatformaLiveActivityAttributes.swift in Sources */,
 				46AA4BCB2D354E7B000A84E5 /* ActivityManager.swift in Sources */,
+				46AA4C812D380A88000A84E5 /* ActivityActionNetwork.swift in Sources */,
 				46AA4B5A2D354C29000A84E5 /* PlatformaLiveActivityBundle.swift in Sources */,
 				46AA4B5B2D354C29000A84E5 /* PlatformaLiveActivityControl.swift in Sources */,
 				46AA4B5C2D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */,
+				46AA4C852D380BD5000A84E5 /* StateContentData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,7 +914,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -849,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -871,7 +959,7 @@
 				CODE_SIGN_ENTITLEMENTS = Platforma/Platforma.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"Platforma/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -894,7 +982,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -916,7 +1004,7 @@
 				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -934,7 +1022,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -954,7 +1042,7 @@
 				CODE_SIGN_ENTITLEMENTS = PlatformaClip/PlatformaClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_ASSET_PATHS = "\"PlatformaClip/Preview Content\"";
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				ENABLE_PREVIEWS = YES;
@@ -972,7 +1060,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.Clip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -989,7 +1077,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MIAPushNotifiExtension/Info.plist;
@@ -1000,10 +1088,13 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.MIAPushNotifiExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1015,7 +1106,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MIAPushNotifiExtension/Info.plist;
@@ -1026,10 +1117,13 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.22;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.MIAPushNotifiExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1041,23 +1135,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PlatformaLiveActivityExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlatformaLiveActivity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PlatformaLiveActivity;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.PlatformaLiveActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1069,23 +1168,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PlatformaLiveActivityExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = H6V832Q56J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlatformaLiveActivity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PlatformaLiveActivity;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MCGroup.Platforma.PlatformaLiveActivity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

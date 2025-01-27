@@ -11,43 +11,198 @@ import SwiftUI
 
 struct PlatformaLiveActivityLiveActivity: Widget {
     @State private var differenceText: String = ""
-
+    
+    func getDateTime(time: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.current
+        
+        return dateFormatter.date(from: time)!
+    }
+    
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: PlatformaLiveActivityAttributes.self) { context in
             // Lock screen/banner UI goes here
             EventActivityView(context: context)
-            .activityBackgroundTint(Color.black.opacity(0.27))
-//            .activitySystemActionForegroundColor(Color.black)
+                .activityBackgroundTint(Color.black.opacity(0.27))
+            //            .activitySystemActionForegroundColor(Color.black)
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
-                DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    VStack(spacing: 0) {
-//                        Text("Bottom \(context.state.emoji)")
-                        Text("\(context.state.eventName)")
-                    }
-                    // more content
-                }
+                expandedContent(context: context)
+                //                DynamicIslandExpandedRegion(.leading) {
+                //
+                //                }
+                //                DynamicIslandExpandedRegion(.trailing) {
+                //                }
+                //                DynamicIslandExpandedRegion(.bottom) {
+                ////                        Text("Bottom \(context.state.emoji)")
+                //                    // more content
+                //                }
             } compactLeading: {
-                Text("L")
+                ZStack {
+                    Image("logo-mini")
+                        .resizable()
+                        .frame(width: 18, height: 18)
+                        .clipped()
+                        .padding([.leading, .trailing], 5)
+                }
+                .aspectRatio(1, contentMode: .fit)
+                .frame(maxWidth: 20)
+                .padding(0)
             } compactTrailing: {
-                Text("T \(context.state.eventType)")
+                //                Image(systemName: "timer")
+                //                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)min")
+                //                Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)
+                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
+                    .font(.custom("Montserrat-Medium", size: 11))
+                    .foregroundColor(Color.privacyPolicyCloseButton)
+                    .frame(maxWidth: 45)
+                    .fixedSize(horizontal: true, vertical: false)
+                ////                    .font(.custom("Montserrat-Bold", size: 11))
+                ////                    .font(.custom("Montserrat-Medium", size: 11))
+                //                    .font(.system(size: 11, weight: .medium))
+                //                    .foregroundColor(Color.privacyPolicyCloseButton)
+                //                    .multilineTextAlignment(.leading)
             } minimal: {
-                Text(context.state.eventType)
+                //                    Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
+                //                    .font(.custom("Montserrat-Medium", size: 11))
+                //                    .font(.system(size: 11, weight: .medium))
+                ProgressView(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, label: { Text("") }, currentValueLabel: { Text("") })
+                    .progressViewStyle(CircularProgressViewStyle())
+                //                      .progressViewStyle(LinearProgressViewStyle())
+                    .tint(Color.privacyPolicyCloseButton)
+                    .frame(width: 20, height: 20)
+                    .scaleEffect(x: 1, y: 1, anchor: .center)
+                
             }
             .widgetURL(URL(string: "\(context.state.eventURL)"))
-//            .widgetURL(URL(string: "https://platformapro.com/user-single-event/6"))
-//            .keylineTint(Color.red)
+            //            .widgetURL(URL(string: "https://platformapro.com/user-single-event/6"))
+            //            .keylineTint(Color.red)
         }
     }
-
+    
+    @DynamicIslandExpandedContentBuilder
+    private func expandedContent(context: ActivityViewContext<PlatformaLiveActivityAttributes>) -> DynamicIslandExpandedContent<some View> {
+        DynamicIslandExpandedRegion(.leading) {
+            HStack(spacing: 0) {
+                Image("logo-mini")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 18, height: 18)
+                    .padding(.trailing, 5)
+                
+                Text(extractTime(from: context.state.startTime) ?? "")
+                    .font(.custom("Montserrat-Medium", size: 17))
+                //                    .font(.system(size: 17, weight: .medium))
+                    .foregroundColor(Color.white)
+            }
+            .padding(.leading, 5)
+        }
+        
+        DynamicIslandExpandedRegion(.trailing) {
+            HStack(spacing: 0) {
+                Image(systemName: "clock")
+                    .resizable()
+                    .frame(width: 18, height: 18)
+                    .foregroundColor(Color.privacyPolicyCloseButton)
+                    .scaleEffect(x: -1, y: 1)
+                    .padding(.trailing, 5)
+                //                ProgressView(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, label: { Text("") }, currentValueLabel: { Text("") })
+                //                    .progressViewStyle(CircularProgressViewStyle())
+                ////                      .progressViewStyle(LinearProgressViewStyle())
+                //                      .tint(Color.privacyPolicyCloseButton)
+                //                      .frame(width: 20, height: 20)
+                //                      .scaleEffect(x: 1, y: 1, anchor: .center)
+                
+                
+                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
+                    .font(.custom("Montserrat-Medium", size: 17))
+                //                    .font(.system(size: 17, weight: .medium))
+                    .foregroundColor(Color.privacyPolicyCloseButton)
+                    .frame(maxWidth: 70)
+                    .fixedSize(horizontal: true, vertical: false)
+            }
+            .padding(.leading, 5)
+        }
+        
+        DynamicIslandExpandedRegion(.bottom) {
+            VStack(spacing: 0) {
+                Text("\(context.state.eventName)")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(Color.white)
+                    .padding(.top, 5)
+//                    .lineLimit(2...)
+                
+                if (context.state.eventType == "online") {
+                    
+                } else {
+                    HStack(spacing: 0) {
+                        HStack(spacing: 0) {
+                            Image("offline-grey")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 12, height: 15)
+                                .foregroundStyle(Color.lightGrayLiveActive)
+                            
+                            Text(" ")
+                            
+                            Text("\(context.state.eventType)")
+                                .textCase(.uppercase)
+                                .font(.custom("Montserrat-Regular", size: 14))
+                            //                            .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Color.lightGrayLiveActive)
+                        }
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                        .background(Color.lightGrayLiveActiveBackground)
+                        .cornerRadius(15)
+                        .padding(.trailing, 5)
+                        
+                        HStack(spacing: 0) {
+                            Image("adres")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 11, height: 15)
+                                .foregroundStyle(Color.lightGrayLiveActive)
+                            
+                            Text(" ")
+                            
+                            Text("\(context.state.eventAddress)")
+                                .font(.custom("Montserrat-Regular", size: 14))
+                            //                            .font(.system(size: 14, weight: .regular))
+                                .foregroundStyle(Color.lightGrayLiveActive)
+                        }
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 20)
+                        .frame(width: .infinity)
+                        .background(Color.lightGrayLiveActiveBackground)
+                        .cornerRadius(15)
+                    }
+                    .padding(.top, 15)
+                    .padding(.bottom, 10)
+                }
+            }
+        }
+    }
+    
+    func extractTime(from dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // Input format
+        dateFormatter.timeZone = TimeZone.current
+        
+        // Convert the string to a Date
+        if let date = dateFormatter.date(from: dateString) {
+            // Create a formatter for the time only
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm" // Desired output format
+            timeFormatter.timeZone = TimeZone.current
+            
+            return timeFormatter.string(from: date)
+        }
+        return nil
+    }
 }
 
 extension PlatformaLiveActivityAttributes {
@@ -58,12 +213,12 @@ extension PlatformaLiveActivityAttributes {
 
 extension PlatformaLiveActivityAttributes.ContentState {
     fileprivate static var smiley: PlatformaLiveActivityAttributes.ContentState {
-        PlatformaLiveActivityAttributes.ContentState(startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", activityID: "")
-     }
-     
-     fileprivate static var starEyes: PlatformaLiveActivityAttributes.ContentState {
-         PlatformaLiveActivityAttributes.ContentState(startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", activityID: "")
-     }
+        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
+    }
+    
+    fileprivate static var starEyes: PlatformaLiveActivityAttributes.ContentState {
+        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
+    }
 }
 
 //#Preview("Notification", as: .content, using: PlatformaLiveActivityAttributes.preview) {
@@ -78,95 +233,117 @@ struct EventActivityView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            HStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    Image("logo-svg")
+                    Image("full-logo-new")
+                    //                            Image("logo-transparent")
+                    //                            Image("logoSVGLiveAct")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 122, height: 20)
                     
-                    Spacer()
-                    
-                    //                    Text(calculateTime(calcTime: context.state.startTime))
+                    //                                .background(Color.red)
+                    //                                .foregroundStyle(Color.purple)
+                    //                                .frame(width: 10, height: 20)
+                }
+                .padding(.leading, 20)
+                
+                Spacer()
+                
+                HStack(spacing: 0) {
                     Text(extractTime(from: context.state.startTime) ?? "")
-                        .font(.custom("Montserrat-Medium", size: 17))
+                    //                                .font(.custom("Montserrat-Medium", size: 17))
+                        .font(.system(size: 17, weight: .medium))
                         .foregroundColor(Color.white)
                     
                     Text(" ")
-                    //                    Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)
-                    ////                    Text(timerInterval: context.attributes.startDate...context.attributes.endDate, countsDown: context.attributes.countsDown, showsHours: false)
-                    //                        .font(.custom("Montserrat-Medium", size: 17))
-                    //                        .foregroundColor(Color.privacyPolicyCloseButton)
                     
                     Image(systemName: "clock")
                         .resizable()
                         .frame(width: 18, height: 18)
                         .foregroundColor(Color.privacyPolicyCloseButton)
-                    //                        .scaleEffect(x: -1, y: 1)
+                        .scaleEffect(x: -1, y: 1)
                     
                     Text(" ")
-                    //                    Text("\(differenceText) min")
-                    //                        .font(.custom("Montserrat-Medium", size: 17))
-                    //                        .foregroundColor(Color.privacyPolicyCloseButton)
-                    Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)
-                        .font(.custom("Montserrat-Medium", size: 17))
+                    //                        Text(" \(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false) min")
+                    Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false) min")
+                    //                                .font(.custom("Montserrat-ExtraBold", size: 17))
+                        .font(.system(size: 17, weight: .medium))
                         .foregroundColor(Color.privacyPolicyCloseButton)
+                        .frame(maxWidth: 95)
+                        .fixedSize(horizontal: true, vertical: false)
                     
-                    Text(" min")
-                        .font(.custom("Montserrat-Medium", size: 17))
-                        .foregroundColor(Color.privacyPolicyCloseButton)
+                    //                        Text(" min")
+                    //                            .font(.custom("Montserrat-Medium", size: 17))
+                    //                            .foregroundColor(Color.privacyPolicyCloseButton)
                 }
-                .multilineTextAlignment(.trailing)
-                .padding(.top, 15)
+                .padding(.trailing, 5)
+                //                        .frame(width: .infinity, alignment: .trailing)
+            }
+            //                .multilineTextAlignment(.trailing)
+            .padding(.top, 15)
             
             Text("\(context.state.eventName)")
-                .font(.custom("Montserrat-SemiBold", size: 16))
+            //                .font(.custom("Montserrat-SemiBold", size: 16))
+                .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(Color.white)
                 .padding(.top, 15)
-            
-            HStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    Image(systemName: "house")
-                        .resizable()
-                        .frame(width: 12, height: 13)
-                        .foregroundStyle(Color.lightGrayLiveActive)
-                        .padding(.trailing, 5)
-                    
-                    Text("\(context.state.eventType)")
-                        .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundStyle(Color.lightGrayLiveActive)
-                    
-                }
-                .padding(.vertical, 5)
-                .padding(.horizontal, 13)
-                .background(Color.lightGrayLiveActiveBackground)
-                .cornerRadius(15)
-                .padding(.trailing, 5)
+            if (context.state.eventType == "online") {
                 
+            } else {
                 HStack(spacing: 0) {
-                    Image(systemName: "mappin.and.ellipse")
-                        .resizable()
-                        .frame(width: 10, height: 13)
-                        .foregroundStyle(Color.lightGrayLiveActive)
-                        .padding(.trailing, 5)
+                    HStack(spacing: 0) {
+                        Image("offline-grey")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 12, height: 15)
+                            .foregroundStyle(Color.lightGrayLiveActive)
+                        
+                        Text(" ")
+                        
+                        Text("\(context.state.eventType)")
+                            .textCase(.uppercase)
+                        //                        .font(.custom("Montserrat-Regular", size: 14))
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Color.lightGrayLiveActive)
+                        
+                    }
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 13)
+                    .background(Color.lightGrayLiveActiveBackground)
+                    .cornerRadius(15)
+                    .padding(.trailing, 5)
                     
-                    Text("\(context.state.eventAddress)")
-                        .font(.custom("Montserrat-Regular", size: 14))
-                        .foregroundStyle(Color.lightGrayLiveActive)
+                    HStack(spacing: 0) {
+                        Image("adres")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 11, height: 15)
+                            .foregroundStyle(Color.lightGrayLiveActive)
+                        
+                        Text(" ")
+                        
+                        Text("\(context.state.eventAddress)")
+                        //                        .font(.custom("Montserrat-Regular", size: 14))
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Color.lightGrayLiveActive)
+                    }
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 20)
+                    .frame(width: .infinity)
+                    .background(Color.lightGrayLiveActiveBackground)
+                    .cornerRadius(15)
                 }
-                .padding(.vertical, 5)
-                .padding(.horizontal, 20)
-                .background(Color.lightGrayLiveActiveBackground)
-                .cornerRadius(15)
+                .padding(.top, 15)
+                .padding(.bottom, 15)
             }
-            .padding(.top, 15)
-            .padding(.bottom, 15)
         }
     }
     func getDateTime(time: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone.current
-
+        
         return dateFormatter.date(from: time)!
     }
     
@@ -186,111 +363,10 @@ struct EventActivityView: View {
         }
         return nil
     }
-
+    
 }
 
 
-//final class ActivityManager: ObservableObject {
-//    @MainActor @Published private(set) var activityID: String?
-//    @MainActor @Published private(set) var activityToken: String?
-//    
-//    let attributes = PlatformaLiveActivityAttributes(name: "Jhon", title: "Upcoming Event")
-//    let initialContentState = PlatformaLiveActivityAttributes.ContentState(emoji: "😀", eventName: "My Event", timeRemaining: 300)
-//
-//    static let shared = ActivityManager()
-//    
-//    func start() async {
-//        await endActivity()
-//        await startNewLiveActivity()
-//    }
-//    
-//    private func startNewLiveActivity() async {
-//        do {
-//        let activity = try Activity<PlatformaLiveActivityAttributes>.request(
-//            attributes: attributes,
-//            contentState: initialContentState,
-//            pushType: .token
-//        )
-//        
-//        Task {
-//            for await pushToken in activity.pushTokenUpdates {
-//                let pushTokenString = pushToken.reduce("") {
-//                      $0 + String(format: "%02x", $1)
-//                }
-//
-////                        Logger().log("New push token: \(pushTokenString)")
-//                        print("New push token: \(pushTokenString)")
-////                        try await self.sendPushToken(hero: hero, pushTokenString: pushTokenString)
-//            }
-//        }
-//
-////        guard let activity = activity else {
-////            return
-////        }
-//            
-//        await MainActor.run { activityID = activity.id }
-//        
-//        for await data in activity.pushTokenUpdates {
-//            let token = data.map {String(format: "%02x", $0)}.joined()
-//            print("Activity token: \(token)")
-//            await MainActor.run { activityToken = token }
-//            // HERE SEND THE TOKEN TO THE SERVER
-//        }
-//        } catch {
-//            print("""
-//                        Couldn't start activity
-//                        ------------------------
-//                        \(String(describing: error))
-//                        """)
-//        }
-//
-//    }
-//    
-//    func updateActivityRandomly() async {
-////        guard let activityID = await activityID,
-////              let runningActivity = Activity<MatchLiveScoreAttributes>.activities.first(where: { $0.id == activityID }) else {
-////            return
-////        }
-////        let newRandomContentState = MatchLiveScoreAttributes.ContentState(homeTeamScore: Int.random(in: 1...9),
-////                                                                          awayTeamScore: Int.random(in: 1...9),
-////                                                                          lastEvent: "Something random happened!")
-////        await runningActivity.update(using: newRandomContentState)
-//    }
-//    
-//    func endActivity() async {
-////        guard let activityID = await activityID,
-////              let runningActivity = Activity<MatchLiveScoreAttributes>.activities.first(where: { $0.id == activityID }) else {
-////            return
-////        }
-////        let initialContentState = MatchLiveScoreAttributes.ContentState(homeTeamScore: 0,
-////                                                                        awayTeamScore: 0,
-////                                                                        lastEvent: "Match Start")
-////
-////        await runningActivity.end(
-////            ActivityContent(state: initialContentState, staleDate: Date.distantFuture),
-////            dismissalPolicy: .immediate
-////        )
-////        
-////        await MainActor.run {
-////            self.activityID = nil
-////            self.activityToken = nil
-////        }
-//    }
-//    
-//    func cancelAllRunningActivities() async {
-//        for activity in Activity<PlatformaLiveActivityAttributes>.activities {
-//            let initialContentState = PlatformaLiveActivityAttributes.ContentState(emoji: "😀", eventName: "My Event", timeRemaining: 300)
-//            
-//            await activity.end(
-//                ActivityContent(state: initialContentState, staleDate: Date()),
-//                dismissalPolicy: .immediate
-//            )
-//        }
-//        
-//        await MainActor.run {
-//            activityID = nil
-//            activityToken = nil
-//        }
-//    }
-//    
-//}
+//80da519f5825ea108c810ea7894a61fe7abdbbcd993e52d6deb0537db63af9c6c5cb965f9e956ada74fc69fcb22566035b1db748bcc32977e07de9e31efde40b56638160f84496fd6777a774a48e142e
+//460f0ac54cc3277e9ccf38f6ae595e2fa9c60983f5018b9541a772bb87f9f1a8
+//JSON Response: {"live_activity":{"startTime":"2025-01-15 01:00:00","eventAddress":"Sejmu Czteroletniego 2\/146","eventName":"Нетворкинг-встреча - Связи будущего в современном мире","eventType":"offline","activityID":"123123"},"aps":{"alert":{"title":"PLATFORMA PRO","subtitle":"ТЕСТ с Platformapro.com","body":"Тестовое название мероприятия"},"sound":"testRingNotification"},"custom":{"openPage":"notification","action":"https:\/\/platformapro.com\/user-single-event\/6"}}

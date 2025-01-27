@@ -22,6 +22,8 @@ struct QRScaneerSheetPreview: View {
     
     @State var searchId: String = ""
     @State var checkId: String = ""
+    @State var userType: String = ""
+    @State var type: String = ""
     
     
     @State var showRequestError: Bool = false
@@ -34,9 +36,9 @@ struct QRScaneerSheetPreview: View {
 //    UserFromQRCodeDataModel(status: true)
     @StateObject var qrCodeNetworkReqests: QRCodeNetworkReqests = QRCodeNetworkReqests()
     
-    func sendDataFirstQR(search_id: String, check_id: String) {
+    func sendDataFirstQR(search_id: String, check_id: String, userType: String) {
         withAnimation(.easeInOut(duration: 0.35)) {
-            qrCodeNetworkReqests.sendQrCodeData(search_id: search_id, check_id: check_id) { result in
+            qrCodeNetworkReqests.sendQrCodeData(search_id: search_id, check_id: check_id, userType: userType) { result in
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
@@ -92,6 +94,7 @@ struct QRScaneerSheetPreview: View {
                         QRScannerView(completion: { result in
                             searchId = ""
                             checkId = ""
+                            type = ""
                             switch result {
                             case .success(let code):
 //                                if (code.contains("search_id") && code.contains("check_id")) {
@@ -102,7 +105,7 @@ struct QRScaneerSheetPreview: View {
                                     print("result parse: \(result) from code: \(code)")
                                     
                                     if (isSendedQRData != true) {
-                                        sendDataFirstQR(search_id: searchId, check_id: checkId)
+                                        sendDataFirstQR(search_id: searchId, check_id: checkId, userType: userType)
                                         isSendedQRData = true
                                     }
 
@@ -284,10 +287,12 @@ struct QRScaneerSheetPreview: View {
         
         let searchId = queryItems?.first(where: { $0.name == "search_id" })?.value
         let checkId = queryItems?.first(where: { $0.name == "check_id" })?.value
+        let userType = queryItems?.first(where: { $0.name == "type" })?.value
         
-        if let searchId = searchId, let checkId = checkId {
+        if let searchId = searchId, let checkId = checkId, let userType = userType {
             self.searchId = searchId
             self.checkId = checkId
+            self.userType = userType
             
             return "Search ID: \(searchId), Check ID: \(checkId)"
         }

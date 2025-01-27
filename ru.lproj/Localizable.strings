@@ -23,6 +23,20 @@
 //"Terms of use" = "Terms of use";
 "content_view.terms_of_use" = "Terms of use";
 
+/* MARK: -- Platforma -> PlatformaLiveActivity (Widgets part) */
+
+"widgets.no_information_about_events_await_update" = "Ожидайте обновления информации...";
+"widgets.no_information_about_events_need_authorize_await_update" = "Авторизуйтиесь и ожидайте обновления информации...";
+
+"widgets.all_events.upcoming_all_events_title" = "Все предстоящие события";
+"widgets.all_events.upcoming_all_events_description" = "Будьте в курсе. Удобно просматривайте предстоящие события Platforma";
+
+"widgets.all_events.upcoming_my_event_title" = "Мои предстоящие события:";
+"widgets.all_events.upcoming_my_event_description" = "Не забудьте про события, которые вы выбрали.";
+
+"widgets.closest_event" = "Ближайшее мероприятие:";
+"widgets.closest_events" = "Ближайшие мероприятия:";
+
 /* MARK: -- Platforma -> src -> QRCodeScanerScreen -> AlertQRCodeInfo() */
 
 //Repeat scan

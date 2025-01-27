@@ -18,6 +18,19 @@
 
 "content_view.terms_of_use" = "Warunki użytkowania";
 
+/* MARK: -- Platforma -> PlatformaLiveActivity (Widgets part) */
+
+"widgets.no_information_about_events_await_update" = "Oczekuj na aktualizację informacji...";
+"widgets.no_information_about_events_need_authorize_await_update" = "Zaloguj się i oczekuj na aktualizację informacji...";
+
+"widgets.all_events.upcoming_all_events_title" = "Wszystkie nadchodzące wydarzenia";
+"widgets.all_events.upcoming_all_events_description" = "Bądź na bieżąco. Wygodnie przeglądaj nadchodzące wydarzenia Platforma";
+
+"widgets.all_events.upcoming_my_event_title" = "Moje nadchodzące wydarzenia:";
+"widgets.all_events.upcoming_my_event_description" = "Nie zapomnij o wydarzeniach, które wybrałeś.";
+
+"widgets.closest_event" = "Najbliższe wydarzenie:";
+"widgets.closest_events" = "Najbliższe wydarzenia:";
 
 /* MARK: -- Platforma -> src -> QRCodeScanerScreen -> AlertQRCodeInfo() */
 

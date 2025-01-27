@@ -8,13 +8,16 @@
 import ActivityKit
 import Combine
 import Foundation
+import SwiftUICore
 
 final class ActivityManager: ObservableObject {
     @MainActor @Published private(set) var activityID: String?
     @MainActor @Published private(set) var activityToken: String?
     
+    @ObservedObject var activityActionNetwork: ActivityActionNetwork = ActivityActionNetwork()
+    
     let attributes = PlatformaLiveActivityAttributes(name: "Jhon", title: "Upcoming Event", countsDown: "")
-    var initialContentState = PlatformaLiveActivityAttributes.ContentState(startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", activityID: "")
+    var initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
 
     static let shared = ActivityManager()
     
@@ -26,9 +29,11 @@ final class ActivityManager: ObservableObject {
     private func startNewLiveActivity() async {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             do {
+                let content = ActivityContent(state: initialContentState, staleDate: nil, relevanceScore: 1.0)
+                
                 let activity = try Activity<PlatformaLiveActivityAttributes>.request(
                     attributes: attributes,
-                    contentState: initialContentState,
+                    content: content,
                     pushType: .token
                 )
                 
@@ -57,6 +62,9 @@ final class ActivityManager: ObservableObject {
                     print("Activity token: \(token)")
                     await MainActor.run { activityToken = token }
                     // HERE SEND THE TOKEN TO THE SERVER
+                    sendActivityData(userID: initialContentState.userID, eventID: initialContentState.eventID, eventToken: token, activityID: activity.id, dateEnd: initialContentState.startTime)
+//                    sendActivityData(userID: userID, eventID: eventID, eventToken: eventToken, activityID: activityID, dateEnd: dateEnd)
+//                    activityActionNetwork.sendActiivityData(userID: <#T##String#>, eventID: <#T##String#>, eventToken: <#T##String#>, activityID: <#T##String#>, dateEnd: <#T##String#>)
                 }
             } catch {
                 print("""
@@ -85,7 +93,7 @@ final class ActivityManager: ObservableObject {
               let runningActivity = Activity<PlatformaLiveActivityAttributes>.activities.first(where: { $0.id == activityID }) else {
             return
         }
-        let initialContentState = PlatformaLiveActivityAttributes.ContentState(startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", activityID: "")
+        let initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
 
         await runningActivity.end(
             ActivityContent(state: initialContentState, staleDate: Date.distantFuture),
@@ -100,7 +108,7 @@ final class ActivityManager: ObservableObject {
     
     func cancelAllRunningActivities() async {
         for activity in Activity<PlatformaLiveActivityAttributes>.activities {
-            let initialContentState = PlatformaLiveActivityAttributes.ContentState(startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", activityID: "")
+            let initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
             
             await activity.end(
                 ActivityContent(state: initialContentState, staleDate: Date()),
@@ -111,6 +119,31 @@ final class ActivityManager: ObservableObject {
         await MainActor.run {
             activityID = nil
             activityToken = nil
+        }
+    }
+    
+    func sendActivityData(userID: String, eventID: String, eventToken: String, activityID: String, dateEnd: String) {
+        withAnimation(.easeInOut(duration: 0.35)) {
+            activityActionNetwork.sendActiivityData(userID: userID, eventID: eventID, eventToken: eventToken, activityID: activityID, dateEnd: dateEnd) { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+//                        if (qrCodeNetworkReqests.userConfirmationDataModel.status == true) {
+//                            showQrCodeResponseAlert = true
+//                        } else {
+//                            showRequestErrorText = qrCodeNetworkReqests.userConfirmationDataModel.error ?? "Unknown Error while sending QR Code data"
+//                            showRequestError = true
+//                        }
+//                        isSendedQRData = false
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+//                        showRequestErrorText = qrCodeNetworkReqests.userConfirmationDataModel.error ?? "Error: \(error.localizedDescription) | \(error)"
+//                        showRequestError = true
+//                        isSendedQRData = false
+                    }
+                }
+            }
         }
     }
     

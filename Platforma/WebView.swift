@@ -34,6 +34,7 @@ struct WebView: UIViewRepresentable, Equatable {
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
     @Binding var showAppSelection: Bool
+    @Binding var userAccessToken: String
     //    @Binding var isRefreshing: Bool
     
     func makeUIView(context: Context) -> WKWebView {
@@ -80,7 +81,7 @@ struct WebView: UIViewRepresentable, Equatable {
     }
     
     func makeCoordinator() -> WebViewCoordinator {
-        return WebViewCoordinator(data: data, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection)
+        return WebViewCoordinator(data: data, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection, userAccessToken: $userAccessToken)
     }
     
 }
@@ -94,6 +95,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     @Binding var textUrl: String
     @Binding var isScannerPresented: Bool
     @Binding var showAppSelection: Bool
+    @Binding var userAccessToken: String
     //    @Binding var isRefreshing: Bool
     
     @StateObject var documentController = DocumentController()
@@ -104,13 +106,14 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
     
     var fileForOpen: URL? = URL(string: "")
     
-    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, showAppSelection: Binding<Bool>) {
+    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, showAppSelection: Binding<Bool>, userAccessToken: Binding<String>) {
         //    init(data: WebViewData, urlToShowHeader: Binding<Bool>, textUrl: Binding<String>, isScannerPresented: Binding<Bool>, isRefreshing: Binding<Bool>) {
         self.data = data
         self._urlToShowHeader = urlToShowHeader
         self._textUrl = textUrl
         self._isScannerPresented = isScannerPresented
         self._showAppSelection = showAppSelection
+        self._userAccessToken = userAccessToken
         //        self._isRefreshing = isRefreshing
         
         super.init()
@@ -251,11 +254,16 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         if let url = webView.url {
             //            Если писать без "for: url.host", то будут получены все кукки, и те что не относяться к сайту
             webView.getCookies(for: url.host) { data in
+//                print("ZZZ data: \(data)")
                 for (key, value) in data {
+//                    print("ZZZ ID data: \(key)")
                     if(key == "access") {
                         let myStringDict = value as? [String:AnyObject]
                         for (key1, value1) in myStringDict! {
                             if (key1 == "Value") {
+//                                print("ZZZ USE ACCESS TOEKN: \(value1)")
+
+                                self.userAccessToken = value1 as! String
                                 StateContent.userAdminQrCodeSendToken = value1 as! String
                             }
                         }
@@ -355,11 +363,18 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         let queryItems = components.queryItems
         
         let startId = queryItems?.first(where: { $0.name == "start_id" })?.value
+        let eventType = queryItems?.first(where: { $0.name == "type" })?.value
         
         if let startId = startId {
             StateContent.scanerOpenEvent = startId
-            
-            return "startId: \(startId)"
+            print("startId: \(startId)")
+//            return "startId: \(startId)"
+        }
+        
+        if let eventType = eventType {
+            StateContent.scanerEvnetType = eventType
+            print("eventType: \(eventType)")
+//            return "eventType: \(eventType)"
         }
         
         return nil
