@@ -11,9 +11,10 @@ import SwiftUI
 @main
 struct PlatformaLiveActivityBundle: WidgetBundle {
     var body: some Widget {
+
         PlatformaLiveActivity()
         PlatformaMyEventWdiget()
-//        PlatformaLiveActivityControl()
         PlatformaLiveActivityLiveActivity()
+
     }
 }

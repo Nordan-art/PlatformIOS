@@ -1,0 +1,145 @@
+/* 
+  Localizable.strings
+  Platforma
+
+  Created by Daniil Razbitski on 08/01/2025.
+  
+*/
+
+/* MARK: -- Platforma -> ContentView() */
+
+//Select an App
+"content_view.select_an_app_tranport" = "Select an app";
+
+//"No internet connection" = "No internet connection";
+"content_view.no_internet" = "No internet connection";
+
+//"Reconnect" = "Повторить";
+"content_view.reconect_no_internet" = "Reconnect";
+
+//"Privacy Policy" = "Privacy Policy";
+"content_view.privacy_policy" = "Privacy Policy";
+
+//"Terms of use" = "Terms of use";
+"content_view.terms_of_use" = "Terms of use";
+
+/* MARK: -- Platforma -> PlatformaLiveActivity (Widgets part) */
+
+"widgets.no_information_about_events_await_update" = "Awaiting information update...";
+"widgets.no_information_about_events_need_authorize_await_update" = "Please log in and await information update...";
+
+"widgets.all_events.upcoming_all_events_title" = "All upcoming events";
+"widgets.all_events.upcoming_all_events_description" = "Stay informed. Conveniently browse upcoming Platforma events.";
+
+"widgets.all_events.upcoming_my_event_title" = "My upcoming events:";
+"widgets.all_events.upcoming_my_event_description" = "Don't forget about the events you have selected.";
+
+"widgets.closest_event" = "Closest event:";
+"widgets.closest_events" = "Closest events:";
+
+/* MARK: -- Platforma -> src -> QRCodeScanerScreen -> AlertQRCodeInfo() */
+
+//Repeat scan
+"qrscaner.repeat_try_to_scan" = "Try again";
+
+"qrscaner.cancel_scan" = "Cancel";
+
+
+/* MARK: -- Platforma -> src -> AdditionalElement() */
+
+"additional_element.privacy_policy" = "Privacy Policy";
+
+
+/* MARK: -- Platforma -> Privacy Policy (text) */
+
+"privacy_policy_translate" = "
+1. GENERAL INFORMATION
+
+The company MIA CONSULT GROUP Sp. z o.o. respects the Users' right to privacy and takes care of the security of the data provided by the Users. Particular importance is attached to respecting the privacy of Users whose personal data is processed in accordance with the Data Protection Act of May 10, 2018, serving to implement Regulation 2016/679 of the European Parliament and of the Council of the EU of April 27, 2016 (General Data Protection Regulation - \"GDPR\"). MIA CONSULT GROUP Sp. z o.o. pays special attention to ensuring data security, using appropriate technological solutions to prevent any interference with the privacy of third-party users.
+The administrator of personal data is the company operating under the domain name PLATFORMAPRO.COM: 
+MIA CONSULT GROUP Sp. z o.o. with its registered office in Warsaw, 02-963, at ul. Zygmunta Vogla 28/02, entered in the National Court Register under the number KRS 0000854891, with authorized capital 100 000 zł, NIP 1133018235, REGON 386780510;
+Personal data is processed for the purpose of processing orders, services provided by MIA CONSULT GROUP Sp. z o.o.
+The data obtained during the registration process will be used by MIA CONSULT GROUP Sp. z o.o. only for processing orders and will not be passed on to third parties.
+The Administrator makes special efforts to protect the privacy and information provided to it by users of the site.
+The Administrator shall exercise due care in the selection and application of appropriate technical measures, including software and organizational measures, to ensure the protection of processed data, in particular the protection of data against unauthorized access, disclosure, loss and destruction, unauthorized modification, as well as against their processing in violation of applicable law.
+The administrator only processes the data of adults.
+As part of the Administrator's use of tools to support its day-to-day operations, provided for example by Google, Personal Data of customers may be transferred to a country outside the European Economic Area, in particular to the United States of America (USA) or another country in which a cooperating organization has tools to process Personal Data in cooperation with the Administrator.
+
+2. DATA COLLECTED AUTOMATICALLY
+
+When you visit our website, data about your visit is automatically collected, such as your IP address, domain name, browser type, operating system type, etc.
+Personal data is processed in accordance with the principles of Article 5 of the DPA, i.e. Data collected automatically may be used to analyze user behavior on our website, collect demographic data about our users or personalize the content of our websites. This data is collected automatically about each user. Data collected in the course of correspondence between you and our service will only be used to respond to your request.
+
+3. HOSTING
+
+The site is hosted (technically supported) on the operator's servers: home.pl S.A.
+1. The website is hosted (technically maintained) on the operator's servers: home.pl 
+2. Registration data of the hosting company: home.pl SA with registered office in Szczecin, ul. Zbożowa 4 70-653 Szczecin, registered in the District Court - Center in Szczecin, XIII Economic Division of the National Court Register. Share capital 1 294 000 zł, fully paid up, KRS No.: 0000431335, REGON: 811158242 NIP: 852-21-03-252. 
+3. At https://home.pl you can learn more about hosting and read the hosting company's privacy policy. 
+4. hosting company: 
+implements measures to protect against data loss (e.g., disk arrays, regular backups),
+Applies adequate measures to protect data processing locations in case of fire (e.g. special fire extinguishing systems)
+Applies adequate measures to protect data processing systems in the event of a sudden power outage (e.g., dual power feeds, generators, UPS backup power systems)
+Apply measures to physically protect access to data processing locations (e.g., access control, monitoring)
+application of measures to ensure appropriate environmental conditions for servers as components of the data processing system (e.g., environmental controls, specialized air conditioning systems), 
+implements organizational measures to ensure the highest possible level of protection and confidentiality (training, internal rules, password policy, etc.),
+appointed a data protection officer
+5. The hosting company maintains logs at the server level to ensure technical reliability. Logs may include: 
+resources specified by URL identifier (addresses of requested resources - pages, files), 
+the time of the request, 
+the time to send a response, 
+client platform name - identification by HTTP protocol, 
+information about errors that occurred during HTTP transaction execution, 
+URL of the page previously visited by the user (referral link), in the case of a link to the Website, 
+information about your browser,
+information about your IP address
+diagnostic information related to the process of self-ordered services through registers on the website,
+information related to the processing of e-mails addressed and sent by the Operator.
+
+4. HOW WE USE DATA. SHARING DATA
+
+Personal data obtained by setting so-called cookies can be used for profiling purposes. For more information about cookies, see the Cookie Policy.
+Rights in the field of information protection
+Due to the voluntary nature of providing your personal data, you have the right to:
+access to your personal data (Article 15 of RODO)
+correct their personal data (Article 16 of RODO)
+correcting your personal data (Article 16 RODO) f deleting your personal data (\"right to be forgotten\" - Article 17 RODO)
+limiting the processing of your personal data (Article 18 of the RODO)
+transferability of your personal data (Art. 20 RODO)
+object (Article 21 of RODO)
+If you believe that the processing of your personal data violates the provisions of the RODO, you have the right to lodge a complaint with the President of the Data Protection Authority.
+The company's website can be found at this address: https://uodo.gov.pl/ .
+Consent to the processing of personal data may be withdrawn at any time. Withdrawal of consent to data processing does not affect the legality of data processing carried out by the Administrator on the basis of consent obtained prior to its withdrawal.
+Any personal data of Users will be processed only in accordance with the purpose for which it was collected. Processing of personal data for marketing purposes is only possible after obtaining prior consent of the User in accordance with the Terms and Conditions.
+Login and personal data entry sites are secured at the data transmission level (SSL certificate). This ensures that the personal and login data entered on the site will be encrypted on the user's computer and can only be read on the target server.
+Personal data is processed by the Administrator for no longer than is necessary for the performance of the relevant activity defined by individual regulations (e.g. accounting).
+Personal data may be transferred to organizations that technically perform certain services. This applies in particular to the transfer of information about the User by MIA CONSULT GROUP Sp. z o.o. to the organization that is the operator of the registered Internet domain, or to organizations cooperating with MIA CONSULT GROUP Sp. z o.o. in the field of Internet domain registration, providers of IT systems and services, companies providing legal, analytical services; postal operators and couriers; operators of electronic payment systems and banks in the field of payments; bodies entitled to receive Subscriber's personal data on the basis of legal regulations. In case of inspection by the General Inspectorate for Personal Data Protection, the data may be provided to the inspection staff in accordance with the Law on Personal Data Protection. 
+Users' personal data are stored in a database where technical and organizational measures are taken to ensure the protection of processed data in accordance with the requirements established by data protection legislation.
+Personal data of customers may also be processed on the basis of:
+Applicable law - where processing is necessary to fulfill a legal obligation imposed on the administrator, e.g. when, on the basis of tax or accounting rules, the administrator settles contracts entered into (Article 6(1)(c) RODO);
+Necessity for purposes other than those mentioned above arising from legitimate interests pursued by the administrator or a third party, in particular to establish, investigate or defend claims, correspondence with clients.(Art. 6(1)(f) RODO)
+In the event of a personal data breach, the Administrator is obliged to notify the supervisory authority - (President of the Personal Data Protection Authority) without undue delay and no later than 72 hours after the breach has been detected, unless the breach is unlikely to result in a risk of infringement of the rights or freedoms of natural persons. The Administrator shall attach to the notification sent to the supervisory authority after 72 hours an explanation of the reasons for the delay. If the personal data breach is likely to result in a high risk of infringement of the rights or freedoms of natural persons, the Administrator shall notify the data subject of such breach without undue delay.
+
+5. GOOGLE ANALYTICS
+
+This website uses Google Analytics, a web audience analysis service provided by Google, Inc. (\"Google\"). Google Analytics uses \"cookies\", which are text files placed on your computer, to help the website analyze how users use the website. The information generated by the cookie about your use of the website (including your IP address) will be transmitted to and stored by Google on servers in the United States. 
+Google will use this information to evaluate your use of the website, compile reports on website activity for website operators and provide other services related to website activity and internet usage. Google may also transfer this information to third parties where required to do so by law or where such third parties process the information on Google's behalf. Google will not link your IP address to any other data stored by Google. You may refuse the use of cookies by selecting the appropriate settings on your browser, but please note that if you do so, you may not be able to use all the features of this website. By using this website, you consent to the processing of data about you by Google in the manner and for the purposes set out above.
+Users who do not agree with Google Analytics should install a cookie blocker. 
+
+6. PASSWORDS
+
+Personal data may only be processed by trained employees who have received the appropriate authorization from MIA CONSULT GROUP Sp. z o.o.
+Online access to the services is through a website validated with an encrypted login and password.
+Your platformapro.com account information, username and customer profile are password protected so that you have secure access to log in and edit your personal information. You are responsible for the security of your password.
+Access to your platformapro.com account is protected by a unique username and password that only you know. Our site utilizes internal security processes that encrypt your password to protect it from disclosure or access by anyone other than you. Neither company employees nor contractors will ask you for your password by mail, email, telephone or other inconsistent means.
+You have the right to request access to your personal data, to rectify, erase or restrict processing, the right to data portability, to object to processing and the right to lodge a complaint with a supervisory authority.
+
+7. CHANGES TO OUR PRIVACY POLICY
+
+We reserve the right to change the above privacy policy by posting the new privacy policy on this website.
+
+8. SECURITY AND CONTACT INFORMATION
+
+MIA CONSULT GROUP Sp. z o.o. periodically backs up web services and e-mail. In addition, MIA CONSULT GROUP Sp. z o.o. uses, among other things, anti-spam and virus protection. Software and security systems are updated on an ongoing basis.
+Inquiries and requests regarding the scope of personal data processing can be sent by post to Zygmunta Vogla 28/02, 02-963, Warszawa, and by e-mail to support@platformapro.com.
+";

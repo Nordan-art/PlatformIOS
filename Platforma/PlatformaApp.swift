@@ -104,7 +104,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         // Print userInfo for debugging
-        //           print("UserInfo: \(userInfo)")
+//                   print("UserInfo: \(userInfo)")
         
         //        updateLiveActivity(endTime: <#T##Date#>)
         
@@ -120,22 +120,32 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                 
                 // Decode JSON data into NotificationDataModel
                 let model = try JSONDecoder().decode(NotificationDataModel.self, from: jsonData)
-                //                   print("Decoded Model: \(model)")
+                                   print("Decoded Model: \(model)")
                 
                 // Handle specific fields
                 if let action = model.custom?.action {
-                    //                       print("Notification Action: \(action)")
-                    StateContent.url = URL(string: action) ?? URL(string: "https://platformapro.com/login?webview")!
+                    print("Notification Action: \(action)")
+                    StateContent.url = URL(string: action) ?? URL(string: "https://platformapro.com/login?webview&lang=en")!
                 }
                 
                 if let liveactivity = model.live_activity {
+                    print("liveactivity")
+                    print("activityManager.activityID: \(activityManager.activityID ?? "")")
                     if (activityManager.activityID?.isEmpty == false) {
                         Task {
                             await activityManager.cancelAllRunningActivities()
+                            
+                            activityManager.initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: model.live_activity?.userID ?? "", eventID: model.live_activity?.eventID ?? "", startTime: model.live_activity?.startTime ?? "", eventName: model.live_activity?.eventName ?? "", eventType: model.live_activity?.eventType ?? "", eventAddress: model.live_activity?.eventAddress ?? "", eventURL: model.live_activity?.eventURL ?? "", eventToken: model.live_activity?.eventToken ?? "", activityID: model.live_activity?.activityID ?? "", staleDate: model.live_activity?.staleDate ?? "\(Date())")
+                            print("activityManager.initialContentState: \(activityManager.initialContentState)")
+                            await activityManager.start(activityID: model.live_activity?.activityID ?? "")
                         }
                     } else {
                         Task {
-                            activityManager.initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: model.live_activity?.userID ?? "", eventID: model.live_activity?.eventID ?? "", startTime: model.live_activity?.startTime ?? "", eventName: model.live_activity?.eventName ?? "", eventType: model.live_activity?.eventType ?? "", eventAddress: model.live_activity?.eventAddress ?? "", eventURL: model.live_activity?.eventURL ?? "", eventToken: model.live_activity?.eventToken ?? "", activityID: model.live_activity?.activityID ?? "")
+//                            activityManager.initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: liveactivity.userID, eventID: liveactivity.eventID, startTime: liveactivity.startTime, eventName: liveactivity.eventName, eventType: liveactivity.eventType, eventAddress: liveactivity.eventAddress, eventURL: liveactivity.eventURL, eventToken: liveactivity.eventToken, activityID: liveactivity.activityID)
+//                            print("activityManager.initialContentState: \(activityManager.initialContentState)")
+//                            await activityManager.start(activityID: liveactivity.activityID)
+                            activityManager.initialContentState = PlatformaLiveActivityAttributes.ContentState(userID: model.live_activity?.userID ?? "", eventID: model.live_activity?.eventID ?? "", startTime: model.live_activity?.startTime ?? "", eventName: model.live_activity?.eventName ?? "", eventType: model.live_activity?.eventType ?? "", eventAddress: model.live_activity?.eventAddress ?? "", eventURL: model.live_activity?.eventURL ?? "", eventToken: model.live_activity?.eventToken ?? "", activityID: model.live_activity?.activityID ?? "", staleDate: model.live_activity?.staleDate ?? "\(Date())")
+                            print("activityManager.initialContentState: \(activityManager.initialContentState)")
                             await activityManager.start(activityID: model.live_activity?.activityID ?? "")
                         }
                     }
@@ -145,7 +155,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                 //                   JSON Response: {"live_activity":{"start_time":"2025-01-13 18:00:00","event_name":"Тестовое название мероприятия"},"custom":{"openPage":"notification","action":"https:\/\/platformapro.com\/user-single-event\/6"},"aps":{"alert":{"title":"PLATFORMA PRO","subtitle":"ТЕСТ с Platformapro.com","body":"Тестовое название мероприятия"},"sound":"testRingNotification"}}
                 
             } catch {
-                //                   print("Error decoding JSON: \(error.localizedDescription)")
+                print("Error decoding JSON: \(error.localizedDescription) | \(error)")
             }
         } else {
             //               print("Failed to serialize dictionary to Data.")
@@ -184,6 +194,7 @@ struct NotificationDataModel: Codable {
         var eventURL: String //address of event, where it will be start
         var eventToken: String
         var activityID: String //address of event, where it will be start
+        var staleDate: String
     }
     
     struct APS: Codable {
@@ -198,6 +209,27 @@ struct NotificationDataModel: Codable {
     }
 }
 
+//{
+//   "live_activity":{
+//      "startTime":"2025-01-15 14:00:00",
+//      "eventAddress":"Sejmu Czteroletniego 2\/146",
+//      "eventName":"Нетворкинг-встреча - Связи будущего в современном мире",
+//      "eventType":"offline",
+//      "activityID":"123123"
+//   },
+//   "aps":{
+//      "alert":{
+//         "title":"PLATFORMA PRO",
+//         "subtitle":"ТЕСТ с Platformapro.com",
+//         "body":"Тестовое название мероприятия"
+//      },
+//      "sound":"testRingNotification"
+//   },
+//   "custom":{
+//      "openPage":"notification",
+//      "action":"https:\/\/platformapro.com\/user-single-event\/6"
+//   }
+//}
 
 //{
 //    "live_activity": {

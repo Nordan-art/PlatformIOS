@@ -14,8 +14,8 @@ struct Provider: TimelineProvider {
     private let userDefaults = UserDefaults(suiteName: "group.com.MCGroup.Platforma")
     
     func placeholder(in context: Context) -> SimpleEntry {
-    SimpleEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [], dataUserEvent: []), image: [UIImage(systemName: "photo")])
-//        SimpleEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")], dataUserEvent: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")]), image: [UIImage(systemName: "photo")])
+        SimpleEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [], dataUserEvent: []), image: [UIImage(systemName: "photo")])
+        //        SimpleEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")], dataUserEvent: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")]), image: [UIImage(systemName: "photo")])
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
@@ -36,9 +36,9 @@ struct Provider: TimelineProvider {
         
         fetchImages(imageUrls: imageUrls) { image in
             let entry = SimpleEntry(date: Date(), eventsData: eventsData, image: image)
-//            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
-//            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-                        let timeline = Timeline(entries: [entry], policy: .atEnd)
+            //            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
+            //            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
         }
     }
@@ -48,7 +48,7 @@ struct Provider: TimelineProvider {
         guard let data = userDefaults?.data(forKey: "widgetEvents"),
               let returnData = try? JSONDecoder().decode(AllWdigetsDataModel.self, from: data) else {
             //            return AllWdigetsDataModel(status: false, dataAllEvents: [], dataUserEvent: [])
-                        return AllWdigetsDataModel(status: true, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")], dataUserEvent: [EventDataModel(id: 2, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")])
+            return AllWdigetsDataModel(status: true, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")], dataUserEvent: [EventDataModel(id: 2, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")])
         }
         return returnData
     }
@@ -83,7 +83,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct PlatformaLiveActivityEntryView : View {
     @Environment(\.widgetFamily) var family
-
+    
     var entry: Provider.Entry
     
     var body: some View {
@@ -92,7 +92,7 @@ struct PlatformaLiveActivityEntryView : View {
                 Text(family == .systemLarge ? "widgets.closest_events" : "widgets.closest_event")
                     .font(.custom("Montserrat-SemiBold", size: 15))
                     .foregroundStyle(Color.white)
-
+                
                 Spacer()
                 
                 Image("logo-mini")
@@ -207,7 +207,7 @@ struct PlatformaLiveActivityEntryView : View {
                                         .background(Color.black)
                                         .cornerRadius(13)
                                         .padding(.trailing, 5)
-
+                                        
                                         HStack(spacing: 0) {
                                             Image("adres")
                                                 .resizable()
@@ -226,18 +226,21 @@ struct PlatformaLiveActivityEntryView : View {
                                         }
                                         .background(Color.black)
                                         .cornerRadius(13)
-
+                                        
                                     }
                                 }
                             }
-//                            .padding(.bottom, 10)
+                            //                            .padding(.bottom, 10)
                         }
                     }
                 } else {
                     Text(LocalizedStringKey("widgets.no_information_about_events_await_update"))
-                            .font(.custom("Montserrat-Medium", size: 15))
-                            .foregroundStyle(Color.lightGrayLiveActive)
-                            .padding(.top, 75)
+                        .multilineTextAlignment(.center)
+                        .font(.custom("Montserrat-Medium", size: 15))
+                        .foregroundStyle(Color.lightGrayLiveActive)
+                        .padding(.top, family == .systemLarge ? 75 : 25)
+                    
+                    
                 }
             }
             
@@ -274,9 +277,9 @@ struct ProviderUser: TimelineProvider {
     private let userDefaults = UserDefaults(suiteName: "group.com.MCGroup.Platforma")
     
     func placeholder(in context: Context) -> SimpleUserWidgetEntry {
-//        SimpleUserWidgetEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f6.jpg", link: "")], dataUserEvent: []), image: [])
+        //        SimpleUserWidgetEntry(date: Date(), eventsData: AllWdigetsDataModel(status: false, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f6.jpg", link: "")], dataUserEvent: []), image: [])
         SimpleUserWidgetEntry(date: Date(), eventsData: AllWdigetsDataModel(status: true, dataAllEvents: [], dataUserEvent: []), image: [UIImage(systemName: "photo")])
-//        SimpleUserWidgetEntry(date: Date(), eventsData: AllWdigetsDataModel(status: true, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")], dataUserEvent: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")]), image: [UIImage(systemName: "photo")])
+        //        SimpleUserWidgetEntry(date: Date(), eventsData: AllWdigetsDataModel(status: true, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")], dataUserEvent: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/storage/app/public/uploads/event/cover_default/f20.jpg", link: "")]), image: [UIImage(systemName: "photo")])
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleUserWidgetEntry) -> Void) {
@@ -298,9 +301,9 @@ struct ProviderUser: TimelineProvider {
         
         fetchImages(imageUrls: imageUrls) { image in
             let entry = SimpleUserWidgetEntry(date: Date(), eventsData: eventsData, image: image)
-//            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
-//            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-                        let timeline = Timeline(entries: [entry], policy: .atEnd)
+            //            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 30, to: Date())!
+            //            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
             completion(timeline)
         }
     }
@@ -309,7 +312,7 @@ struct ProviderUser: TimelineProvider {
     private func loadEvents() -> AllWdigetsDataModel {
         guard let data = userDefaults?.data(forKey: "widgetEvents"),
               let returnData = try? JSONDecoder().decode(AllWdigetsDataModel.self, from: data) else {
-//            return AllWdigetsDataModel(status: false, dataAllEvents: [], dataUserEvent: [])
+            //            return AllWdigetsDataModel(status: false, dataAllEvents: [], dataUserEvent: [])
             return AllWdigetsDataModel(status: true, dataAllEvents: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")], dataUserEvent: [EventDataModel(id: 1, type: 0, title: "Example event", city: "Warszawa", address: "Address of event", start: "2025-01-01 18:00", imageUrl: "https://platformapro.com/uploads/front/img/logo.svg", link: "")])
         }
         return returnData
@@ -345,7 +348,7 @@ struct SimpleUserWidgetEntry: TimelineEntry {
 
 struct PlatformaWidgetUserEventView : View {
     @Environment(\.widgetFamily) var family
-
+    
     var entry: ProviderUser.Entry
     
     var body: some View {
@@ -494,10 +497,11 @@ struct PlatformaWidgetUserEventView : View {
                         }
                     }
                 } else {
-                        Text("widgets.no_information_about_events_need_authorize_await_update")
-                            .font(.custom("Montserrat-Medium", size: 15))
-                            .foregroundStyle(Color.lightGrayLiveActive)
-                            .padding(.top, 75)
+                    Text("widgets.no_information_about_events_need_authorize_await_update")
+                        .multilineTextAlignment(.center)
+                        .font(.custom("Montserrat-Medium", size: 15))
+                        .foregroundStyle(Color.lightGrayLiveActive)
+                        .padding(.top, family == .systemLarge ? 75 : 25)
                 }
             }
             

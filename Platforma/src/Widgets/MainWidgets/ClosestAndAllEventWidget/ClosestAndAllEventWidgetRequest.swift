@@ -115,7 +115,7 @@ class ReqWidgetAnaliticData: ObservableObject {
                     var boolReqStatus: Bool = false
                     do {
                         if let jsonString = String(data: responseData, encoding: .utf8) {
-                            print("JSON Response request closes event widget: \(jsonString)")
+//                            print("JSON Response request closes event widget: \(jsonString)")
                         }
                         
                         let decodedInvoice = try JSONDecoder().decode(AllWdigetsDataModel.self, from: responseData)

@@ -20,6 +20,7 @@ struct PlatformaLiveActivityAttributes: ActivityAttributes {
         var eventURL: String //address of event, where it will be start
         var eventToken: String
         var activityID: String //address of event, where it will be start
+        var staleDate: String
     }
 
     // Fixed non-changing properties about your activity go here!

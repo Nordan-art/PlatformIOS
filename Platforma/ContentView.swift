@@ -126,9 +126,14 @@ struct ContentView: View {
                     textUrl = String(describing: StateContent.url)
                     //                    print("onAppear currentUrl \(StateContent.currentUrl) ")
                     //                    print("onAppear stateContent.url \(StateContent.url) ")
+//                    if let activity = Activity<PlatformaLiveActivityAttributes>.activities.first {
+//                        Task {
+//                            await activity.end(dismissalPolicy: .immediate)
+//                        }
+//                    }
                 }
                 .onOpenURL { incomingURL in
-//                    print("App was opened via URL: \(incomingURL)")
+                    print("App was opened via URL: \(incomingURL)")
                     //                    let deepLink = "platforma://open-restore-password/https%3A%2F%2Fplatformapro.com%2Fforgot-password"
                     let baseDeepLink = "platforma://open-restore-password/"
                     let baseDeepLinkOpenAnything = "platforma://open-any-url/"
@@ -159,7 +164,7 @@ struct ContentView: View {
                                 StateContent.url = URL(string: extractedURL)!
                             }
                         } else {
-                            StateContent.url = URL(string: "https://platformapro.com/login?webview")!
+                            StateContent.url = URL(string: "https://platformapro.com/login?webview&lang=en")!
                         }
                     } else {
                         openURL(incomingURL)
@@ -179,7 +184,7 @@ struct ContentView: View {
             //                    }
             //                }
                 .confirmationDialog(
-                    "Select an App",
+                    "content_view.select_an_app_tranport",
                     isPresented: $showAppSelection,
                     titleVisibility: .visible
                 ) {
@@ -284,7 +289,7 @@ struct ContentView: View {
 //                                        }
 //                                    }
                                 } label: {
-                                    Text("Privacy Policy")
+                                    Text(LocalizedStringKey("content_view.privacy_policy"))
                                         .font(.custom("Montserrat-Medium", size: 16))
                                         .padding([.top, .bottom], 10)
                                         .padding([.leading, .trailing], 20)
@@ -302,7 +307,7 @@ struct ContentView: View {
                                     openURL(URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
                                     //                                UIApplication.shared.open("https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")
                                 } label: {
-                                    Text("Terms of use")
+                                    Text(LocalizedStringKey("content_view.terms_of_use"))
                                         .font(.custom("Montserrat-Medium", size: 16))
                                         .padding([.top, .bottom], 10)
                                         .padding([.leading, .trailing], 20)
@@ -417,7 +422,7 @@ struct ContentView: View {
 
     func extractURL(from deepLink: String, base: String) -> String? {
         guard deepLink.hasPrefix(base) else {
-            print("Deep link does not match the base")
+//            print("Deep link does not match the base")
             return nil
         }
         let startIndex = deepLink.index(deepLink.startIndex, offsetBy: base.count)
@@ -428,7 +433,7 @@ struct ContentView: View {
     }
     
     func reqInvoiceAnaliticsDataWidget(userAccessToken: String) {
-        print("request suka user data: \(userAccessToken)")
+//        print("request suka user data: \(userAccessToken)")
         
             withAnimation(.easeInOut(duration: 0.35)) {
                 reqWidgetAnaliticData.fetchClosestEvents(userAccessToken: userAccessToken) { result in

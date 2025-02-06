@@ -198,7 +198,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         }
         
         let defaultsStorage = UserDefaults.standard
-        let compaire = URL(string: "https://platformapro.com/login?webview")
+        let compaire = URL(string: "https://platformapro.com/login?webview&lang=en")
         let compaire1 = URL(string: "https://platformapro.com/login")
         
         
@@ -214,7 +214,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
         //MARK: -- Use JavaScript интеграци JS явы скрипта
         print(String(describing: webView.url!).contains("forgot-password"))
         //        print("webView.url: \(webView.url) || compaire: \(compaire)")
-        if (webView.url! != URL(string: "https://platformapro.com/login?webview") && webView.url! != URL(string: "https://platformapro.com/login") && webView.url! != URL(string: "https://platformapro.com/register")) {
+        if (webView.url! != URL(string: "https://platformapro.com/login?webview&lang=en") && webView.url! != URL(string: "https://platformapro.com/login") && webView.url! != URL(string: "https://platformapro.com/register")) {
             if (String(describing: webView.url!).contains("forgot-password")) {
                 urlToShowHeader = true
             } else {
@@ -450,7 +450,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKUIDelegate, WKNavigation
 extension WKWebView {
     //extension WKWebView {
     @objc func LoadBack(_ sender: Any) {
-        if (StateContent.currentUrl !=  URL(string: "https://platformapro.com/login?webview")) {
+        if (StateContent.currentUrl !=  URL(string: "https://platformapro.com/login?webview&lang=en")) {
             if self.canGoBack {
                 self.goBack()
                 //            let urlStr = String(describing: self.url!)
@@ -484,7 +484,7 @@ extension WKWebView {
     }
     
     @objc func goHome(_ sender: Any) {
-        self.load( URLRequest(url: URL(string:  "https://platformapro.com/login?webview")!))
+        self.load( URLRequest(url: URL(string:  "https://platformapro.com/login?webview&lang=en")!))
     }
     
     //    @objc func goWindows(_ sender: Any) {

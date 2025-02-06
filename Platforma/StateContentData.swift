@@ -8,11 +8,9 @@
 import Foundation
 
 struct StateContent {
-    //        static var url: URL = URL(string: "https://crm.mcgroup.pl/")!
-    //        static var url: URL = URL(string: "https://hurafaktura.pl")!
-    static var url: URL = URL(string: "https://platformapro.com/login?webview")!
+    static var url: URL = URL(string: "https://platformapro.com/login?webview&lang=en")!
     
-    static var currentUrl: URL = URL(string: "https://platformapro.com/login?webview")!
+    static var currentUrl: URL = URL(string: "https://platformapro.com/login?webview&lang=en")!
     
     
     static var addressOpenApp: String = ""

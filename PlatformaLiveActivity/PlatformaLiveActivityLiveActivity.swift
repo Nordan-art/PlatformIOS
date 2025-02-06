@@ -31,15 +31,13 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 expandedContent(context: context)
-                //                DynamicIslandExpandedRegion(.leading) {
-                //
-                //                }
-                //                DynamicIslandExpandedRegion(.trailing) {
-                //                }
-                //                DynamicIslandExpandedRegion(.bottom) {
-                ////                        Text("Bottom \(context.state.emoji)")
-                //                    // more content
-                //                }
+//                                DynamicIslandExpandedRegion(.leading) {
+//                                }
+//                                DynamicIslandExpandedRegion(.trailing) {
+//                                }
+//                                DynamicIslandExpandedRegion(.bottom) {
+//                                    Text(context.state.eventName)
+//                                }
             } compactLeading: {
                 ZStack {
                     Image("logo-mini")
@@ -55,7 +53,7 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                 //                Image(systemName: "timer")
                 //                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)min")
                 //                Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)
-                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
+                Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: true)
                     .font(.custom("Montserrat-Medium", size: 11))
                     .foregroundColor(Color.privacyPolicyCloseButton)
                     .frame(maxWidth: 45)
@@ -66,9 +64,6 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                 //                    .foregroundColor(Color.privacyPolicyCloseButton)
                 //                    .multilineTextAlignment(.leading)
             } minimal: {
-                //                    Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
-                //                    .font(.custom("Montserrat-Medium", size: 11))
-                //                    .font(.system(size: 11, weight: .medium))
                 ProgressView(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, label: { Text("") }, currentValueLabel: { Text("") })
                     .progressViewStyle(CircularProgressViewStyle())
                 //                      .progressViewStyle(LinearProgressViewStyle())
@@ -78,8 +73,6 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                 
             }
             .widgetURL(URL(string: "\(context.state.eventURL)"))
-            //            .widgetURL(URL(string: "https://platformapro.com/user-single-event/6"))
-            //            .keylineTint(Color.red)
         }
     }
     
@@ -116,10 +109,9 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                 //                      .frame(width: 20, height: 20)
                 //                      .scaleEffect(x: 1, y: 1, anchor: .center)
                 
-                
-                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
+                Text(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)
+//                Text("\(timerInterval: Date()...getDateTime(time: context.state.startTime), countsDown: true, showsHours: false)")
                     .font(.custom("Montserrat-Medium", size: 17))
-                //                    .font(.system(size: 17, weight: .medium))
                     .foregroundColor(Color.privacyPolicyCloseButton)
                     .frame(maxWidth: 70)
                     .fixedSize(horizontal: true, vertical: false)
@@ -148,15 +140,14 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                             
                             Text(" ")
                             
-                            Text("\(context.state.eventType)")
-                                .textCase(.uppercase)
+                            Text("\(context.state.eventType.capitalizingFirstLetter())")
                                 .font(.custom("Montserrat-Regular", size: 14))
                             //                            .font(.system(size: 14, weight: .regular))
                                 .foregroundStyle(Color.lightGrayLiveActive)
                         }
                         .padding(.vertical, 5)
                         .padding(.horizontal, 10)
-                        .background(Color.lightGrayLiveActiveBackground)
+                        .background(Color.lightGrayLiveActiveBackgroundLittleCard)
                         .cornerRadius(15)
                         .padding(.trailing, 5)
                         
@@ -177,7 +168,7 @@ struct PlatformaLiveActivityLiveActivity: Widget {
                         .padding(.vertical, 5)
                         .padding(.horizontal, 20)
                         .frame(width: .infinity)
-                        .background(Color.lightGrayLiveActiveBackground)
+                        .background(Color.lightGrayLiveActiveBackgroundLittleCard)
                         .cornerRadius(15)
                     }
                     .padding(.top, 15)
@@ -213,20 +204,13 @@ extension PlatformaLiveActivityAttributes {
 
 extension PlatformaLiveActivityAttributes.ContentState {
     fileprivate static var smiley: PlatformaLiveActivityAttributes.ContentState {
-        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
+        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "", staleDate: "")
     }
     
     fileprivate static var starEyes: PlatformaLiveActivityAttributes.ContentState {
-        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "")
+        PlatformaLiveActivityAttributes.ContentState(userID: "", eventID: "", startTime: "", eventName: "", eventType: "", eventAddress: "", eventURL: "", eventToken: "", activityID: "", staleDate: "")
     }
 }
-
-//#Preview("Notification", as: .content, using: PlatformaLiveActivityAttributes.preview) {
-//   PlatformaLiveActivityLiveActivity()
-//} contentStates: {
-//    PlatformaLiveActivityAttributes.ContentState.smiley
-//    PlatformaLiveActivityAttributes.ContentState.starEyes
-//}
 
 struct EventActivityView: View {
     let context: ActivityViewContext<PlatformaLiveActivityAttributes>
@@ -301,8 +285,8 @@ struct EventActivityView: View {
                         
                         Text(" ")
                         
-                        Text("\(context.state.eventType)")
-                            .textCase(.uppercase)
+                        Text("\(context.state.eventType.capitalizingFirstLetter())")
+//                            .textCase(.uppercase)
                         //                        .font(.custom("Montserrat-Regular", size: 14))
                             .font(.system(size: 14, weight: .regular))
                             .foregroundStyle(Color.lightGrayLiveActive)
@@ -310,7 +294,7 @@ struct EventActivityView: View {
                     }
                     .padding(.vertical, 5)
                     .padding(.horizontal, 13)
-                    .background(Color.lightGrayLiveActiveBackground)
+                    .background(Color.lightGrayLiveActiveBackgroundLittleCard)
                     .cornerRadius(15)
                     .padding(.trailing, 5)
                     
@@ -331,7 +315,7 @@ struct EventActivityView: View {
                     .padding(.vertical, 5)
                     .padding(.horizontal, 20)
                     .frame(width: .infinity)
-                    .background(Color.lightGrayLiveActiveBackground)
+                    .background(Color.lightGrayLiveActiveBackgroundLittleCard)
                     .cornerRadius(15)
                 }
                 .padding(.top, 15)
@@ -370,3 +354,13 @@ struct EventActivityView: View {
 //80da519f5825ea108c810ea7894a61fe7abdbbcd993e52d6deb0537db63af9c6c5cb965f9e956ada74fc69fcb22566035b1db748bcc32977e07de9e31efde40b56638160f84496fd6777a774a48e142e
 //460f0ac54cc3277e9ccf38f6ae595e2fa9c60983f5018b9541a772bb87f9f1a8
 //JSON Response: {"live_activity":{"startTime":"2025-01-15 01:00:00","eventAddress":"Sejmu Czteroletniego 2\/146","eventName":"Нетворкинг-встреча - Связи будущего в современном мире","eventType":"offline","activityID":"123123"},"aps":{"alert":{"title":"PLATFORMA PRO","subtitle":"ТЕСТ с Platformapro.com","body":"Тестовое название мероприятия"},"sound":"testRingNotification"},"custom":{"openPage":"notification","action":"https:\/\/platformapro.com\/user-single-event\/6"}}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
