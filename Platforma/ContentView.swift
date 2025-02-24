@@ -38,6 +38,8 @@ struct ContentView: View {
     
     @State private var showProductInfo = false
     
+    @StateObject var webViewState = WebViewState()
+    
     func changeOffset() {
         if (topActionMenuOffset < 100) {
             withAnimation {
@@ -109,50 +111,21 @@ struct ContentView: View {
             
             Color.black.ignoresSafeArea()
             
-            //            Text("textUrl: \(textUrl)")
-            //                .foregroundStyle(Color.clear)
-            //                .font(.system(size: 20))
-            //                .zIndex(4)
-            
-            //            WebView(data: WebViewData(url: stateContent.url))
-            WebView(data: WebViewData(url: StateContent.url), urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection, userAccessToken: $userAccessToken)
+            WebView(data: WebViewData(url: StateContent.url), webViewState: webViewState, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection, userAccessToken: $userAccessToken)
                 .equatable()
-                .onChange(of: webView.estimatedProgress, perform: { value in
-                    print(value)
-                })
                 .zIndex(internetConnectionIsOKorNOT == .satisfied ? 2 : 1)
                 .blur(radius: internetConnectionIsOKorNOT == .satisfied ? 0 : 5)
                 .onAppear {
                     textUrl = String(describing: StateContent.url)
-                    //                    print("onAppear currentUrl \(StateContent.currentUrl) ")
-                    //                    print("onAppear stateContent.url \(StateContent.url) ")
-//                    if let activity = Activity<PlatformaLiveActivityAttributes>.activities.first {
-//                        Task {
-//                            await activity.end(dismissalPolicy: .immediate)
-//                        }
-//                    }
                 }
                 .onOpenURL { incomingURL in
-                    print("App was opened via URL: \(incomingURL)")
-                    //                    let deepLink = "platforma://open-restore-password/https%3A%2F%2Fplatformapro.com%2Fforgot-password"
+//                    print("App was opened via URL: \(incomingURL)")
                     let baseDeepLink = "platforma://open-restore-password/"
                     let baseDeepLinkOpenAnything = "platforma://open-any-url/"
-                    //                    let baseDeepLinkOpenAnything = "platforma://open-any-url/https%3A%2F%2Fplatformapro.com%2Fuser-single-event%2F6"
-                    //user-single-event/6
-                    //                    https://platformapro.com/forgot-password/ilNkhjFmM2nzJcYvfUGXzMHiZDWNdvd7QjN8bMUMbP2IIa3Qy1
-                    
-                    // Допустимы ссылки
-                    // https://platformapro.com/
-                    // platforma://platformapro.com/open-restore-password
-                    // platforma://platformapro.com/open-any-url
                     
                     if (String(describing: incomingURL).contains("platformapro.com") && !String(describing: incomingURL).contains("platforma://")) {
-                        
                         StateContent.url = incomingURL
-                        
                     } else if (String(describing: incomingURL).contains("platforma://")) {
-                        print("incomingURL: \(incomingURL)")
-                        
                         if (String(describing: incomingURL).contains("open-restore-password")) {
                             if let extractedURL = extractURL(from: String(describing: incomingURL), base: baseDeepLink) {
                                 print("extractedURL1: \(extractedURL)")
@@ -170,19 +143,6 @@ struct ContentView: View {
                         openURL(incomingURL)
                     }
                 }
-            //                .sheet(isPresented: $showAppSelection) {
-            //                    List(availableApps) { app in
-            //                        Button(action: {
-            //                            app.open()
-            //                        }) {
-            //                            HStack {
-            //                                Image(systemName: app.iconName)
-            //                                    .foregroundColor(.blue)
-            //                                Text(app.name)
-            //                            }
-            //                        }
-            //                    }
-            //                }
                 .confirmationDialog(
                     "content_view.select_an_app_tranport",
                     isPresented: $showAppSelection,
@@ -205,20 +165,13 @@ struct ContentView: View {
                     }
                 }
                 .onAppear {
-//                    reqInvoiceAnaliticsDataWidget(accessToken: userAccessToekn)
                     reqInvoiceAnaliticsDataWidget(userAccessToken: userAccessToken)
-
+                    
                     availableApps = TransportApplication.getAvailableApps()
                 }
                 .onChange(of: userAccessToken) { newValue in
                     reqInvoiceAnaliticsDataWidget(userAccessToken: userAccessToken)
                 }
-            
-            
-            
-            //            https://platformapro.com/
-            //            platforma://
-            
             
             GeometryReader{ geometry in
                 ZStack {
@@ -252,8 +205,6 @@ struct ContentView: View {
             .zIndex(internetConnectionIsOKorNOT != .satisfied ? 4 : 1)
             
             if (urlToShowHeader == true) {
-                //            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
-                //            if (stateContent.currentUrl == URL(string: "http://platformapro.com/login?webview") || stateContent.currentUrl == URL(string: "http://platformapro.com/login")) {
                 VStack(spacing: 0) {
                     
                     HStack(alignment: .top) {
@@ -270,24 +221,9 @@ struct ContentView: View {
                                 
                                 
                                 Button {
-                                    ///openURL(URL(string: "https://platformapro.com/privacy-policy")!)
-                                    ///openURL(URL(string: "https://miacrm.pl/privacy-policy/")!)
-                                    
-                                    //                                    availableApps = TransportApplication.getAvailableApps()
-                                    //                                    showAppSelection = true
-                                    //                                    isScannerPresented = true
                                     //MARK: -- MAIN
                                     showPrivacePolicyAlert = true
                                     
-//                                    if (activityManager.activityID?.isEmpty == false) {
-//                                        Task {
-//                                            await activityManager.cancelAllRunningActivities()
-//                                        }
-//                                    } else {
-//                                        Task {
-//                                            await activityManager.start()
-//                                        }
-//                                    }
                                 } label: {
                                     Text(LocalizedStringKey("content_view.privacy_policy"))
                                         .font(.custom("Montserrat-Medium", size: 16))
@@ -335,41 +271,14 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 15)
                 .frame(width: SGConvenience.deviceWidth, height: 75)
-                //                .frame(minWidth: SGConvenience.deviceWidth, minHeight: 75, maxHeight: 75)
-                //                .frame(minWidth: UIScreen.main.bounds.width, minHeight: 75, maxHeight: 75)
-                //                .frame(minWidth: UIScreen.main.bounds.width, minHeight: urlToShowHeader ? 75 : 0, maxHeight: urlToShowHeader ? 75 : 0)
                 .background(Color.headerLogBackgr.opacity(0.5))
-                //            .background(Color(red: 100 / 255, green: 108 / 255, blue: 154 / 255).opacity(0.8))
-                //            .cornerRadius(radius: 15.0, corners: [.topLeft, .bottomLeft])
-                //            .frame(minWidth: UIScreen.main.bounds.width, minHeight: 75, maxHeight: 75, alignment: .top)
-                //            .frame(width: UIScreen.main.bounds.width, height: 50, alignment: .top)
-                //                .transition(.move(edge: .trailing))
-                //                .offset(y: CGFloat(topActionMenuOffset))
-                //            .gesture(
-                //                DragGesture(minimumDistance: 20, coordinateSpace: .global)
-                //                    .onEnded { value in
-                //                        if (rightActionMenuOffset < 100) {
-                //                            //opening
-                //                            if value.translation.width > 0 {
-                //                                // left
-                //                                changeOffset()
-                //                            }
-                //                        } else {
-                //                            if value.translation.width < 0 {
-                //                                // right
-                //                                changeOffset()
-                //                            }
-                //                            //closing
-                //                        }
-                //                    }
-                //            )
                 .zIndex(3)
             }
+            
             
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            
             networkMonitoring()
             
             updateWidget()
@@ -383,11 +292,7 @@ struct ContentView: View {
                         // Display the custom alert as an overlay
                         AlertPrivacyPolice(show: $showPrivacePolicyAlert, infoTextAlert: "")
                             .frame(width: geo.size.width - 30, height: geo.size.height / 2)
-                        //                        .frame(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.width / 2)
-                        //                        .frame(width: SGConvenience.deviceWidth - 30, height: SGConvenience.deviceHeight / 2)
-                        //                        .frame(width: UIScreen.main.bounds.width / 1.1, height: UIScreen.main.bounds.height / 2)
                             .background(LinearGradient(gradient: gradient, startPoint: .topLeading, endPoint: .bottomTrailing))
-                        //                        .background(Color.headerLogBackgr.opacity(0.7))
                             .cornerRadius(15)
                             .opacity(showPrivacePolicyAlert ? 1 : 0)
                             .animation(.easeInOut, value: showPrivacePolicyAlert)
@@ -398,31 +303,26 @@ struct ContentView: View {
                             .zIndex(2)
                             .position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
                         
-                        
-                        
                         Color.black.opacity(0.25)
                             .frame(width: geo.size.width, height: geo.size.height)
-                        //                            .frame(width: .infinity, height: .infinity)
                             .zIndex(1)
                     }
                 }
-                //                if (!networkMonitor.isConnected) {
-                //                    NoInternetView()
-                //                }
             }
                 .ignoresSafeArea(.all)
         )
         .fullScreenCover(isPresented: $isScannerPresented, content: {QRScaneerSheetPreview(isScannerPresented: $isScannerPresented, scannedCode: $scannedCode).ignoresSafeArea(.all)})
     }
+    
     func updateWidget() {
         WidgetCenter.shared.reloadAllTimelines()
     }
-
+    
     @State var errorMessage: String? = ""
-
+    
     func extractURL(from deepLink: String, base: String) -> String? {
         guard deepLink.hasPrefix(base) else {
-//            print("Deep link does not match the base")
+            //            print("Deep link does not match the base")
             return nil
         }
         let startIndex = deepLink.index(deepLink.startIndex, offsetBy: base.count)
@@ -433,23 +333,19 @@ struct ContentView: View {
     }
     
     func reqInvoiceAnaliticsDataWidget(userAccessToken: String) {
-//        print("request suka user data: \(userAccessToken)")
-        
-            withAnimation(.easeInOut(duration: 0.35)) {
-                reqWidgetAnaliticData.fetchClosestEvents(userAccessToken: userAccessToken) { result in
-                    switch result {
-                    case .success(let data):
-                        print("")
-                        updateWidget()
-                    case .failure(let error):
-                        updateWidget()
-                            print("Error: \(error.localizedDescription)")
-                    }
+        withAnimation(.easeInOut(duration: 0.35)) {
+            reqWidgetAnaliticData.fetchClosestEvents(userAccessToken: userAccessToken) { result in
+                switch result {
+                case .success(let data):
+                    print("")
+                    updateWidget()
+                case .failure(let error):
+                    updateWidget()
+                    print("Error: \(error.localizedDescription)")
                 }
             }
-
+        }
     }
-
 }
 
 

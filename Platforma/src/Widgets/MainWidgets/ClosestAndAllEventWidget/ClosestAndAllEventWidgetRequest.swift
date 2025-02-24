@@ -18,12 +18,12 @@ struct AllWdigetsDataModel: Codable {
 struct EventDataModel: Codable {
     var id: Int
     var type: Int
-    var title: String
-    var city: String
-    var address: String
+    var title: String?
+    var city: String?
+    var address: String?
     var start: String
-    var imageUrl: String
-    var link: String
+    var imageUrl: String?
+    var link: String?
 }
 
 class ReqWidgetAnaliticData: ObservableObject {

@@ -12,6 +12,7 @@ struct StateContent {
     
     static var currentUrl: URL = URL(string: "https://platformapro.com/login?webview&lang=en")!
     
+    static var isLoading: Bool = false
     
     static var addressOpenApp: String = ""
     static var addressCityOpenApp: String = ""
@@ -25,4 +26,12 @@ struct StateContent {
     static var purchaseSingl: [String] = []
     static var purchaseSubscription: [String] = []
     static var purchaseAllIDs: [String] = []
+}
+
+
+class WebViewState : ObservableObject {
+    @Published var url:URL?
+    @Published var userSetUrl:URL?
+    @Published var showLoader: Bool = false
+    @Published var estimatedProgress:Double?
 }

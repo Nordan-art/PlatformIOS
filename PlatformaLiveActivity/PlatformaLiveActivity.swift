@@ -86,6 +86,8 @@ struct PlatformaLiveActivityEntryView : View {
     
     var entry: Provider.Entry
     
+//    imageUrl
+//    link
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -105,49 +107,49 @@ struct PlatformaLiveActivityEntryView : View {
                 if (!entry.eventsData.dataAllEvents.isEmpty) {
                     if (family == .systemLarge) {
                         ForEach(Array(entry.eventsData.dataAllEvents.enumerated().prefix(5)), id: \.element.id) { index, value in
-                            Link(destination: URL(string: value.link)!) {
-                                HStack(spacing: 0) {
-                                    if let image = entry.image[index] {
-                                        ZStack(alignment: .center) {
-                                            Image(uiImage: image)
+                            Link(destination: URL(string: value.link ?? "https://platformapro.com/login?webview&lang=en")!) {
+                                    HStack(spacing: 0) {
+                                        if let image = entry.image[index] {
+                                            ZStack(alignment: .center) {
+                                                Image(uiImage: image)
+                                                    .resizable()
+                                                    .cornerRadius(10)
+                                                    .frame(width: 40, height: 40)
+                                                
+                                                Image(value.type == 1 ? "online" : "offline")
+                                                    .resizable()
+                                                    .frame(width: 24, height: 24)
+                                            }
+                                        } else {
+                                            // Fallback image or a placeholder
+                                            Image(systemName: "photo")
                                                 .resizable()
+                                                .scaledToFit()
                                                 .cornerRadius(10)
                                                 .frame(width: 40, height: 40)
-                                            
-                                            Image(value.type == 1 ? "online" : "offline")
-                                                .resizable()
-                                                .frame(width: 24, height: 24)
+                                                .foregroundColor(.gray)
                                         }
-                                    } else {
-                                        // Fallback image or a placeholder
-                                        Image(systemName: "photo")
+                                        
+                                        Text("\(value.title ?? "")")
+                                            .lineLimit(2)
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Montserrat-Medium", size: 14))
+                                            .padding(.leading, 10)
+                                            .foregroundStyle(Color.lightGrayColorB7B7B7)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "arrow.right")
                                             .resizable()
-                                            .scaledToFit()
-                                            .cornerRadius(10)
-                                            .frame(width: 40, height: 40)
-                                            .foregroundColor(.gray)
+                                            .frame(width: 15, height: 15)
                                     }
-                                    
-                                    Text("\(value.title)")
-                                        .lineLimit(2)
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Montserrat-Medium", size: 14))
-                                        .padding(.leading, 10)
-                                        .foregroundStyle(Color.lightGrayColorB7B7B7)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "arrow.right")
-                                        .resizable()
-                                        .frame(width: 15, height: 15)
+                                    .frame(width: nil)
                                 }
-                                .frame(width: nil)
-                            }
-                            .padding(.bottom, 15)
+                                .padding(.bottom, 15)
                         }
                     } else {
                         ForEach(Array(entry.eventsData.dataAllEvents.enumerated().prefix(1)), id: \.element.id) { index, value in
-                            Link(destination: URL(string: value.link)!) {
+                            Link(destination: URL(string: value.link ?? "https://platformapro.com/login?webview&lang=en")!) {
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         if let image = entry.image[index] {
@@ -217,7 +219,7 @@ struct PlatformaLiveActivityEntryView : View {
                                                 .padding(.leading, 10)
                                                 .padding(.vertical, 5)
                                             
-                                            Text(value.address)
+                                            Text("\(value.address ?? "")")
                                                 .font(.custom("Montserrat-Regular", size: 13))
                                                 .foregroundStyle(Color.lightGrayColorB7B7B7)
                                                 .padding(.leading, 5)
@@ -369,49 +371,49 @@ struct PlatformaWidgetUserEventView : View {
                 if (!entry.eventsData.dataUserEvent.isEmpty) {
                     if (family == .systemLarge) {
                         ForEach(Array(entry.eventsData.dataUserEvent.enumerated().prefix(5)), id: \.element.id) { index, value in
-                            Link(destination: URL(string: value.link)!) {
-                                HStack(spacing: 0) {
-                                    if let image = entry.image[index] {
-                                        ZStack(alignment: .center) {
-                                            Image(uiImage: image)
+                            Link(destination: URL(string: value.link ?? "https://platformapro.com/login?webview&lang=en")!) {
+                                    HStack(spacing: 0) {
+                                        if let image = entry.image[index] {
+                                            ZStack(alignment: .center) {
+                                                Image(uiImage: image)
+                                                    .resizable()
+                                                    .cornerRadius(10)
+                                                    .frame(width: 40, height: 40)
+                                                
+                                                Image(value.type == 1 ? "online" : "offline")
+                                                    .resizable()
+                                                    .frame(width: 24, height: 24)
+                                            }
+                                        } else {
+                                            // Fallback image or a placeholder
+                                            Image(systemName: "photo")
                                                 .resizable()
+                                                .scaledToFit()
                                                 .cornerRadius(10)
                                                 .frame(width: 40, height: 40)
-                                            
-                                            Image(value.type == 1 ? "online" : "offline")
-                                                .resizable()
-                                                .frame(width: 24, height: 24)
+                                                .foregroundColor(.gray)
                                         }
-                                    } else {
-                                        // Fallback image or a placeholder
-                                        Image(systemName: "photo")
+                                        
+                                        Text("\(value.title ?? "")")
+                                            .lineLimit(2)
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Montserrat-Medium", size: 14))
+                                            .padding(.leading, 10)
+                                            .foregroundStyle(Color.lightGrayColorB7B7B7)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "arrow.right")
                                             .resizable()
-                                            .scaledToFit()
-                                            .cornerRadius(10)
-                                            .frame(width: 40, height: 40)
-                                            .foregroundColor(.gray)
+                                            .frame(width: 15, height: 15)
                                     }
-                                    
-                                    Text("\(value.title)")
-                                        .lineLimit(2)
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Montserrat-Medium", size: 14))
-                                        .padding(.leading, 10)
-                                        .foregroundStyle(Color.lightGrayColorB7B7B7)
-                                    
-                                    Spacer()
-                                    
-                                    Image(systemName: "arrow.right")
-                                        .resizable()
-                                        .frame(width: 15, height: 15)
+                                    .frame(width: nil)
                                 }
-                                .frame(width: nil)
-                            }
-                            .padding(.bottom, 15)
+                                .padding(.bottom, 15)
                         }
                     } else {
                         ForEach(Array(entry.eventsData.dataUserEvent.sorted(by: {$0.start < $1.start}).enumerated().prefix(1)), id: \.element.id) { index, value in
-                            Link(destination: URL(string: value.link)!) {
+                            Link(destination: URL(string: value.link ?? "https://platformapro.com/login?webview&lang=en")!) {
                                 VStack(spacing: 0) {
                                     HStack(spacing: 0) {
                                         if let image = entry.image[index] {
@@ -435,7 +437,7 @@ struct PlatformaWidgetUserEventView : View {
                                                 .foregroundColor(.gray)
                                         }
                                         
-                                        Text("\(value.title)")
+                                        Text("\(value.title ?? "")")
                                             .lineLimit(2)
                                             .multilineTextAlignment(.leading)
                                             .font(.custom("Montserrat-Medium", size: 14))
@@ -481,7 +483,7 @@ struct PlatformaWidgetUserEventView : View {
                                                 .padding(.leading, 10)
                                                 .padding(.vertical, 5)
                                             
-                                            Text(value.address)
+                                            Text("\(value.address ?? "")")
                                                 .font(.custom("Montserrat-Regular", size: 13))
                                                 .foregroundStyle(Color.lightGrayColorB7B7B7)
                                                 .padding(.leading, 5)
@@ -490,7 +492,6 @@ struct PlatformaWidgetUserEventView : View {
                                         }
                                         .background(Color.black)
                                         .cornerRadius(13)
-                                        
                                     }
                                 }
                             }
