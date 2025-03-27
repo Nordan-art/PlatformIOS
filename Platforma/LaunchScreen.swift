@@ -24,27 +24,37 @@ struct MainLaunchScreen: View {
                     .frame(width: UIScreen.main.bounds.width * 0.5)
                     .scaleEffect(scale)
                     .opacity(opacity)
-                    .onAppear {
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            scale = 1.2
-                            opacity = 1.0
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                withAnimation(.easeInOut(duration: 0.6)) {
-                                scale = 0.5
-                                opacity = 0.0
-
-                                showLoadingPage = false
-                            }
-                        }
-                    }
                 
                 Spacer()
             }
             .edgesIgnoringSafeArea(.all)
-            .frame(minWidth: geo.size.width, maxWidth: geo.size.width, minHeight: geo.size.height, maxHeight: geo.size.height, alignment: .center)
+//            .frame(minWidth: geo.size.width, maxWidth: geo.size.width, minHeight: geo.size.height, maxHeight: geo.size.height, alignment: .center)
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             .navigationBarBackButtonHidden(true)
-            .background(Color.black.opacity(0.7))
+//            .background(Color.black.opacity(0.7))
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.black, Color.gradientDarkGray]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+            )
+            .onAppear {
+                withAnimation(.easeInOut(duration: 0.8)) {
+                    scale = 1.2
+                    opacity = 1.0
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation(.easeInOut(duration: 0.6)) {
+                        scale = 0.5
+                        opacity = 0.0
+
+                        showLoadingPage = false
+                    }
+                }
+            }
+
         }
     }
 }
