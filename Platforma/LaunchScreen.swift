@@ -17,21 +17,19 @@ struct MainLaunchScreen: View {
         GeometryReader { geo in
             VStack(spacing: 0) {
                 Spacer()
-                
                 Image("logo_launch_scr")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.width * 0.5)
                     .scaleEffect(scale)
                     .opacity(opacity)
-                
+                    .animation(.spring(response: 0.5, dampingFraction: 0.6), value: scale)
+                    .animation(.easeInOut(duration: 0.8), value: opacity)
                 Spacer()
             }
             .edgesIgnoringSafeArea(.all)
-//            .frame(minWidth: geo.size.width, maxWidth: geo.size.width, minHeight: geo.size.height, maxHeight: geo.size.height, alignment: .center)
             .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
             .navigationBarBackButtonHidden(true)
-//            .background(Color.black.opacity(0.7))
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [Color.black, Color.gradientDarkGray]),
@@ -47,7 +45,7 @@ struct MainLaunchScreen: View {
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         withAnimation(.easeInOut(duration: 0.6)) {
-                        scale = 0.5
+//                        scale = 0.5
                         opacity = 0.0
 
                         showLoadingPage = false
