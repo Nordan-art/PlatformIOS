@@ -18,7 +18,7 @@ struct ContentView: View {
     @Environment(\.openURL) var openURL
     
     private let webView = WKWebView()
-    
+    @StateObject private var networkMonitor = NetworkMonitor()
     @StateObject var reqWidgetAnaliticData: ReqWidgetAnaliticData = ReqWidgetAnaliticData()
     @State var userAccessToken: String = ""
     
@@ -58,30 +58,30 @@ struct ContentView: View {
     @State var loadingOnlyOneTime: Bool = false
     //    https://platformapro.com/login
     //    https://platformapro.com/register
-    func networkMonitoring() {
-        let monitor = NWPathMonitor()
-        let queue = DispatchQueue(label: "monitoring")
-        monitor.start(queue: queue)
-        monitor.pathUpdateHandler = { path in
-            DispatchQueue.main.async {
-                switch path.status {
-                case .satisfied:
-                    //                      print("path of internet: \(path.status)")
-                    internetConnectionIsOKorNOT = path.status
-                    //ok
-                case .unsatisfied:
-                    //                      print("path of internet: \(path.status)")
-                    internetConnectionIsOKorNOT = path.status
-                    //ne ok
-                case .requiresConnection:
-                    internetConnectionIsOKorNOT = .unsatisfied
-                    //                      internetConnectionIsOKorNOT = path.status
-                    //internet connect but not work
-                @unknown default:  fatalError()
-                }
-            }
-        }
-    }
+//    func networkMonitoring() {
+//        let monitor = NWPathMonitor()
+//        let queue = DispatchQueue(label: "monitoring")
+//        monitor.start(queue: queue)
+//        monitor.pathUpdateHandler = { path in
+//            DispatchQueue.main.async {
+//                switch path.status {
+//                case .satisfied:
+//                    //                      print("path of internet: \(path.status)")
+//                    internetConnectionIsOKorNOT = path.status
+//                    //ok
+//                case .unsatisfied:
+//                    //                      print("path of internet: \(path.status)")
+//                    internetConnectionIsOKorNOT = path.status
+//                    //ne ok
+//                case .requiresConnection:
+//                    internetConnectionIsOKorNOT = .unsatisfied
+//                    //                      internetConnectionIsOKorNOT = path.status
+//                    //internet connect but not work
+//                @unknown default:  fatalError()
+//                }
+//            }
+//        }
+//    }
     
     @State var internetConnectionIsOKorNOT: NWPath.Status = .satisfied
     
@@ -100,8 +100,6 @@ struct ContentView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            //            Color.red // This changes the background of the entire screen, including the safe area.
-            //                .edgesIgnoringSafeArea(.top) // Ignore the top safe area
             GeometryReader { reader in
                 Color.headerLogBackgr
                     .frame(height: reader.safeAreaInsets.top, alignment: .top)
@@ -113,8 +111,8 @@ struct ContentView: View {
             
             WebView(data: WebViewData(url: StateContent.url), webViewState: webViewState, urlToShowHeader: $urlToShowHeader, textUrl: $textUrl, isScannerPresented: $isScannerPresented, showAppSelection: $showAppSelection, userAccessToken: $userAccessToken)
                 .equatable()
+                .blur(radius: networkMonitor.status == .satisfied ? 0 : 5)
                 .zIndex(internetConnectionIsOKorNOT == .satisfied ? 2 : 1)
-                .blur(radius: internetConnectionIsOKorNOT == .satisfied ? 0 : 5)
                 .onAppear {
                     textUrl = String(describing: StateContent.url)
                 }
@@ -143,21 +141,12 @@ struct ContentView: View {
                         openURL(incomingURL)
                     }
                 }
-                .confirmationDialog(
-                    "content_view.select_an_app_tranport",
-                    isPresented: $showAppSelection,
-                    titleVisibility: .visible
-                ) {
+                .confirmationDialog("content_view.select_an_app_tranport", isPresented: $showAppSelection) {
                     ForEach(availableApps) { app in
                         Button {
                             app.open()
                         } label: {
                             HStack(spacing: 0) {
-                                //                                Image(systemName: app.iconName)
-                                //                                    .resizable()
-                                //                                    .foregroundColor(.blue)
-                                //                                    .frame(width: 15, height: 15)
-                                
                                 Text(app.name)
                                     .font(.custom("Montserrat-Medium", size: 14))
                             }
@@ -178,21 +167,21 @@ struct ContentView: View {
                     Color.black.opacity(0.5)
                         .edgesIgnoringSafeArea(.all)
                     
-                    if (internetConnectionIsOKorNOT != .satisfied) {
-                        VStack {
+                    if (networkMonitor.status != .satisfied) {
+                        LazyVStack {
                             ProgressView("No internet connection")
                                 .font(.custom("Montserrat-Medium", size: 14))
                                 .progressViewStyle(CircularProgressViewStyle())
                                 .scaleEffect(1.5)
                                 .font(.system(size: 16))
-                            Button("Reconnect") {
-                                withAnimation {
+                            Button {
+                                withAnimation(.easeInOut(duration: 0.35)) {
                                     internetConnectionIsOKorNOT = .satisfied
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                        networkMonitoring()
-                                    }
                                 }
+                            } label: {
+                                Text("Reconnect")
+                                    .font(.custom("Montserrat-Medium", size: 14))
+
                             }
                             .padding(.top, 25)
                         }
@@ -205,10 +194,9 @@ struct ContentView: View {
             .zIndex(internetConnectionIsOKorNOT != .satisfied ? 4 : 1)
             
             if (urlToShowHeader == true) {
-                VStack(spacing: 0) {
+                LazyVStack(spacing: 0) {
                     
                     HStack(alignment: .top) {
-                        //Spacer()
                         Group {
                             HStack(alignment: .top, spacing: 0) {
                                 Image("logo-mini")
@@ -260,14 +248,11 @@ struct ContentView: View {
                                 //                                .font(.system(size: 16))
                                 //                                .foregroundColor(.white)
                                 //                                .padding(.bottom, 5)
-                                
                             }
                             .padding(.top, 15)
                             .padding(.bottom, 15)
                         }
-                        //                    Spacer()
                     }
-                    
                 }
                 .padding(.horizontal, 15)
                 .frame(width: SGConvenience.deviceWidth, height: 75)
@@ -275,12 +260,10 @@ struct ContentView: View {
                 .zIndex(3)
             }
             
-            
         }
+        .background(Color.black)
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            networkMonitoring()
-            
             updateWidget()
         }
         .disabled(showPrivacePolicyAlert)

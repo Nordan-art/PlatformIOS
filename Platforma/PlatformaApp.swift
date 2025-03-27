@@ -21,29 +21,34 @@ struct PlatformaApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @State var showLoadingLaunchScreen: Bool = true
+
     var body: some Scene {
         WindowGroup {
-            
-            ContentView()
-                .ignoresSafeArea(.keyboard)
-            /// Проверка и устанвока состояние где находиться приложение, по типу свёрнуто полность, то это background,
-            /// при просмотре открытых приложенеи(list всех приложение), то это inactive,
-            /// иначе active
-                .onChange(of: scenePhase) { newPhase in
-                    if newPhase == .active {
-                        withAnimation {
-                            bluringAppInBackground = false
-                        }
-                    } else if newPhase == .inactive {
-                        withAnimation {
-                            bluringAppInBackground = true
-                        }
-                    } else if newPhase == .background {
-                        withAnimation {
-                            bluringAppInBackground = true
+            if (showLoadingLaunchScreen) {
+                MainLaunchScreen(showLoadingPage: $showLoadingLaunchScreen)
+            } else {
+                ContentView()
+                    .ignoresSafeArea(.keyboard)
+                /// Проверка и устанвока состояние где находиться приложение, по типу свёрнуто полность, то это background,
+                /// при просмотре открытых приложенеи(list всех приложение), то это inactive,
+                /// иначе active
+                    .onChange(of: scenePhase) { newPhase in
+                        if newPhase == .active {
+                            withAnimation {
+                                bluringAppInBackground = false
+                            }
+                        } else if newPhase == .inactive {
+                            withAnimation {
+                                bluringAppInBackground = true
+                            }
+                        } else if newPhase == .background {
+                            withAnimation {
+                                bluringAppInBackground = true
+                            }
                         }
                     }
-                }
+            }
         }
     }
 }

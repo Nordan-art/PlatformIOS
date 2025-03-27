@@ -53,7 +53,6 @@
 		46AA4BA82D354C2F000A84E5 /* QRCodeNetworkReqests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7E2D354C2F000A84E5 /* QRCodeNetworkReqests.swift */; };
 		46AA4BA92D354C2F000A84E5 /* QRScaneerSheetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B7F2D354C2F000A84E5 /* QRScaneerSheetPreview.swift */; };
 		46AA4BAA2D354C2F000A84E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B832D354C2F000A84E5 /* ContentView.swift */; };
-		46AA4BAB2D354C2F000A84E5 /* JSUserScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */; };
 		46AA4BAC2D354C2F000A84E5 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */; };
 		46AA4BAD2D354C2F000A84E5 /* PlatformaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */; };
 		46AA4BAE2D354C2F000A84E5 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AA4B892D354C2F000A84E5 /* WebView.swift */; };
@@ -96,6 +95,9 @@
 		46AE47952D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */; };
 		46AE47962D479FFB00A5E064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4B822D354C2F000A84E5 /* Assets.xcassets */; };
 		46AE47972D47CD6C00A5E064 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46AA4AFC2D2E72E0000A84E5 /* Localizable.strings */; };
+		46F3AD7C2D9563EF0003A01F /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3AD7B2D9563EF0003A01F /* LaunchScreen.swift */; };
+		46F3AD7F2D9573E00003A01F /* CheckNetwrok.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3AD7E2D9573DC0003A01F /* CheckNetwrok.swift */; };
+		46F3AD802D9573E00003A01F /* CheckNetwrok.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F3AD7E2D9573DC0003A01F /* CheckNetwrok.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,7 +198,6 @@
 		46AA4B822D354C2F000A84E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		46AA4B832D354C2F000A84E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		46AA4B842D354C2F000A84E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSUserScripts.swift; sourceTree = "<group>"; };
 		46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		46AA4B872D354C2F000A84E5 /* Platforma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Platforma.entitlements; sourceTree = "<group>"; };
 		46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformaApp.swift; sourceTree = "<group>"; };
@@ -214,6 +215,8 @@
 		46AA4C832D380BC7000A84E5 /* StateContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateContentData.swift; sourceTree = "<group>"; };
 		46AE478F2D4452CF00A5E064 /* PlatformaLiveActivityExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlatformaLiveActivityExtension.entitlements; sourceTree = "<group>"; };
 		46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosestAndAllEventWidgetRequest.swift; sourceTree = "<group>"; };
+		46F3AD7B2D9563EF0003A01F /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		46F3AD7E2D9573DC0003A01F /* CheckNetwrok.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNetwrok.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +386,7 @@
 		46AA4B812D354C2F000A84E5 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				46F3AD7D2D9573D30003A01F /* Network */,
 				46AE47902D477AB700A5E064 /* Widgets */,
 				46AA4B612D354C2F000A84E5 /* AdditionalElement */,
 				46AA4B782D354C2F000A84E5 /* Fonts */,
@@ -397,10 +401,10 @@
 				46AA4B5E2D354C2F000A84E5 /* Preview Content */,
 				46AA4B812D354C2F000A84E5 /* src */,
 				46AA4B822D354C2F000A84E5 /* Assets.xcassets */,
+				46F3AD7B2D9563EF0003A01F /* LaunchScreen.swift */,
 				46AA4B832D354C2F000A84E5 /* ContentView.swift */,
 				46AA4C832D380BC7000A84E5 /* StateContentData.swift */,
 				46AA4B842D354C2F000A84E5 /* Info.plist */,
-				46AA4B852D354C2F000A84E5 /* JSUserScripts.swift */,
 				46AA4B862D354C2F000A84E5 /* NotificationDelegate.swift */,
 				46AA4B872D354C2F000A84E5 /* Platforma.entitlements */,
 				46AA4B882D354C2F000A84E5 /* PlatformaApp.swift */,
@@ -479,6 +483,14 @@
 				46AE47932D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift */,
 			);
 			path = ClosestAndAllEventWidget;
+			sourceTree = "<group>";
+		};
+		46F3AD7D2D9573D30003A01F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				46F3AD7E2D9573DC0003A01F /* CheckNetwrok.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,13 +727,14 @@
 				46AA4BA62D354C2F000A84E5 /* QRCodeAlertWindwo.swift in Sources */,
 				46AA4BA72D354C2F000A84E5 /* QRCodeElement.swift in Sources */,
 				46AA4BA82D354C2F000A84E5 /* QRCodeNetworkReqests.swift in Sources */,
+				46F3AD7C2D9563EF0003A01F /* LaunchScreen.swift in Sources */,
 				46AA4BA92D354C2F000A84E5 /* QRScaneerSheetPreview.swift in Sources */,
 				46AA4BAA2D354C2F000A84E5 /* ContentView.swift in Sources */,
-				46AA4BAB2D354C2F000A84E5 /* JSUserScripts.swift in Sources */,
 				46AA4BAC2D354C2F000A84E5 /* NotificationDelegate.swift in Sources */,
 				46AE47942D477AF700A5E064 /* ClosestAndAllEventWidgetRequest.swift in Sources */,
 				46AA4BC42D354C87000A84E5 /* ActivityManager.swift in Sources */,
 				46AA4BAD2D354C2F000A84E5 /* PlatformaApp.swift in Sources */,
+				46F3AD802D9573E00003A01F /* CheckNetwrok.swift in Sources */,
 				46AA4BAE2D354C2F000A84E5 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,6 +769,7 @@
 				46AA4B5B2D354C29000A84E5 /* PlatformaLiveActivityControl.swift in Sources */,
 				46AA4B5C2D354C29000A84E5 /* PlatformaLiveActivityLiveActivity.swift in Sources */,
 				46AA4C852D380BD5000A84E5 /* StateContentData.swift in Sources */,
+				46F3AD7F2D9573E00003A01F /* CheckNetwrok.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
