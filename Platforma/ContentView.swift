@@ -58,30 +58,6 @@ struct ContentView: View {
     @State var loadingOnlyOneTime: Bool = false
     //    https://platformapro.com/login
     //    https://platformapro.com/register
-//    func networkMonitoring() {
-//        let monitor = NWPathMonitor()
-//        let queue = DispatchQueue(label: "monitoring")
-//        monitor.start(queue: queue)
-//        monitor.pathUpdateHandler = { path in
-//            DispatchQueue.main.async {
-//                switch path.status {
-//                case .satisfied:
-//                    //                      print("path of internet: \(path.status)")
-//                    internetConnectionIsOKorNOT = path.status
-//                    //ok
-//                case .unsatisfied:
-//                    //                      print("path of internet: \(path.status)")
-//                    internetConnectionIsOKorNOT = path.status
-//                    //ne ok
-//                case .requiresConnection:
-//                    internetConnectionIsOKorNOT = .unsatisfied
-//                    //                      internetConnectionIsOKorNOT = path.status
-//                    //internet connect but not work
-//                @unknown default:  fatalError()
-//                }
-//            }
-//        }
-//    }
     
     @State var internetConnectionIsOKorNOT: NWPath.Status = .satisfied
     

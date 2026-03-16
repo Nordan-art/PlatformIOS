@@ -8,7 +8,7 @@
 import ActivityKit
 import Combine
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 final class ActivityManager: ObservableObject {
     @MainActor @Published private(set) var activityID: String?
